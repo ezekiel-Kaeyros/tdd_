@@ -1,0 +1,206 @@
+/* 
+
+Commented because of tailwind
+
+.log-in-page input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 100px;
+}
+/* Set a style for all buttons */
+/*.log-in-page button {
+  background-color: #05758f;
+  border-radius: 100px;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.log-in-page button:hover {
+  opacity: 0.8;
+}
+.log-in-page a {
+  color: #000;
+} */
+
+/* Extra styles for the cancel button */
+.log-in-page .cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+.log-in-page img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+.log-in-page .container {
+  padding: 16px;
+}
+.log-in-page {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.log-in-modal {
+  background: white;
+  width: 80%;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: white;
+  display: flex;
+  justify-content: center;
+
+  /* align-items: stretch; */
+}
+
+@media (min-width: 576px) {
+  .log-in-modal {
+    width: 80%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+
+    /* align-items: stretch; */
+  }
+}
+
+@media (min-width: 768px) {
+  .log-in-modal {
+    width: 60%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+
+    /* align-items: stretch; */
+  }
+}
+
+@media (min-width: 992px) {
+  .log-in-modal {
+    width: 40%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+
+    /* align-items: stretch; */
+  }
+}
+
+@media (min-width: 1200px) {
+  .log-in-modal {
+    width: 30%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: greeen;
+    display: flex;
+    justify-content: center;
+
+    /* align-items: stretch; */
+  }
+}
+
+@media (min-width: 1400px) {
+  .log-in-modal {
+    width: 30%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+    zoom: 100%;
+    /* align-items: stretch; */
+  }
+}
+
+/* Modal Content/Box */
+/* .modal-content {
+    border-radius: 1rem;
+    display: flex;
+    background-color: #FEFEFE;
+    width: 80%;
+    } */
+.log-in {
+  width: 50%;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0 1rem 1rem 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.img-holder {
+  width: 50%;
+  align-self: center;
+}
+.img-holder img {
+  width: 100%;
+  height: auto;
+}
+.content {
+  margin: 0 2rem;
+}
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

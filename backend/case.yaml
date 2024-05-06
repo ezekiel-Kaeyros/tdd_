@@ -1,0 +1,33 @@
+useCase1:
+  action:
+    name: create_remedial_action_schedule
+    name2: create_power_schedule
+    name3: create_redispatch_schedule_action
+    name4: create_remedial_action_cost
+  filter:
+    auslosender_prozess: PRD2 (DACF)
+    gm_art: Redispatch
+    ursache: I
+  level: '5'
+useCase2:
+  action:
+    name: create_remedial_action_schedule
+    name2: create_power_schedule
+    name3: create_redispatch_schedule_action
+    name4: create_remedial_action_cost
+  filter:
+    auslosender_prozess: PRD2 (DACF)
+    gm_art: Redispatch
+    ursache: I
+  level: '4'
+useCase3:
+  action:
+    name: create_remedial_action_schedule
+    name2: create_power_schedule
+    name3: create_redispatch_schedule_action
+    name4: create_remedial_action_cost
+  filter:
+    auslosender_prozess: PRD2 (DACF)
+    gm_art: Redispatch
+    ursache: I
+  level: '6'

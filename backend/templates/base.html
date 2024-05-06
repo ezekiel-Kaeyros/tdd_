@@ -1,0 +1,491 @@
+<html>
+  <head>
+    <title>TDD Flask</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <!-- <link rel="stylesheet" href="/static/auth.css" /> -->
+    <link rel="stylesheet" href="/static/admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/static/css/dashboard_header.css" />
+    <link rel="stylesheet" href="/static/css/config.css" />
+    <link rel="stylesheet" href="/static/css/custom-alert.css" />
+    <link rel="stylesheet" href="/static/notification.css" />
+    <!-- <link rel="stylesheet" href="/static/auth.css" />
+    <link rel="stylesheet" href="/static/update.css" />  -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;0,900;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div id="snackbar"></div>
+    <div class="wrapper">
+      <header id="side-menu">
+        <div class="light-bulb">
+          <img
+            id="company-logo"
+            src="/static/img/Tennet_TSO_logo.svg"
+            alt="Tennet"
+          />
+        </div>
+        <div class="menu-list">
+          <nav class="nav-list">
+            <a class="nav-item link-side-bar" id="dashbord-link" href="">
+              <i class="bi bi-house-door-fill"></i>
+              <span>Dashboard</span>
+            </a>
+            <span class="nav-item">
+              <i class="bi bi-graph-up"></i>
+              <span>Analytics</span>
+            </span>
+            <span class="nav-item">
+              <i class="bi bi-person-fill"></i>
+              <span>Agents</span>
+            </span>
+            <span class="nav-item">
+              <i class="bi bi-people"></i>
+              <span>Customers</span>
+            </span>
+          </nav>
+          <nav class="nav-list">
+            <span class="nav-item">
+              <i class="bi bi-folder-fill"></i>
+              <span>Products</span>
+            </span>
+            <span class="nav-item">
+              <i class="bi bi-eye-fill"></i>
+              <span>Overview</span>
+            </span>
+            <span class="nav-item">
+              <i class="bi bi-bar-chart-fill"></i>
+              <span>Report</span>
+            </span>
+          </nav>
+          <nav class="nav-list">
+            <a
+              class="nav-item link-side-bar"
+              onclick="redirectSetting()"
+              id="setting-link"
+            >
+              <i class="bi bi-gear"></i>
+              <span>Settings</span>
+            </a>
+          </nav>
+        </div>
+
+        <button
+          class="logout-btn"
+          id="btn_connect"
+          style="font-size: 10px"
+          onclick="disconnect()"
+        >
+          <div class="user-holder">
+            <div class="user-img-holder">
+              <img src="/static/img/contact.jpg" alt="user" />
+            </div>
+            <p id="display-user-name"></p>
+          </div>
+          <img src="/static/img/icon_logout.png" alt="logout icon" />
+        </button>
+      </header>
+      <!-- <div class="header-overlay" id="header-overlay" onclick="closeMenu()">
+
+      </div> -->
+      <!-- main content -->
+      <div class="main">
+        <nav class="navigation">
+          <a href="/"><i class="bi bi-house-door-fill"></i></a>
+          <button class="shadow" onclick="redirecToAddUser()">
+            <i class="bi bi-plus"></i> User
+          </button>
+        </nav>
+        <div class="content">{% block content %} {% endblock %}</div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModalCente"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenteTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="border-radius: 1rem; padding: 1rem">
+            <div class="modal-head">
+              <h1>Adding User</h1>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="contactForm">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        id="name"
+                        placeholder="Username"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <label for="inputState">User role</label>
+                      <select
+                        id="inputState"
+                        class="form-control"
+                        style="background-color: #dcdcdc"
+                      >
+                        <option selected>Select role...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <label for="inputState">Select company</label>
+                      <select
+                        id="inputState"
+                        class="form-control"
+                        style="background-color: #dcdcdc"
+                      >
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row justify-content-start mt-3">
+                  <div class="col-md-9">
+                    <button
+                      type="button"
+                      class="btn"
+                      style="background-color: #05758f; color: #fff"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="add-user-modal" class="modal-add"></div>
+    <script>
+      const socket = io();
+      socket.connect();
+      let us = JSON.parse(localStorage.getItem("client"));
+      socket.on("session-false-" + us.email, function (data) {
+        // getToast(`your session has expired, please log in`, 3000);
+        console.log("please login");
+        localStorage.clear();
+        // window.open("/", "_self");
+        // setTimeout(() => {
+        //   localStorage.clear();
+        //   document.getElementById("content-auth").style.display = "flex";
+        // }, 4500);
+      });
+    </script>
+
+    <script>
+      function getToast(text, duration = 10000) {
+        document.getElementById("snackbar").style.display = "block";
+        var x = document.getElementById("snackbar");
+        x.textContent = text;
+        x.className = "show";
+        setTimeout(function () {
+          x.className = "";
+        }, duration);
+      }
+      let div_name = document.getElementById("display-user-name");
+      let user = JSON.parse(localStorage.getItem("client"));
+      if (user.username) {
+        div_name.innerText = user.username;
+      }
+    </script>
+
+    <script>
+      client = JSON.parse(localStorage.getItem("client"));
+
+      var settingLink = document.getElementById("setting-link");
+      var dashbordLink = document.getElementById("dashbord-link");
+
+      function redirectSetting() {
+        let user = JSON.parse(localStorage.getItem("client"));
+          // settingLink.href = `/admin/super_admin?email=${user.email}`;
+          window.open(`/admin/super_admin?email=${user.email}`, "_self");
+        // if (client.role === 1) {
+        //   settingLink.href = "javascript: void(0)";
+        //   console.log("You do not have permission to acces this page");
+        //   alert("You do not have permission to acces this page");
+        // } else {
+        //   let user = JSON.parse(localStorage.getItem("client"));
+        //   settingLink.href = `/admin/super_admin?email=${user.email}`;
+        //   // settingLink.href = "/super_admin";
+        // }
+      }
+
+      dashbordLink.href = "/admin/" + client.id;
+
+      function disconnect() {
+        localStorage.removeItem("client");
+        sessionStorage.clear();
+        window.open("/", "_self");
+      }
+    </script>
+
+    <script src="{{url_for('static', filename='/js/handle_file.js')}}"></script>
+    <script src="{{url_for('static', filename='/js/user.js')}}"></script>
+    <script src="{{url_for('static', filename='/js/custom-alert.js')}}"></script>
+    <script src="{{url_for('static', filename='/js/notification.js')}}"></script>
+    <script src="{{url_for('static', filename='/js/handle-logo.js')}}"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      //   function toggleMenu() {
+      //     document.getElementById("side-menu").style.width = "21.111rem";
+      //     document.getElementById("header-overlay").style.display = "block";
+      //     document.getElementById("logos").style.display = "none";
+      //     document.getElementById("logos-full").style.display = "inline-flex";
+      //   }
+
+      //   function closeMenu() {
+      //     document.getElementById("side-menu").style.width = "10rem";
+      //     document.getElementById("header-overlay").style.display = "none";
+      //     document.getElementById("logos").style.display = "inline-flex";
+      //     document.getElementById("logos-full").style.display = "none";
+      //   }
+    </script>
+
+    <script>
+      function redirecToAddUser() {
+        window.open("/users/add-user", "_self");
+      }
+
+      function add_new_user() {
+        document.getElementById("id01").style.display = "block";
+      }
+      const closeModal = function () {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+        window.location.reload();
+      };
+      async function getData(key) {
+        let URL = "/admin/getconfig";
+        let formData = new FormData();
+        formData.append("config_key", key);
+        console.log(key);
+        try {
+          fetch(URL, {
+            method: "POST",
+            body: formData,
+          })
+            .then((res) => res.json())
+            .then((myJson) => {
+              console.log(myJson);
+              openModal(myJson, key);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      const close_without_reload = function () {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+      const saveSetting = function () {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+      // function getToast(text, duration = 4000) {
+      //   document.getElementById("snackbar").style.display = "block";
+      //   var x = document.getElementById("snackbar");
+      //   x.textContent = text;
+      //   x.className = "show";
+      //   setTimeout(function () {
+      //     x.className = x.className.replace("show", "");
+      //   }, duration);
+      // }
+      function closeModale() {
+        document.getElementById("id01").style.display = "none";
+      }
+      async function getDataConfig(key) {
+        console.log(88888);
+        let URL = "/admin/tso/getconfig";
+        let formData = new FormData();
+        formData.append("config_key", key);
+        console.log(key);
+        try {
+          fetch(URL, {
+            method: "POST",
+            body: formData,
+          })
+            .then((res) => res.json())
+            .then((myJson) => {
+              console.log(77777);
+              console.log(myJson);
+              console.log(key);
+              openModal(myJson, key);
+            });
+          //   console.log(result.json());
+          //   let r = result.json();
+          //   r.then((data) => {
+          //     console.log(data); // JSON data parsed by `data.json()` call
+          //   });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      function getData(form) {
+        var formData = new FormData(form);
+        for (var pair of formData.entries()) {
+          console.log(pair[0] + ": " + pair[1]);
+        }
+        if (JSON.parse(localStorage.getItem("client"))) {
+          let user = JSON.parse(localStorage.getItem("client"));
+          formData.append("company", user["company"]);
+        }
+        let URL = `/users`;
+        fetch(URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(Object.fromEntries(formData)),
+        })
+          .then((res) => res.json())
+          .then((myJson) => {
+            console.log(myJson);
+            notification(`user added `, "#23A3F8");
+            document.getElementById("form").reset();
+            // closeModale();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+      function addUser() {
+        document.getElementById("form").onsubmit = async (e) => {
+          e.preventDefault();
+          registerUser(e.target);
+        };
+      }
+    </script>
+    <script>
+      function getConfig(key) {
+        console.log(key);
+        let URL = "/admin/getconfig";
+        let formData = new FormData();
+        formData.append("config_key", key);
+        console.log(key);
+        try {
+          fetch(URL, {
+            method: "POST",
+            body: formData,
+          })
+            .then((res) => res.json())
+            .then((myJson) => {
+              console.log(myJson);
+              openModal(myJson, key);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </body>
+</html>

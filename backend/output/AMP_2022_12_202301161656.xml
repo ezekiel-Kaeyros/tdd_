@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:time="http://www.w3.org/2006/time#" xmlns:eumd="http://entsoe.eu/ns/Metadata-European#" xmlns:eu="http://iec.ch/TC57/CIM100-European#" xmlns:nc="http://entsoe.eu/ns/nc#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:cim="http://iec.ch/TC57/CIM100#" xmlns:dcterms="http://purl.org/dc/terms/#">
+	<md:FullModel rdf:about="urn:uuid:14c397de-ff4b-44fb-b6d8-cfccfed5dc84">
+		<prov:generatedAtTime>2023-01-16T16:56:00Z</prov:generatedAtTime>
+		<dcterms:issued>2024-03-04T10:22:37.345773</dcterms:issued>
+		<dcterms:publisher rdf:resource="http://energy.referencedata.eu/EIC/10X1001A1001A094" />
+		<dcat:keyword>RAS</dcat:keyword>
+		<dcterms:references rdf:resource="urn:uuid:bdc54ef6-da08-11ee-a347-f44ee39bf109" />
+		<dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+		<dcterms:accessRights rdf:resource="http://energy.referencedata.eu/Confidentiality/4cd9b326-1275-4da7-9724-28c5e1deeb87" />
+		<dcat:version>1.0</dcat:version>
+		<dcterms:description>This is an example of  remedial action schedule profile.</dcterms:description>
+		<dcat:startDate>2022-11-02T05:30:00+00:00Z</dcat:startDate>
+		<dcat:endDate>2022-11-04T21:30:00+00:00Z</dcat:endDate>
+		<dcterms:identifier>urn:uuid:14c397de-ff4b-44fb-b6d8-cfccfed5dc84</dcterms:identifier>
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2" />
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2" />
+		<prov:wasGeneratedBy rdf:resource="http://energy.referencedata.eu/CGM/Action/CGM-1D-RAS" />
+		<dcat:isVersionOf rdf:resource="http://energy.referencedata.eu/Model/ELIA_CGM-RAS" />
+		<dcterms:spatial rdf:resource="http://energy.referencedata.eu/Frame/BE_Transmission_Grid" />
+		<dcterms:title>2022-11-02T05:30:00+00:00Z_Amprion_CGM-1D-RAS</dcterms:title>
+	</md:FullModel>
+	<nc:RemedialActionSchedule rdf:ID="_db1fb956-cf72-4ddb-af77-7d6ebf7e679a">
+		<cim:IdentifiedObject.name>20221102_DA_CROSA_ORA_20221102_RD-22-03028_13(1)MKW-028</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>db1fb956-cf72-4ddb-af77-7d6ebf7e679a</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_efc3dc7d-7007-460a-ba09-4fbac13a48fd" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_17bc92a7-815d-44ee-8e96-71c6afce4517">
+		<cim:IdentifiedObject.name>NIEDERAUSSEM_H</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>17bc92a7-815d-44ee-8e96-71c6afce4517</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Amprion_)MKW-028_06</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_db1fb956-cf72-4ddb-af77-7d6ebf7e679a" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_fb97334f-7b7e-4675-8ccf-e22414f3deb0">
+		<cim:RemedialActionCost.mRID>fb97334f-7b7e-4675-8ccf-e22414f3deb0</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>12</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>50</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_db1fb956-cf72-4ddb-af77-7d6ebf7e679a" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9">
+		<cim:IdentifiedObject.name>Power schedule NIEDERAUSSEM_H</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_cfdc16a1-16c5-4e29-989e-9545958827ab">
+		<nc:PowerTimePoint.atTime>2022-11-02T06:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>1.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>2.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_8a0cdb37-4e64-4206-8b80-8b7b3ad32b94">
+		<nc:PowerTimePoint.atTime>2022-11-02T07:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_7c840a5f-4c7c-4ab4-8f2c-1b819080f2ca">
+		<nc:PowerTimePoint.atTime>2022-11-02T08:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_dce56e69-e89f-4f86-b400-21a072bd42bf">
+		<nc:PowerTimePoint.atTime>2022-11-02T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_723a3971-1fba-4ef3-bf6a-1b8e1a1ceea0">
+		<nc:PowerTimePoint.atTime>2022-11-02T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_1eabd9e6-5e17-48c8-a401-d329b2ed90e4">
+		<nc:PowerTimePoint.atTime>2022-11-02T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_82021607-ed8f-4646-831d-541a74cbda8b">
+		<nc:PowerTimePoint.atTime>2022-11-02T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_e6a17799-b517-4583-9e5d-18e2b8547298">
+		<nc:PowerTimePoint.atTime>2022-11-02T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_cfe59be9-8d9f-4743-b316-bc679e7108fe">
+		<nc:PowerTimePoint.atTime>2022-11-02T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f4d0f7c9-c2df-4049-b9f0-3fddb1689eb9" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_4b326d28-5236-4bd3-a0d3-6000f7700401">
+		<cim:IdentifiedObject.name>20221103_DA_CROSA_ORA_20221102_RD-22-03028_13(1)MKW-050</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>4b326d28-5236-4bd3-a0d3-6000f7700401</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_6fe1c6bc-471b-4917-80fb-8a7bf9abef7d" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_4ee11117-102c-46ea-bfdc-bf2cbd2c84ae">
+		<cim:IdentifiedObject.name>EMSLAND_GTB2</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>4ee11117-102c-46ea-bfdc-bf2cbd2c84ae</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Amprion_)MKW-050_12</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_4b326d28-5236-4bd3-a0d3-6000f7700401" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_715c83bd-0d2e-4904-b86f-a4af0e39e98c" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_863639f2-e877-430d-8a5c-08d761ff1951">
+		<cim:RemedialActionCost.mRID>863639f2-e877-430d-8a5c-08d761ff1951</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>50</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_4b326d28-5236-4bd3-a0d3-6000f7700401" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_715c83bd-0d2e-4904-b86f-a4af0e39e98c">
+		<cim:IdentifiedObject.name>Power schedule EMSLAND_GTB2</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>715c83bd-0d2e-4904-b86f-a4af0e39e98c</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_6343e035-fcc1-4ed4-8239-f8069a368122">
+		<nc:PowerTimePoint.atTime>2022-11-03T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-12.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>50.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_715c83bd-0d2e-4904-b86f-a4af0e39e98c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_0c56174d-fa9b-4549-8d68-b2a2589e3976">
+		<nc:PowerTimePoint.atTime>2022-11-03T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-4.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>50.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_715c83bd-0d2e-4904-b86f-a4af0e39e98c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_61e8039a-cc22-421b-b6b1-3c88f6b495ea">
+		<nc:PowerTimePoint.atTime>2022-11-03T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-10.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>50.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_715c83bd-0d2e-4904-b86f-a4af0e39e98c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_69421ae9-fb7d-41a1-9701-b810f8e116b9">
+		<nc:PowerTimePoint.atTime>2022-11-03T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-4.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>50.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_715c83bd-0d2e-4904-b86f-a4af0e39e98c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_490c6d09-9075-486a-8550-0b5fc96f33c2">
+		<nc:PowerTimePoint.atTime>2022-11-03T15:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-4.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_715c83bd-0d2e-4904-b86f-a4af0e39e98c" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_7542dda1-7073-45e5-82da-bf50d72510cc">
+		<cim:IdentifiedObject.name>20221104_DA_CROSA_ORA_20221102_RD-22-03028_13(1)MKW-051</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>7542dda1-7073-45e5-82da-bf50d72510cc</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_cb3a724c-baa6-404d-b8c5-6956e0439f57" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_442ea34a-80dc-45f3-aed7-7df106f8b4b2">
+		<cim:IdentifiedObject.name>GERSTEINW_DTF2</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>442ea34a-80dc-45f3-aed7-7df106f8b4b2</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Amprion_)MKW-051_18</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_7542dda1-7073-45e5-82da-bf50d72510cc" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_08c1cd0e-18e4-48b4-a773-46b89cb939bf">
+		<cim:RemedialActionCost.mRID>08c1cd0e-18e4-48b4-a773-46b89cb939bf</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>80</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_7542dda1-7073-45e5-82da-bf50d72510cc" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_78dba348-eb28-4136-bf93-271a0daa2b01">
+		<cim:IdentifiedObject.name>Power schedule GERSTEINW_DTF2</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>78dba348-eb28-4136-bf93-271a0daa2b01</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_9218df4a-440c-402f-a525-003beb21c86f">
+		<nc:PowerTimePoint.atTime>2022-11-04T16:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-5.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_9175e204-5f63-483d-ab4c-e57f8d51bc71">
+		<nc:PowerTimePoint.atTime>2022-11-04T17:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-10.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_529c914c-e26d-4feb-8dc8-d8cbf8b0d7ae">
+		<nc:PowerTimePoint.atTime>2022-11-04T18:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-15.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_ccde34a4-2654-46f8-9da4-59fe3983721e">
+		<nc:PowerTimePoint.atTime>2022-11-04T19:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-15.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_b9908385-73e3-42d7-ab2c-4d0d438ec047">
+		<nc:PowerTimePoint.atTime>2022-11-04T20:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-5.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_00c7a871-0351-4dff-af1f-7774da1a3a21">
+		<nc:PowerTimePoint.atTime>2022-11-04T21:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-5.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_78dba348-eb28-4136-bf93-271a0daa2b01" />
+	</nc:PowerTimePoint>
+</rdf:RDF>

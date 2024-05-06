@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/login.css">
+  </head>
+  <body>
+    <div id="id01" class="log-in-page">
+      <div class="log-in-page">
+         <!-- <form class="modal-content animate">
+        <div class="img-holder">
+          <img src="{{url_for('static', filename='/img/map.png')}}" alt="">
+        </div>
+        <div class="log-in">
+          <label for="uname"><b>Email </b></label>
+          <input
+            type="text"
+            placeholder="Enter your email"
+            name="email"
+            id="email"
+            required
+          />
+
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            id="password"
+            required
+          />
+
+          <button onclick="signIn()">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" /> Remember
+            me
+          </label>
+          <div>
+            <button
+            type="button"Document
+            onclick="document.getElementById('id01').style.display='none'"
+            class="cancelbtn"
+          >
+            Cancel
+          </button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </div>      
+      </form> -->
+      <form class="log-in-modal animate">
+        <div class="img-holder">
+          <!-- <img src="{{url_for('static', filename='/img/map.png')}}" alt="map"> -->
+        </div>
+        <div class="log-in">
+          <div class="content">
+            <label for="uname"><b>Email </b></label>
+          <input
+            type="text"
+            placeholder="Enter your email"
+            name="email"
+            id="email"
+            required
+          />
+
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            id="password"
+            required
+          />
+
+          <button onclick="signIn()">Login</button>
+          <!-- <label>
+            <input type="checkbox" checked="checked" name="remember" /> Remember
+            me
+          </label> -->
+          <!-- <div>
+            <button
+            type="button"
+            onclick="document.getElementById('id01').style.display='none'"
+            class="cancelbtn"
+          >
+            Cancel
+          </button> -->
+          <p><a href="#">Forgot password?>></a></p>
+          </div>
+          </div>
+          
+        </div> 
+      </form>
+      </div>     
+    </div>
+
+    <script>
+      // Get the modal
+      document.getElementById("id01").style.display = "block";
+      var modal = document.getElementById("id01");
+      document.getElementById("id01").onclick = async (e) => {
+        e.preventDefault();
+      };
+      // When the user clicks anywhere outside of the modal, close it
+    </script>
+    <script src="{{url_for('static', filename='/js/notification.js')}}"></script>
+    <script>
+      async function signIn() {
+        //let username = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        // let user = users.filter(
+        //   (user) => user.username == username && passsword == passsword
+        // );
+        let user = await loginUser(email, password);
+
+        if (user) {
+          localStorage.setItem("client", JSON.stringify(user));
+          if (user["role"] == 0) {
+            let url = `/super_admin?company=${user.company}`;
+            window.open(url, "_self");
+          } else if (user["role"] == 1) {
+            let url = `/admin/${user.id}?company=${user.company}`;
+            window.open(url, "_self");
+          } else {
+            window.open(`/?company=${user.company}`, "_self");
+          }
+        } else {
+          notification(`authfailed! `, "#23a3f8");
+        }
+      }
+
+      function loginUser(email, password) {
+        return new Promise((resolve, reject) => {
+          let URL = `/auth/user/try/connect`;
+          try {
+            fetch(URL, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+            })
+              .then((res) => res.json())
+              .then((user) => {
+                resolve(user);
+              });
+          } catch (error) {
+            console.log(error);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+FullModel/dcterms:Model.creator:
+  50Hertz: https://www.amprion.net/Strommarkt/Zertifikate/
+  AMP: https://www.amprion.net/Strommarkt/Zertifikate/
+  HOPS: https://www.amprion.net/Strommarkt/Zertifikate/
+  TNG: https://www.amprion.net/Strommarkt/Zertifikate/
+  TRANSELECTRICA: https://www.amprion.net/Strommarkt/Zertifikate/
+  HL: https://www.amprion.net/Strommarkt/Zertifikate/
+  SEPS: https://www.amprion.net/Strommarkt/Zertifikate/
+  ELIA: https://www.amprion.net/Strommarkt/Zertifikate/
+  APG: https://www.amprion.net/Strommarkt/Zertifikate/
+  PSE: https://www.amprion.net/Strommarkt/Zertifikate/
+  TTG: a
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  50Hertz: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  AMP: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  TNG: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  HOPS: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  TRANSELECTRICA: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  HL: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  SEPS: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  ELIA: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  APG: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  PSE: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+  TTG: b
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  50Hertz: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  AMP: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  TNG: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  HOPS: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  TRANSELECTRICA: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  HL: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  SEPS: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  ELIA: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  APG: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  PSE: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+  TTG: c
+FullModel/dcterms:Model.license:
+  TNG: https://creativecommons.org/licenses/by/4.0/
+  AMP: https://creativecommons.org/licenses/by/4.0/
+  50Hertz: https://creativecommons.org/licenses/by/4.0/
+  HOPS: https://creativecommons.org/licenses/by/4.0/
+  TRANSELECTRICA: https://creativecommons.org/licenses/by/4.0/
+  HL: https://creativecommons.org/licenses/by/4.0/
+  SEPS: https://creativecommons.org/licenses/by/4.0/
+  ELIA: https://creativecommons.org/licenses/by/4.0/
+  APG: https://creativecommons.org/licenses/by/4.0/
+  PSE: https://creativecommons.org/licenses/by/4.0/
+  TTG: v
+FullModel/eumd:Model.applicationSoftware:
+  TNG: TDD-Tool
+  AMP: TDD-Tool
+  50Hertz: TDD-Tool
+  HOPS: TDD-Tool
+  TRANSELECTRICA: TDD-Tool
+  HL: TDD-Tool
+  SEPS: TDD-Tool
+  ELIA: TDD-Tool
+  APG: TDD-Tool
+  PSE: TDD-Tool
+  TTG: b
+FullModel/dcterms:Model.description:
+  50Hertz: This is an example of  remedial action schedule profile.
+  AMP: This is an example of  remedial action schedule profile.
+  TNG: This is an example of  remedial action schedule profile.
+  HOPS: This is an example of  remedial action schedule profile.
+  TRANSELECTRICA: This is an example of  remedial action schedule profile.
+  HL: This is an example of  remedial action schedule profile.
+  SEPS: This is an example of  remedial action schedule profile.
+  ELIA: This is an example of  remedial action schedule profile.
+  APG: This is an example of  remedial action schedule profile.
+  PSE: This is an example of  remedial action schedule profile.
+  TTG: n
+FullModel/md:Model.wasAttributedTo:
+  50Hertz: https://www.amprion.net/Strommarkt/Zertifikate/
+  AMP: https://www.amprion.net/Strommarkt/Zertifikate/
+  HOPS: https://www.amprion.net/Strommarkt/Zertifikate/
+  TRANSELECTRICA: https://www.amprion.net/Strommarkt/Zertifikate/
+  HL: https://www.amprion.net/Strommarkt/Zertifikate/
+  SEPS: https://www.amprion.net/Strommarkt/Zertifikate/
+  ELIA: https://www.amprion.net/Strommarkt/Zertifikate/
+  APG: https://www.amprion.net/Strommarkt/Zertifikate/
+  PSE: https://www.amprion.net/Strommarkt/Zertifikate/
+  TTG: m
+  TNG: https://www.amprion.net/Strommarkt/Zertifikate/
+clients:
+  TNG: TransnetBW
+  AMP: Amprion
+  50Hertz: 50Hertz
+  HOPS: HOPS
+  TRANSELECTRICA: TRANSELECTRICA
+  HL: helloElectrica
+  SEPS: SEPS
+  ELIA: Elia
+  APG: APG
+  PSE: PSE
+  TTG: TenneT DE
+RemedialActionCost/nc:RemedialActionCost.kind:
+  value1: provisonal
+  value2: indicativ
+  value3: final
+  HELLO: provisonal
+  HL: provisonal
+  SEPS: provisonal
+  ELIA: provisonal
+  APG: provisonal
+  PSE: provisonal
+  TNG: provisional
+PowerSchedule/cim:IdentifiedObject.description:
+  TNG: Power schedule for the redispatch action
+  AMP: Power schedule for the redispatch action
+  50Hertz: Power schedule for the redispatch action
+  HOPS: Power schedule for the redispatch action
+  TRANSELECTRICA: Power schedule for the redispatch action
+  HL: Power schedule for the redispatch action
+  SEPS: Power schedule for the redispatch action
+  ELIA: Power schedule for the redispatch action
+  APG: Power schedule for the redispatch action
+  PSE: Power schedule for the redispatch action
+  TTG: g
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  TNG: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  AMP: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  50Hertz: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  HOPS: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  TRANSELECTRICA: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  HL: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  SEPS: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  ELIA: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  APG: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  PSE: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+  TTG: r
+EIC:
+  TNG: 10YDE-ENBW-----N
+  AMP: 10YDE-RWENET---I
+  50Hertz: 10YDE-VE-------2
+  HOPS: 10YDE-VE-------2
+  TRANSELECTRICA: 10YDE-VE-------2
+  HL: 10YDE-EON------1
+  SEPS: 10YDE-EON------1
+  ELIA: 10YDE-EON------1
+  APG: 10YDE-EON------1
+  PSE: 10YDE-EON------1
+  TTG: r
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  TNG: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  AMP: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  50Hertz: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  HOPS: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  TRANSELECTRICA: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  HL: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  SEPS: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  ELIA: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  APG: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  PSE: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+  TTG: r
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  50Hertz: https://iec.ch/TC57/CIM100#Currency.EUR
+  AMP: https://iec.ch/TC57/CIM100#Currency.EUR
+  HOPS: https://iec.ch/TC57/CIM100#Currency.EUR
+  TNG: https://iec.ch/TC57/CIM100#Currency.EUR
+  TRANSELECTRICA: https://iec.ch/TC57/CIM100#Currency.EUR
+  HL: https://iec.ch/TC57/CIM100#Currency.EUR
+  SEPS: https://iec.ch/TC57/CIM100#Currency.EUR
+  ELIA: https://iec.ch/TC57/CIM100#Currency.EUR
+  APG: https://iec.ch/TC57/CIM100#Currency.EUR
+  PSE: https://iec.ch/TC57/CIM100#Currency.EUR
+  TTG: r
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  TNG: https://iec.ch/TC57/CIM100#Currency.EUR
+  AMP: https://iec.ch/TC57/CIM100#Currency.EUR
+  50Hertz: https://iec.ch/TC57/CIM100#Currency.EUR
+  HOPS: https://iec.ch/TC57/CIM100#Currency.EUR
+  TRANSELECTRICA: https://iec.ch/TC57/CIM100#Currency.EUR
+  HL: https://iec.ch/TC57/CIM100#Currency.EUR
+  SEPS: https://iec.ch/TC57/CIM100#Currency.EUR
+  ELIA: https://iec.ch/TC57/CIM100#Currency.EUR
+  APG: https://iec.ch/TC57/CIM100#Currency.EUR
+  PSE: https://iec.ch/TC57/CIM100#Currency.EUR
+  TTG: r

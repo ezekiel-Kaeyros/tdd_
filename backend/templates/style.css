@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.input-data {
+  margin-left: 35%;
+  margin-top: 10%;
+  width: 28%;
+  padding: 2%;
+  border: 3px solid #004b8d !important;
+  border-radius: 5%;
+  box-shadow: 0 2rem 5rem 1rem rgba(10, 10, 10, 0.175) !important;
+  background: #004b8d;
+  color: #fff;
+}
+
+.file-upload {
+  width: 100%;
+}
+
+.file-upload .file-upload-select {
+  display: block;
+  color: #000;
+  cursor: pointer;
+  text-align: left;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+}
+.file-upload .file-upload-select .file-select-button {
+  background: #e9ecef;
+  padding: 10px;
+  display: inline-block;
+}
+.file-upload .file-upload-select .file-select-name {
+  display: inline-block;
+  padding: 10px;
+}
+/* .file-upload .file-upload-select:hover .file-select-button {
+	background: #324759;
+	color: #ffffff;
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+} */
+.file-upload .file-upload-select input[type="file"] {
+  display: none;
+}

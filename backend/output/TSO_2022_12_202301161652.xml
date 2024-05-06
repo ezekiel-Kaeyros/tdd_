@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:time="http://www.w3.org/2006/time#" xmlns:eumd="http://entsoe.eu/ns/Metadata-European#" xmlns:eu="http://iec.ch/TC57/CIM100-European#" xmlns:nc="http://entsoe.eu/ns/nc#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:cim="http://iec.ch/TC57/CIM100#" xmlns:dcterms="http://purl.org/dc/terms/#">
+	<md:FullModel rdf:about="urn:uuid:c5c409b8-23f7-439d-867d-0e3c28f2708b">
+		<prov:generatedAtTime>2023-01-16T16:52:00Z</prov:generatedAtTime>
+		<dcterms:issued>2024-03-22T16:02:58.363673</dcterms:issued>
+		<dcterms:publisher rdf:resource="http://energy.referencedata.eu/EIC/10X1001A1001A094" />
+		<dcat:keyword>RAS</dcat:keyword>
+		<dcterms:references rdf:resource="urn:uuid:4514b858-e85d-11ee-a347-f44ee39bf109" />
+		<dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+		<dcterms:accessRights rdf:resource="http://energy.referencedata.eu/Confidentiality/4cd9b326-1275-4da7-9724-28c5e1deeb87" />
+		<dcat:version>1.0</dcat:version>
+		<dcterms:description>This is an example of  remedial action schedule profile.</dcterms:description>
+		<dcat:startDate>2022-11-02T04:30:00+00:00Z</dcat:startDate>
+		<dcat:endDate>2022-11-02T14:45:00+00:00Z</dcat:endDate>
+		<dcterms:identifier>urn:uuid:c5c409b8-23f7-439d-867d-0e3c28f2708b</dcterms:identifier>
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2" />
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2" />
+		<prov:wasGeneratedBy rdf:resource="http://energy.referencedata.eu/CGM/Action/CGM-1D-RAS" />
+		<dcat:isVersionOf rdf:resource="http://energy.referencedata.eu/Model/ELIA_CGM-RAS" />
+		<dcterms:spatial rdf:resource="http://energy.referencedata.eu/Frame/BE_Transmission_Grid" />
+		<dcterms:title>2022-11-02T04:30:00+00:00Z_TSO_CGM-1D-RAS</dcterms:title>
+	</md:FullModel>
+	<nc:RemedialActionSchedule rdf:ID="_1d322bdb-86cb-4c9f-b855-8f2cf9c7ee39">
+		<cim:IdentifiedObject.name>20221102_DA_CROSA_ORA_20221102_RD-22-03028_13(1)MKW-029</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>1d322bdb-86cb-4c9f-b855-8f2cf9c7ee39</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_99caa88b-babb-459a-a2f0-737c21ff30e2" />
+	</nc:RemedialActionSchedule>
+	<nc:RemedialActionCost rdf:ID="_c5541bb0-7057-470e-9578-f2b35f9664b8">
+		<cim:RemedialActionCost.mRID>c5541bb0-7057-470e-9578-f2b35f9664b8</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>5</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_1d322bdb-86cb-4c9f-b855-8f2cf9c7ee39" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+</rdf:RDF>

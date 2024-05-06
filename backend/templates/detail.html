@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Add icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/static/notification.css" />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      .input-container {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .icon {
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+        min-width: 50px;
+        text-align: center;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+      }
+
+      .input-field:focus {
+        border: 2px solid dodgerblue;
+      }
+
+      /* Set a style for the submit button */
+      .btn {
+        background-color: dodgerblue;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+      .close {
+        position: absolute;
+        right: 35px;
+        top: 15px;
+        font-size: 25px;
+        font-weight: bold;
+        color: black;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #f44336;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="" style="width: 100%">
+      <span class="close">&times;</span>
+    </div>
+    <form id="form" style="max-width: 1000px; margin: auto">
+      <div
+        style="
+          text-transform: uppercase;
+          text-align: center;
+          font-size: 15px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          padding: 10px;
+        "
+      >
+        {{user.username}}
+      </div>
+      <div class="input-container">
+        <i class="fa fa-user icon"></i>
+        <label for="n"></label>
+        <input
+          class="input-field"
+          type="text"
+          placeholder="Username"
+          name="username"
+          value="{{user.username}}"
+          id="username"
+          onkeyup="nameChange()"
+        />
+      </div>
+
+      <div class="input-container">
+        <i class="fa fa-envelope icon"></i>
+        <input
+          class="input-field"
+          type="text"
+          placeholder="Email"
+          name="email"
+          value="{{user.email}}"
+          disabled
+          id="useremail"
+        />
+      </div>
+
+      <div class="input-container">
+        <i class="fa fa-address-card icon"></i>
+        <input
+          class="input-field"
+          type="text"
+          placeholder="company"
+          name="company"
+          value="{{user.company}}"
+          disabled
+        />
+      </div>
+      <div class="input-container">
+        <i class="fa fa-address-card icon"></i>
+        <select id="role" name="role" class="input-field">
+          <!-- <option value="2">Editor</option>
+          <option value="1">Administrator</option> -->
+          <!-- <option value="0">Super Administrator</option> -->
+        </select>
+      </div>
+      <!-- <div class="input-container">
+        <i class="fa fa-envelope icon"></i>
+        <input
+          class="input-field"
+          type="number"
+          placeholder="role"
+          name="role"
+          value="{{user.role}}"
+          maxlength="1"
+        />
+      </div> -->
+
+      <!-- <div class="input-container">
+        <i class="fa fa-key icon"></i>
+        <input
+          class="input-field"
+          type="password"
+          placeholder="Enter old Password"
+          name="oldpassword"
+        />
+      </div> -->
+
+      <div class="input-container">
+        <i class="fa fa-key icon"></i>
+        <input
+          class="input-field"
+          type="password"
+          placeholder="Enter new Password"
+          name="newpassword"
+        />
+      </div>
+
+      <button onclick="updateUser()" type="submit" class="btn">Update</button>
+    </form>
+    <script>
+      let user = "{{user}}";
+      let role = "{{user.role}}";
+      console.log(user);
+      let new_email = false;
+      let text = "";
+      let email = false;
+      let select = document.getElementById("role");
+      var option = document.createElement("option");
+      option.setAttribute("value", role);
+      if (role == 1) {
+        text = "Administrator";
+      }
+      if (role == 2) {
+        text = "Editor";
+      }
+      if (role == 0) {
+        text = "Super Administrator";
+      }
+      option.textContent = text;
+
+      select.appendChild(option);
+      if (role == 1) {
+        var option2 = document.createElement("option");
+        option2.setAttribute("value", 2);
+        option2.textContent = "Editor";
+        select.appendChild(option2);
+      }
+      if (role == 2) {
+        var option3 = document.createElement("option");
+        option3.setAttribute("value", 1);
+        option3.textContent = "Administrator";
+        select.appendChild(option3);
+      }
+
+      function nameChange() {
+        setTimeout(() => {
+          let fname = document.getElementById("username").value;
+          let admin_email = JSON.parse(localStorage.getItem("client")).email;
+          fname = fname.replace(/ /g, ".");
+          fname = fname;
+
+          let email_ext = admin_email.split("@")[1];
+          email = `${fname}@${email_ext}`.toLowerCase();
+          let user_email = document.getElementById("useremail");
+          user_email.setAttribute("value", email);
+          if (email == "{{user.email}}") {
+            new_email = false;
+          } else {
+            new_email = true;
+          }
+        }, 1500);
+      }
+    </script>
+    <script src="{{url_for('static', filename='/auth.js')}}"></script>
+    <script src="{{url_for('static', filename='/js/notification.js')}}"></script>
+    <script>
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        client = JSON.parse(localStorage.getItem("client"));
+        window.open("/admin/" + client.id, "_self");
+      };
+    </script>
+    <script>
+      function updateUser() {
+        document.getElementById("form").onsubmit = async (e) => {
+          e.preventDefault();
+          // registerUser(e.target);
+          let user_to_update_id = "{{user.id}}";
+
+          if (JSON.parse(localStorage.getItem("client"))) {
+            let admin = JSON.parse(localStorage.getItem("client"));
+            let form = e.target;
+            let obj = {};
+            var formData = new FormData(form);
+            for (var pair of formData.entries()) {
+              console.log(pair[0] + ": " + pair[1]);
+              if (pair[0] == "password" && pair[1]) {
+                console.log("exist==");
+              } else {
+                obj[pair[0]] = pair[1];
+                // if (pair[0] && pair[1]) {
+                //   user[pair[0]] = pair[1];
+                // }
+              }
+            }
+            formData.append("company", user["company"]);
+            if (new_email) {
+              obj["new_email"] = true;
+              obj["email"] = email;
+            } else {
+              obj["new_email"] = false;
+            }
+            obj["company"] = admin["company"];
+            obj["id"] = user_to_update_id;
+            let URL = `/users/update_password`;
+            fetch(URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(obj),
+            })
+              .then((res) => res.json())
+              .then((myJson) => {
+                console.log(myJson);
+                notification(`user update `, "#23a3f8");
+                client = JSON.parse(localStorage.getItem("client"));
+                window.open("/admin/get/" + client.id, "_self");
+                // document.getElementById("form").reset();
+                // closeModale();
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

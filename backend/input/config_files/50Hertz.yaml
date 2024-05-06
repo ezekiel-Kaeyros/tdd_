@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  50Hertz: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  50Hertz: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  50Hertz: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  50Hertz: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  50Hertz: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  50Hertz: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  50Hertz: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  50Hertz: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  50Hertz: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  50Hertz: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  50Hertz: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  50Hertz: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  50Hertz: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  50Hertz: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  50Hertz: 50Hertz
+tso:
+  50Hertz: 50Hertz

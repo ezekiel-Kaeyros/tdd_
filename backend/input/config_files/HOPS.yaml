@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  HOPS: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  HOPS: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  HOPS: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  HOPS: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  HOPS: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  HOPS: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  HOPS: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  HOPS: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  HOPS: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  HOPS: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  HOPS: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  HOPS: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  HOPS: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  HOPS: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  HOPS: HOPS
+tso:
+  HOPS: HOPS

@@ -1,0 +1,16 @@
+2023-07-18 12:40:04,700 - ERROR - [log.py:41] - (sqlite3.ProgrammingError) Error binding parameter 2: type 'dict' is not supported
+[SQL: INSERT INTO user (username, company, role, created_at, password, email) VALUES (?, ?, ?, ?, ?, ?)]
+[parameters: ('erico erico', {'FullModel/dcterms:Model.creator': {'TTG': 'https://www.amprion.net/Strommarkt/Zertifikate/'}, 'FullModel/dcterms:Model.license': {'TTG': 'https://cr ... (931 characters truncated) ... C57/CIM100#Currency.EUR'}, 'config_file_path': './input/config_files/TenneTDE.yaml', 'admin_tso': 'TenneTDE', 'logo_path': '/static/img/images_1.png'}, '1', '2023-07-18 11:23:16.528543', '$pbkdf2-sha256$29000$Ycy5lxKC0PpfK.WcM6ZUqg$xaIOpLZukRYhL/n9uhz5jmCDRMjW6t9LJDV5O7/wARg', 'eric22@test.com')]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2023-07-20 09:01:16,296 - ERROR - [log.py:41] - (sqlite3.IntegrityError) NOT NULL constraint failed: tso.logo_path
+[SQL: INSERT INTO tso (logo_path, company, stammdatei_file_path, config_file_path, created_at, "tsoAbbreviation", email) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: (None, 'TenneT DE', './input/WV-Datei_ReadMe.xlsx', None, '2023-07-20 09:00:41.994354', 'TTG', 'admin1@ttg.com')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2023-07-20 09:04:36,396 - ERROR - [log.py:41] - (sqlite3.IntegrityError) NOT NULL constraint failed: tso.logo_path
+[SQL: INSERT INTO tso (logo_path, company, stammdatei_file_path, config_file_path, created_at, "tsoAbbreviation", email) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: (None, 'PSE', './input/WV-Datei_ReadMe.xlsx', None, '2023-07-20 09:00:41.994354', 'PSE', 'admin@pse.com')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2023-07-20 09:12:26,967 - ERROR - [log.py:41] - (sqlite3.IntegrityError) NOT NULL constraint failed: tso.config_file_path
+[SQL: INSERT INTO tso (logo_path, company, stammdatei_file_path, config_file_path, created_at, "tsoAbbreviation", email) VALUES (?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('/static/img/Transnett_btw.png', 'sdsdsd', './input/WV-Datei_ReadMe.xlsx', None, '2023-07-20 09:11:35.540358', 'dfdf', 'admin@tennet.com')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

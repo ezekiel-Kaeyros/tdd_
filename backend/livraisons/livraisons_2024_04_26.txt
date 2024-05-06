@@ -1,0 +1,31 @@
+Numéro de version: V1.01.01
+Auteur: Frank Tcha'a
+Date: 26/04/2024
+Type de livraison : Finale
+Contenu de la livraison: 
+    Permettre la lecture des fichiers nouveau format a traiter projet TDD
+
+Fichiers modifiés:
+	- backend/src/read_csv.py
+	
+Fichiers Ajoutés:
+	- backend/livraisons/livraisons_2024_04_26
+    - backend/input/WV_AMP_2024_01_202404181542.csv
+
+Fonctions:
+	* Création:
+		- strip_colonnes(liste_colonnes)
+		
+	* Modification:
+		- verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
+		
+	* Suppression: Aucune
+	
+Tables modifiées: Aucune
+
+APIs modifiées: Aucune
+
+Couverture de code : -%
+
+Action manuelle:
+1.

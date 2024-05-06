@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  TransnetBW: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  TransnetBW: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  TransnetBW: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  TransnetBW: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  TransnetBW: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  TransnetBW: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  TransnetBW: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  TransnetBW: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  TransnetBW: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  TransnetBW: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  TransnetBW: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  TransnetBW: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  TransnetBW: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  TransnetBW: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  TNG: TransnetBW
+tso:
+  TNG: TransnetBW

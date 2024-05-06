@@ -1,0 +1,56 @@
+
+
+.title_page{
+    position: absolute;
+    width: 331px;
+    height: 87px;
+    left: 22.5rem;
+    top: 9rem;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 45px;
+}
+
+.tableau_config{
+    margin-left: -6rem;
+    margin-top: 15rem;
+    border: 1.1px solid #e4e4ef;
+    font-weight: 400;
+    box-shadow: inset 0px -1px 0px #E4E4EF;
+}
+
+#TTG{
+    width: 100% !important;
+    color: #080808;
+    background: #ECECEC;
+}
+
+#input-container button{
+    color: white;
+    background: #05758F;
+    border-radius: 4px;
+    margin-left: 29rem !important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+}
+
+.title_modal{
+    font-weight: 600;
+    margin-top: -3.5rem;
+}
+
+.close_btn{
+    transform: translate(10px, -20px);
+    padding: 0.2rem 0.5rem !important;
+    color: white !important;
+    background: #080808 !important;
+    border-radius: 50%;
+    margin-top: 1.5rem !important;
+    margin-right: 1rem !important;
+}

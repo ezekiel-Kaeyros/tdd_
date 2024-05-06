@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  undefined: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  undefined: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  undefined: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  undefined: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  undefined: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  undefined: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  undefined: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  undefined: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  undefined: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  undefined: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  undefined: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  undefined: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  undefined: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  undefined: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  undefined: undefined
+tso:
+  undefined: undefined

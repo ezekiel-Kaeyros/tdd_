@@ -1,0 +1,52 @@
+.config-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 200;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.config-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.config-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.config-close:hover,
+.config-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#snackbar {
+  visibility: hidden;
+  max-width: 360px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 23%) 5px 10px 15px 2px;
+  margin-left: -125px;
+  background-color: var(--tertiary-color);
+  color: var(--quaternary-color);
+  text-align: center;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  right: 31px;
+  top: 70px;
+}

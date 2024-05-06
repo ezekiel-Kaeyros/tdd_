@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  Amprion: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  Amprion: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  Amprion: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  Amprion: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  Amprion: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  Amprion: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  Amprion: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  Amprion: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  Amprion: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  Amprion: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  Amprion: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  Amprion: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  Amprion: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  Amprion: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  AMP: Amprion
+tso:
+  AMP: Amprion

@@ -1,0 +1,73 @@
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: neueLeiden;
+    src: url("/fonts/NeueLeiden-Regular.woff2");
+}
+
+.glass {
+  background: var(
+    --gls,
+    linear-gradient(
+      154deg,
+      rgba(121, 117, 131, 0.2) 0%,
+      rgba(54, 53, 103, 0.2) 100%
+    ),
+    rgba(49, 48, 54, 0.3)
+  );
+}
+
+.title {
+  @apply font-neueLeiden font-bold text-4xl sm:text-5xl md:text-6xl max-w-xs sm:max-w-full text-center;
+}
+
+.primary-btn {
+  @apply px-6 rounded py-3 bg-greenpale text-center font-bold font-neueLeiden text-lightWhite hover:bg-green-900 transition-all duration-100;
+}
+
+.secondary-btn {
+  @apply px-6 rounded py-3 border border-secondaryBG text-center font-bold font-neueLeiden text-secondaryBG hover:bg-secondaryBG hover:text-lightWhite duration-100 transition-all;
+}
+
+.menu-glass {
+  border-radius: 6px;
+  background: var(
+    --gls,
+    linear-gradient(
+      154deg,
+      rgba(121, 117, 131, 0.2) 0%,
+      rgba(54, 53, 103, 0.2) 100%
+    ),
+    rgba(49, 48, 54, 0.3)
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.company-glass {
+  background: rgba(100, 196, 146, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 85, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.pop {
+  background-color: black;
+}
+
+body{
+    font-family: neueLeiden;
+}
+
+
+
+.glass{
+
+}

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:time="http://www.w3.org/2006/time#" xmlns:eumd="http://entsoe.eu/ns/Metadata-European#" xmlns:eu="http://iec.ch/TC57/CIM100-European#" xmlns:nc="http://entsoe.eu/ns/nc#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:cim="http://iec.ch/TC57/CIM100#" xmlns:dcterms="http://purl.org/dc/terms/#">
+	<md:FullModel rdf:about="urn:uuid:b882145e-b4b7-46cf-a4ee-75f304a470e4">
+		<prov:generatedAtTime>2023-03-21T16:56:00Z</prov:generatedAtTime>
+		<dcterms:issued>2024-04-23T08:23:39.265571</dcterms:issued>
+		<dcterms:publisher rdf:resource="http://energy.referencedata.eu/EIC/10X1001A1001A094" />
+		<dcat:keyword>RAS</dcat:keyword>
+		<dcterms:references rdf:resource="urn:uuid:67cc4bba-0142-11ef-a347-f44ee39bf109" />
+		<dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+		<dcterms:accessRights rdf:resource="http://energy.referencedata.eu/Confidentiality/4cd9b326-1275-4da7-9724-28c5e1deeb87" />
+		<dcat:version>1.0</dcat:version>
+		<dcterms:description>This is an example of  remedial action schedule profile.</dcterms:description>
+		<dcat:startDate>2022-12-04T01:30:00+00:00Z</dcat:startDate>
+		<dcat:endDate>2022-12-20T11:30:00+00:00Z</dcat:endDate>
+		<dcterms:identifier>urn:uuid:b882145e-b4b7-46cf-a4ee-75f304a470e4</dcterms:identifier>
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2" />
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2" />
+		<prov:wasGeneratedBy rdf:resource="http://energy.referencedata.eu/CGM/Action/CGM-1D-RAS" />
+		<dcat:isVersionOf rdf:resource="http://energy.referencedata.eu/Model/ELIA_CGM-RAS" />
+		<dcterms:spatial rdf:resource="http://energy.referencedata.eu/Frame/BE_Transmission_Grid" />
+		<dcterms:title>2022-12-04T01:30:00+00:00Z_HOPS_CGM-1D-RAS</dcterms:title>
+	</md:FullModel>
+	<nc:RemedialActionSchedule rdf:ID="_c92d70f1-8ad4-4d72-8363-1fecd22fc765">
+		<cim:IdentifiedObject.name>20221204_DA_CROSA_ORA_20221204_DA_CROSA_ORA_0701</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>c92d70f1-8ad4-4d72-8363-1fecd22fc765</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_1af6f10a-e559-42c8-b94f-d4313de23f79" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_b3dbf459-361c-430e-a096-3b4551d0cb08">
+		<cim:IdentifiedObject.name>HSENJG1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>b3dbf459-361c-430e-a096-3b4551d0cb08</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>HOPS_ORA_0701_02</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_c92d70f1-8ad4-4d72-8363-1fecd22fc765" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_185655e2-0f27-4e2f-94ca-1d39ec082e59" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_bf7acfff-baa5-4d2f-ad2e-f9bcb8e52a19">
+		<cim:RemedialActionCost.mRID>bf7acfff-baa5-4d2f-ad2e-f9bcb8e52a19</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0.0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_c92d70f1-8ad4-4d72-8363-1fecd22fc765" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_185655e2-0f27-4e2f-94ca-1d39ec082e59">
+		<cim:IdentifiedObject.name>Power schedule HSENJG1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>185655e2-0f27-4e2f-94ca-1d39ec082e59</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:RemedialActionSchedule rdf:ID="_a8cc12ad-3644-4234-88b6-1165e4cf5549">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_DA_CROSA_ORA_0701</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>a8cc12ad-3644-4234-88b6-1165e4cf5549</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_7e1df569-0f18-4d0f-a4f8-ea2b76d879e0" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_ff36068f-b5cb-4d1c-8a7e-de5c6b9c9841">
+		<cim:IdentifiedObject.name>HSENJG1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>ff36068f-b5cb-4d1c-8a7e-de5c6b9c9841</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>HOPS_ORA_0701_10</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_a8cc12ad-3644-4234-88b6-1165e4cf5549" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_f7096890-9e46-4b6b-9634-b6da6744094a" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_564eecd4-da10-4315-a1e5-caa5d9eb0b98">
+		<cim:RemedialActionCost.mRID>564eecd4-da10-4315-a1e5-caa5d9eb0b98</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0.0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_a8cc12ad-3644-4234-88b6-1165e4cf5549" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_f7096890-9e46-4b6b-9634-b6da6744094a">
+		<cim:IdentifiedObject.name>Power schedule HSENJG1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>f7096890-9e46-4b6b-9634-b6da6744094a</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_fead3f1b-ad64-4850-b80f-1e82a237b8be">
+		<nc:PowerTimePoint.atTime>2022-12-20T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-20.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>254.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f7096890-9e46-4b6b-9634-b6da6744094a" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_4814843a-cf0f-479a-a360-b455c83f53bf">
+		<nc:PowerTimePoint.atTime>2022-12-20T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>-20.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>245.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f7096890-9e46-4b6b-9634-b6da6744094a" />
+	</nc:PowerTimePoint>
+</rdf:RDF>

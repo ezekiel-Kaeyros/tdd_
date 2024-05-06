@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1 style="font-size: 5.5rem;">Dashboard <br> Config</h1>
+<div class="tableau">
+  <!-- <table BORDER=1 CELLPADDING=3 CELLSPACING=1 
+      RULES=ROWS FRAME=BOX class="table tableau_config w-100" style="font-size: 12px"> -->
+  <table class="table tableau_config w-100" style="font-size: 1.5rem; ">
+    <tr>
+      <th colspan="3">Header</th>
+
+    </tr>
+    {% for conf in configfile %}
+    <tr onclick="getDataConfig('{{conf}}')">
+      <td>
+        <i class="fa fa-futbol-o" aria-hidden="true" style="font-size: 1.5rem;"></i>
+      </td>
+      <td>{{conf}}</td>
+      <td style="cursor: pointer"><i class="fa fa-pencil" aria-hidden="true"  style="color:#BDBCDB"></i></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+ <!-- Modal -->
+ <!-- <div class="modal fade" id="exampleModalCent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteTitle"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+   <div class="modal-content" style="border-radius: 1rem; padding: 1rem;">
+     <div class="modal-head">
+       <h1>Configure Parameter</h1>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form class="contactForm">
+         
+         <div class="row mt-2">
+           <div class="col">
+             <div class="form-group">
+               <input class="form-control" type="text" placeholder="Update link…" readonly>
+             </div>
+           </div>
+         </div>
+
+         <div class="row justify-content-start mt-3">
+           <div class="col-md-9"><button type="button" class="btn"
+               style="background-color: #05758F; color:#fff">Update</button></div>
+         </div>
+       </form>
+     </div>
+
+
+   </div>
+ </div>
+</div> -->
+
+<div class="modal-admin">
+  <section class="modal hidden" style="top: 17rem;
+  height: auto;
+  width: 38rem;">
+    <div class="flex">
+      <button></button>
+      <button class="btn-close close_btn" onclick="close_without_reload()">
+        ⨉
+      </button>
+    </div>
+    <div>
+      <h3 class="title_modal">Config List</h3>
+    </div>
+    <div id="input-container"></div>
+    <button class="wrong" onclick="saveSetting()"></button>
+  </section>
+
+  <div class="overlay hidden"></div>
+  <button class="btn btn-open"></button>
+</div>
+</div>
+
+<div id="my-Modal" class="config-modal">
+
+  <!-- Modal content -->
+  <div class="config-modal-content" id="custom-modal">
+    <span class="config-close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+<!-- <div class="list_users">
+  <p style="text-align: center; text-transform: uppercase; font-size: 13px">
+    Users List
+  </p>
+  <table class="w3-table w3-striped w3-white" style="font-size: 12px">
+    <tr>
+      <td></td>
+      <td>Name</td>
+      <td>Company</td>
+      <td>@email</td>
+      <td>role</td>
+      <td></td>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td>
+        <i class="fa fa-user w3-text-blue w3-large"></i>
+      </td>
+      <td>{{user.username}}</td>
+      <td>{{user.company}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role}}</td>
+      <td style="cursor: pointer" onclick="displayDetails('{{user.id}}')">
+        <i>update</i>
+      </td>
+      <td style="cursor: pointer" onclick="deleteUser('{{user.id}}')">
+        <i>delete</i>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  Footer -->
+
+  <!-- End page content -->
+</div> 
+{% endblock %}

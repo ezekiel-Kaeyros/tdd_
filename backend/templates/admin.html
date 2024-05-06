@@ -1,0 +1,217 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- <div class="content">
+
+ <div class="content-user">
+      <i class="bi bi-plus-square-dotted"></i>
+      Add user
+  </div> 
+</div> -->
+
+<h1 style="font-size: 5.5rem">
+  Admin <br />
+  Dashboard
+</h1>
+<div class="tableau">
+  <table class="table w-100" style="font-size: 1.5rem">
+    <tr class="thead">
+      <td></td>
+      <td>Name</td>
+      <td>Company</td>
+      <td>@email</td>
+      <td>role</td>
+      <td></td>
+    </tr>
+    {% for user in users %}
+    <tr class="trow">
+      <td>
+        <i
+          class="fa fa-user-circle w3-text-blue w3-large"
+          aria-hidden="true"
+        ></i>
+        <!--   <i class="fa fa-user w3-text-blue w3-large"></i> -->
+      </td>
+      <td>{{user.username}}</td>
+      <td>{{user.company}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.role}}</td>
+      <td style="cursor: pointer">
+        <i
+          class="fa fa-pencil"
+          aria-hidden="true"
+          style="color: #bdbcdb"
+          onclick="displayDetails('{{user.id}}')"
+        ></i>
+               
+        <i
+          class="fa fa-trash"
+          aria-hidden="true"
+          style="color: #bdbcdb"
+          onclick="deleteUser('{{user.id}}', '{{user.role}}')"
+        ></i>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div
+    class="modal fade"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content" style="border-radius: 1rem; padding: 1rem">
+        <div class="modal-head">
+          <h1>Modify User</h1>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="contactForm">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <!-- <label class="label" for="name">Full Name</label> -->
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="name"
+                    placeholder="Username"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col">
+                <div class="form-group">
+                  <!-- <label class="label" for="email">Email Address</label> -->
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    placeholder="User mail"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col">
+                <div class="form-group">
+                  <!-- <label class="label" for="email">Email Address</label> -->
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    placeholder="Old Password"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col">
+                <div class="form-group">
+                  <!-- <label class="label" for="email">Email Address</label> -->
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    placeholder="New Password"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label for="inputState">User role</label>
+                  <select
+                    id="inputState"
+                    class="form-control"
+                    style="background-color: #dcdcdc"
+                  >
+                    <option selected>Select role...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label for="inputState">Select company</label>
+                  <select
+                    id="inputState"
+                    class="form-control"
+                    style="background-color: #dcdcdc"
+                  >
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-start mt-3">
+              <div class="col-md-9">
+                <button
+                  type="button"
+                  class="btn"
+                  style="background-color: #05758f; color: #fff"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-admin">
+  <section class="modal hidden" style="top: 17rem; height: auto; width: 38rem">
+    <div class="flex">
+      <button></button>
+      <button class="btn-close close_btn" onclick="close_without_reload()">
+        ⨉
+      </button>
+    </div>
+    <div>
+      <h3 class="title_modal">Config List</h3>
+    </div>
+    <div id="input-container"></div>
+    <button class="wrong" onclick="saveSetting()"></button>
+  </section>
+
+  <div class="overlay hidden"></div>
+  <button class="btn btn-open"></button>
+</div>
+<!-- Footer -->
+
+<!-- End page content -->
+<div class="div-alert">
+  <section class="alert-modal alert-hidden">
+    <h4 style="text-align: center; margin-bottom: 15px">Delete User ?</h4>
+    <div class="alert-flex">
+      <div class="alert-btn-confirm" style="color: rgb(252, 88, 88)">OK</div>
+      <div class="alert-btn-close">Cancel</div>
+    </div>
+  </section>
+</div>
+<div class="alert-overlay alert-hidden"></div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv
+*.log
+.git
+.gitgnore
+.mypy_cache
+.pytest_cache
+test.csv
+
+

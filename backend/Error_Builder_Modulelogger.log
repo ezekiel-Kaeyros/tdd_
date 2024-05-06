@@ -1,0 +1,88 @@
+2023-05-03 09:15:49,426 - ERROR - [log.py:33] - 'Index' object has no attribute 'remove'
+2023-05-03 09:15:51,451 - ERROR - [log.py:33] - division by zero
+2023-05-03 09:15:57,566 - INFO - [log.py:25] - http://localhost:5000/builder/
+2023-05-03 09:16:58,855 - INFO - [log.py:25] - http://localhost:5000/admin/get/2
+2023-05-03 09:18:24,761 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:18:26,159 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:18:37,376 - INFO - [log.py:25] - http://localhost:5000/auth/user/try/connect
+2023-05-03 09:18:37,629 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:18:38,876 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:18:49,015 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:18:50,104 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:18:58,063 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:18:58,983 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:19:03,408 - INFO - [log.py:25] - http://localhost:5000/users/userss
+2023-05-03 09:19:42,924 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:19:43,845 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:19:49,007 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:19:50,176 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:20:02,779 - INFO - [log.py:25] - http://localhost:5000/auth/user/try/connect
+2023-05-03 09:20:03,042 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:20:04,116 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 09:20:10,502 - INFO - [log.py:25] - http://localhost:5000/admin/get/15
+2023-05-03 09:20:18,661 - INFO - [log.py:25] - http://localhost:5000/admin/super_admin?email=admin.tdd%4050hertz.com
+2023-05-03 09:20:38,770 - INFO - [log.py:25] - http://localhost:5000/admin/tso/getconfig
+2023-05-03 09:20:41,361 - INFO - [log.py:25] - http://localhost:5000/admin/tso/update_config?key=FullModel%2Fdcterms:Model.conformsTo.RemedialActionSchedule&email=admin.tdd%4050hertz.com
+2023-05-03 09:20:41,607 - INFO - [log.py:25] - http://localhost:5000/admin/super_admin?email=admin.tdd%4050hertz.com
+2023-05-03 09:21:02,766 - INFO - [log.py:25] - http://localhost:5000/
+2023-05-03 09:21:04,332 - INFO - [log.py:25] - http://localhost:5000/company/
+2023-05-03 17:30:40,220 - ERROR - [log.py:33] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-05-03 17:36:01,054 - ERROR - [log.py:33] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-05-03 17:36:04,233 - ERROR - [log.py:33] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-05-03 18:45:17,644 - ERROR - [log.py:33] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-06-20 14:22:49,935 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-06-20 14:22:54,161 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-06-22 14:55:29,677 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-06-22 14:55:35,737 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-06-28 17:37:08,804 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-06-30 03:09:04,128 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-01 03:00:14,808 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-01 03:00:21,511 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-02 06:48:00,359 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-06 10:05:13,623 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-06 13:47:41,434 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-10 11:50:00,264 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-10 11:54:22,653 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-11 09:41:29,181 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 09:51:17,679 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 10:13:16,245 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 11:00:37,844 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 11:54:20,171 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 12:01:13,846 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-11 12:19:19,706 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-11 13:22:30,331 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-11 15:37:44,451 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 15:40:03,325 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-11 16:16:21,104 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+=======
+2023-07-11 15:42:04,230 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-12 10:57:00,631 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-13 15:48:14,761 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-13 15:49:31,723 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-13 15:51:03,963 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-13 17:42:14,918 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-14 09:04:41,828 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-14 09:53:17,507 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+2023-07-14 10:00:03,547 - ERROR - [log.py:41] - [Errno 9] Bad file descriptor
+>>>>>>> 59eb1e7c3c66eb3c6bc8b24001c9cca86aae5e42
+=======
+2023-07-12 05:42:11,554 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-12 05:42:23,086 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+2023-07-12 16:29:47,806 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+>>>>>>> tdd-review
+=======
+2023-07-19 15:57:35,770 - ERROR - [log.py:41] - [WinError 10038] An operation was attempted on something that is not a socket
+>>>>>>> tdd-review
+2023-09-03 19:21:21,402 - ERROR - [log.py:58] - [Errno 9] Bad file descriptor
+2023-09-03 19:21:23,007 - ERROR - [log.py:58] - [Errno 9] Bad file descriptor
+2023-12-11 12:26:47,474 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-11 12:45:55,665 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-11 16:52:57,181 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:41:13,872 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:41:18,501 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:41:20,137 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:42:03,100 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:42:10,590 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:42:13,520 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:50:46,965 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2023-12-13 04:50:48,971 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor

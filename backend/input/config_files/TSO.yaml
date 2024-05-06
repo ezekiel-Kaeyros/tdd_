@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  TSO: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  TSO: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  TSO: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  TSO: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  TSO: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  TSO: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  TSO: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  TSO: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  TSO: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  TSO: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  TSO: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  TSO: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  TSO: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  TSO: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  TSO: TSO
+tso:
+  TSO: TSO

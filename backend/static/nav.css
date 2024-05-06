@@ -1,0 +1,268 @@
+header {
+  display: flex;
+  align-items: center;
+  column-gap: 3;
+  /* justify-content: space-between; */
+  /* padding: 1rem 3rem; */
+}
+
+/* header span {
+  font-size: 1.389rem;
+} */
+
+.logos {
+  display: inline-flex;  
+  flex-direction: column;
+}
+
+.logo-holder {
+  height: 3.333rem;
+  width: 3.333rem;
+  padding: 10px;
+  background-color: white;
+  border-radius: 100%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-holder img {
+  width: 100%;
+  height: auto;
+}
+
+/* Logo-6 */
+.logo-6 h3 {
+  color: var(--primary-color);
+  /* font-family: 'Cinzel', serif; */
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-right: 0.5rem;
+}
+.logo-6 h3 span {
+  background: #05758f;
+  color: #fff;
+  display: inline-block;
+  line-height: 1.8;
+  padding: 0 16px;
+  font-size: 1rem;
+}
+
+.logo-image {
+  height: auto;
+  width: 11rem;
+}
+
+.logo-partners {
+  height: auto;
+  width: 6rem;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  header {
+    flex-direction: column;
+  }
+
+  .topnav {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* .container-circle-bar {
+  background-color: #fff;
+  position: relative;
+  width: 500px;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+} */
+
+/* .progress-circular {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(#05758f 30deg, #ededed 0deg);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: spin 2s linear infinite;
+  margin-top: 1rem;
+}
+.progress-circular::after {
+  position: absolute;
+  content: "";
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #fff;
+} */
+.div-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 64px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #05758f;
+  z-index: 9;
+}
+
+.topnav li:hover ul ul {
+  /* display: none; */
+} /* hides sub-sublists */
+.topnav li:hover div {
+  /* display: block;
+  margin-left: 150px;
+  margin-right: 150px;
+  width: 50%;
+  font-size: 13px; */
+}
+/*  */
+
+.main .tour {
+  position: absolute;
+  padding: 0;
+  left: 0;
+  display: none;
+  z-index: 10;
+}
+
+#about {
+  position: absolute;
+  display: block;
+  /* margin-left: 20px; */
+  /* left: 50; */
+  width: 20%;
+  padding: 10px;
+  /* width: 50%; */
+  font-size: 10px;
+  color: white;
+  background-color: #047a95;
+  box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.15),
+    2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  transition-duration: 0.5s;
+  animation: myabout 2s;
+  z-index: 10;
+}
+
+#transnet {
+  position: absolute;
+  display: block;
+  /* margin-left: 150px;
+  margin-right: 150px; */
+  padding: 10px;
+  width: 20%;
+  font-size: 10px;
+  color: white;
+  background-color: #047a95;
+  box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.15),
+    2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  animation: transnetmove 2s;
+}
+
+#tourBtn {
+  position: absolute;
+  left: 600px;
+  display: block;
+  /* margin-left: 150px;
+  margin-right: 150px; */
+  padding: 10px;
+  width: 20%;
+  font-size: 10px;
+  color: white;
+  background-color: #047a95;
+  box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.15),
+    2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  animation: uploadmove 2s;
+}
+
+#mapBtn {
+  position: absolute;
+  bottom: 30px;
+  left: 200px;
+  display: block;
+  /* margin-left: 150px;
+  margin-right: 150px; */
+  padding: 10px;
+  width: 20%;
+  font-size: 10px;
+  color: white;
+  background-color: #047a95;
+  box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.15),
+    2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+  animation: mymove 2s;
+}
+@keyframes mymove {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 200px;
+  }
+}
+
+@keyframes transnetmove {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 410px;
+  }
+}
+
+@keyframes uploadmove {
+  from {
+    left: 400px;
+  }
+  to {
+    left: 600px;
+  }
+}
+
+@keyframes mapin {
+  from {
+    bottom: 0px;
+  }
+  to {
+    top: 100px;
+  }
+}
+
+@keyframes myabout {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 85px;
+  }
+}
+.close {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}

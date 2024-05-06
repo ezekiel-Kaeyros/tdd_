@@ -1,0 +1,30 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  PSE: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  PSE: 10XDE-RWENET---W
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  PSE: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  AMP: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  AMP: 10XDE-RWENET---W
+FullModel/dcterms:Model.description:
+  PSE: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  PSE: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  AMP: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  PSE: 10XDE-RWENET---W
+PowerSchedule/cim:IdentifiedObject.description:
+  PSE: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  PSE: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  PSE: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  AMP: provisonal
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  PSE: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  PSE2: PSE2

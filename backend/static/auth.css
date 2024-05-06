@@ -1,0 +1,71 @@
+#content-auth {
+  width: 100%;
+  height: 100%;
+  background-color: #00000085;
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 60;
+}
+
+.card-login {
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+}
+
+.title-login {
+  margin-bottom: 30px;
+}
+
+#message-login {
+  display: flex;
+  justify-content: center;
+}
+
+#btn-sigin {
+  background-color: #047a95;
+  color: white;
+}
+
+.auth-input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.auth-icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.auth-input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.auth-input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.auth-btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.auth-btn:hover {
+  opacity: 1;
+}

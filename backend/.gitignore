@@ -1,0 +1,8 @@
+env/
+venv/
+tddenv/
+instance/
+migrations/
+src/__pycache__
+src/cases/__pycache__
+src/create_dumy/__pycache__

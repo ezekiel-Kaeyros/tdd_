@@ -1,0 +1,687 @@
+:root {
+  --primary-color: #0b0188;
+  --secondary-color: #ffbc49;
+  --tertiary-color: #6a88f8;
+  --quaternary-color: #ffffff;
+  --quinary-color: #989898;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  font-size: 18px;
+}
+
+.wrapper {
+  display: flex;
+}
+
+header {
+  justify-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  background-color: #047a95;
+  width: 10rem;
+}
+
+.light-bulb {
+  margin-bottom: 3rem;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: none;
+  margin-top: 3rem;
+}
+
+#form {
+  width: 650px;
+  padding: 1.2rem;
+  border-radius: 15px;
+  background: #edf2fb;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  justify-content: space-between;
+}
+
+#form h2 {
+  align-self: center;
+  font-size: 1.3rem;
+}
+
+#form .file {
+  width: 100%;
+  justify-self: center;
+  border-radius: 1.5rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: white;
+}
+
+#file::file-selector-button {
+  padding: 0.8rem;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  background-color: #047a95;
+  color: var(--quaternary-color);
+}
+
+.custom-file {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-bottom: 2rem; */
+}
+
+#upload-button {
+  text-transform: uppercase;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  border: none;
+  background-color: #26316d;
+  color: var(--quaternary-color);
+}
+
+#upload-button:hover {
+  background-color: var(--quaternary-color);
+  color: black;
+}
+
+#download_btn:hover {
+  text-decoration: none;
+  background-color: var(--quaternary-color);
+  color: var(--quinary-color);
+}
+
+#download_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  border: none;
+  background-color: var(--quinary-color);
+  color: var(--quaternary-color);
+}
+
+#download_btn i {
+  margin-left: 8px;
+}
+
+#cancel_btn {
+  text-transform: uppercase;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  border: none;
+  background-color: #ca2d36;
+  color: var(--quaternary-color);
+}
+
+#cancel_btn:hover {
+  background-color: var(--quaternary-color);
+  color: black;
+}
+
+.form-group button {
+  margin-top: 10px;
+  position: relative;
+  left: 100px;
+  right: 100px;
+}
+
+#snackbar {
+  visibility: hidden;
+  /* Hidden by default. Visible on click */
+  min-width: 250px;
+  border-radius: 20px;
+  box-shadow: rgb(0 0 0 / 23%) 5px 0px 15px 2px;
+  /* Set a default minimum width */
+  margin-left: -125px;
+  /* Divide value of min-width by 2 */
+  background-color: var(--tertiary-color);
+  /* Black background color */
+  color: var(--quaternary-color);
+  /* White text color */
+  text-align: center;
+  /* Centered text */
+  /* border-radius: 2px; */
+  /* Rounded borders */
+  padding: 16px;
+  /* Padding */
+  position: fixed;
+  /* Sit on top of the screen */
+  z-index: 1;
+  /* Add a z-index if needed */
+  left: 50%;
+  /* Center the snackbar */
+  bottom: 30px;
+  /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible;
+  /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* #pbm {
+  display: none;
+} */
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 1%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  color: black;
+  text-align: center;
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+input[type="file"] {
+  border: none;
+  background: #f1f1f1;
+  color: black;
+  font-size: 13px;
+}
+
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: grey;
+  padding-left: 2%;
+  padding-right: 2%;
+  color: black;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  font-size: 13px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+.parent {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  /* Sit on top */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* B
+}
+.mod {
+  z-index: 1; /* Sit on top */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+.child {
+  position: relative;
+  top: 30%;
+  left: 45%;
+  margin: -50px 0 0 -50px;
+}
+
+#upload-button {
+  cursor: pointer;
+}
+
+#btn-info {
+  cursor: pointer;
+  color: white;
+}
+
+#prb2 {
+  background-color: rgb(63, 63, 249);
+  font-size: 10px;
+  text-align: center;
+}
+
+.container {
+  padding: 1rem;
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))
+    drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
+.main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.presentation {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.presentation-image {
+  height: 100%;
+  width: 100%;
+}
+
+/* .apptool {
+  height: 50%;
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+} */
+
+footer {
+  /* height: 4rem; */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+}
+
+.circle-wrap {
+  margin-top: 15px;
+  width: 150px;
+  height: 150px;
+  background: #fefcff;
+  border-radius: 50%;
+  border: 1px solid #cdcbd0;
+}
+
+.inside-circle {
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  background: #d2eaf1;
+  line-height: 120px;
+  text-align: center;
+  margin-top: 14px;
+  margin-left: 14px;
+  color: #1e51dc;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+#05758f .circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #227ded;
+}
+
+.card-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: rgb(0 0 0 / 23%) 2px 0px 10px 1px; */
+  /* padding: 1rem; */
+  height: auto;
+  min-width: 300px;
+  max-width: 650px;
+}
+
+.loader {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+.outer {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.15);
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.15),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.15),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+#progross-title {
+  margin-top: -25px;
+  display: flex;
+  justify-content: center;
+}
+
+#tite-action {
+  font-size: 20px;
+  font-weight: 600;
+  color: #05758f;
+}
+
+#number {
+  font-weight: 600;
+  color: #555;
+}
+
+circle {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 350;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .card-map {
+    height: auto;
+    margin: auto;
+  }
+
+  .presentation {
+    margin-bottom: 2rem;
+  }
+
+  .presentation-image {
+    height: auto;
+    width: 100%;
+  }
+
+  .apptool {
+    height: auto;
+  }
+
+  .progress-bar-main {
+    margin-top: 1rem;
+  }
+
+  footer {
+    margin-top: 2rem;
+  }
+}
+
+.progress-bar-main {
+  /* position: relative; */
+  display: block;
+
+  /* justify-content: center;
+  align-items: start;
+  align-content: center; */
+}
+
+/* .container-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: var(--quaternary-color);
+  height: 100%;
+  width: 100%;
+} */
+
+.container-circle-bar {
+  /* background-color: #fff;
+  position: relative; */
+  /* width: auto;
+  height: auto;
+  padding: 1px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*border-radius: 20px; */
+}
+
+.progress-circular {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(#05758f 30deg, #ededed 0deg);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: spin 2s linear infinite;
+  margin-top: 6px;
+}
+.progress-circular::after {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+}
+.div-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 63px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #05758f;
+  z-index: 9;
+}
+#content-auth {
+  width: 100%;
+  height: 100%;
+  background-color: #00000085;
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login {
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+}
+
+.title-login {
+  margin-bottom: 30px;
+}
+
+#message-login {
+  display: flex;
+  justify-content: center;
+}
+
+#btn-sigin {
+  background-color: #047a95;
+  color: white;
+}
+
+@media (max-width: 830px) {
+  .card-map {
+    width: 80%;
+  }
+
+  #form {
+    width: 80% !important;
+  }
+}

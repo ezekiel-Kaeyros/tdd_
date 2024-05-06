@@ -1,0 +1,950 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:time="http://www.w3.org/2006/time#" xmlns:eumd="http://entsoe.eu/ns/Metadata-European#" xmlns:eu="http://iec.ch/TC57/CIM100-European#" xmlns:nc="http://entsoe.eu/ns/nc#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:cim="http://iec.ch/TC57/CIM100#" xmlns:dcterms="http://purl.org/dc/terms/#">
+	<md:FullModel rdf:about="urn:uuid:989a0dc9-87b7-4814-909c-09290573d4b3">
+		<prov:generatedAtTime>2023-02-01T10:58:00Z</prov:generatedAtTime>
+		<dcterms:issued>2024-05-06T12:34:48.682795</dcterms:issued>
+		<dcterms:publisher rdf:resource="http://energy.referencedata.eu/EIC/10X1001A1001A094" />
+		<dcat:keyword>RAS</dcat:keyword>
+		<dcterms:references rdf:resource="urn:uuid:a53d7b2c-0b9c-11ef-a347-0242595922db" />
+		<dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+		<dcterms:accessRights rdf:resource="http://energy.referencedata.eu/Confidentiality/4cd9b326-1275-4da7-9724-28c5e1deeb87" />
+		<dcat:version>1.0</dcat:version>
+		<dcterms:description>This is an example of  remedial action schedule profile.</dcterms:description>
+		<dcat:startDate>2022-12-03T23:30:00+00:00Z</dcat:startDate>
+		<dcat:endDate>2022-12-20T23:30:00+00:00Z</dcat:endDate>
+		<dcterms:identifier>urn:uuid:989a0dc9-87b7-4814-909c-09290573d4b3</dcterms:identifier>
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2" />
+		<dcterms:conformsTo rdf:resource="http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2" />
+		<prov:wasGeneratedBy rdf:resource="http://energy.referencedata.eu/CGM/Action/CGM-1D-RAS" />
+		<dcat:isVersionOf rdf:resource="http://energy.referencedata.eu/Model/ELIA_CGM-RAS" />
+		<dcterms:spatial rdf:resource="http://energy.referencedata.eu/Frame/BE_Transmission_Grid" />
+		<dcterms:title>2022-12-03T23:30:00+00:00Z_TransnetBW_CGM-1D-RAS</dcterms:title>
+	</md:FullModel>
+	<nc:RemedialActionSchedule rdf:ID="_b29badd3-ad00-4d69-bd5d-98e0ee5cfc67">
+		<cim:IdentifiedObject.name>20221204_DA_CROSA_ORA_20221204_RD-22-03373_13(1)MKW-004</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>b29badd3-ad00-4d69-bd5d-98e0ee5cfc67</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_0624c42a-ca09-4d41-8867-e4ee12d0e516" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_7c0b9544-b1a8-411e-8400-90835b58a21b" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_41cd45cb-54e5-489e-8dae-769e54838882">
+		<cim:IdentifiedObject.name>Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>41cd45cb-54e5-489e-8dae-769e54838882</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-004_20</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_b29badd3-ad00-4d69-bd5d-98e0ee5cfc67" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_0b5f1337-706f-4103-a24a-b0bea0b1bb2a" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_243db0c0-66d5-414a-9387-785cf36e9479">
+		<cim:RemedialActionCost.mRID>243db0c0-66d5-414a-9387-785cf36e9479</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_b29badd3-ad00-4d69-bd5d-98e0ee5cfc67" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_0b5f1337-706f-4103-a24a-b0bea0b1bb2a">
+		<cim:IdentifiedObject.name>Power schedule Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>0b5f1337-706f-4103-a24a-b0bea0b1bb2a</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_a4137382-357b-47d2-bb9e-4e85260f98d9">
+		<nc:PowerTimePoint.atTime>2022-12-04T19:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_0b5f1337-706f-4103-a24a-b0bea0b1bb2a" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_b8a28e74-08f5-40c3-a6f8-db654a5bd103">
+		<nc:PowerTimePoint.atTime>2022-12-04T20:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>130.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>5265.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_0b5f1337-706f-4103-a24a-b0bea0b1bb2a" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_db9b5f0a-7508-41c6-9851-cb4ab4898736">
+		<nc:PowerTimePoint.atTime>2022-12-04T21:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>130.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>5265.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_0b5f1337-706f-4103-a24a-b0bea0b1bb2a" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_1ad9b116-641b-480d-8d2c-712f5f2d8d38">
+		<nc:PowerTimePoint.atTime>2022-12-04T22:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>130.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>5265.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_0b5f1337-706f-4103-a24a-b0bea0b1bb2a" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_f8d8aa31-a8c7-4aa9-8ae8-12a6ddd9f7e1">
+		<cim:IdentifiedObject.name>20221219_DA_CROSA_ORA_20221219_RD-22-03477_13(1)MKW-006</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>f8d8aa31-a8c7-4aa9-8ae8-12a6ddd9f7e1</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_38fe8149-ba78-433a-9821-4540d8027f44" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_52579ba5-89a1-4650-9d26-b6a10136885c" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_5fa64fd8-693e-4b6d-8ff4-ae3b7309717e">
+		<cim:IdentifiedObject.name>Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>5fa64fd8-693e-4b6d-8ff4-ae3b7309717e</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-006_05</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_f8d8aa31-a8c7-4aa9-8ae8-12a6ddd9f7e1" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_62f048a7-9298-44c6-b380-934608c382d7">
+		<cim:RemedialActionCost.mRID>62f048a7-9298-44c6-b380-934608c382d7</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_f8d8aa31-a8c7-4aa9-8ae8-12a6ddd9f7e1" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47">
+		<cim:IdentifiedObject.name>Power schedule Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>7b72e7b9-3c66-4dc1-828e-a2ee34c0af47</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_62847b6e-e331-4ed4-8743-a3a878df39de">
+		<nc:PowerTimePoint.atTime>2022-12-19T04:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_c0dd25cc-275b-48d3-8828-0ca10342159f">
+		<nc:PowerTimePoint.atTime>2022-12-19T05:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>276.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>11178.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_acdd3167-d7db-4222-8d66-58cf62a7e9a7">
+		<nc:PowerTimePoint.atTime>2022-12-19T06:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>6075.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_1430b9ee-7d2f-4a2e-9ec0-6df8ca227183">
+		<nc:PowerTimePoint.atTime>2022-12-19T07:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>110.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4455.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_2ff8b24c-5eb8-4726-87b9-25d3bdc1063c">
+		<nc:PowerTimePoint.atTime>2022-12-19T08:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>200.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_5ad42388-866c-4a2f-a93b-2707816376bf">
+		<nc:PowerTimePoint.atTime>2022-12-19T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>200.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7b72e7b9-3c66-4dc1-828e-a2ee34c0af47" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_db23f59b-d7e0-4de8-9f8b-b14646e3362f">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_RD-22-03490_13(1)MKW-020</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>db23f59b-d7e0-4de8-9f8b-b14646e3362f</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_cb7149e2-9882-40d6-b5be-a164bc8327d8" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_4847b3f4-8ed5-48d0-814d-051a771e4a7c" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_cd9962e1-9a49-4db3-b79d-7da7b1a626de">
+		<cim:IdentifiedObject.name>Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>cd9962e1-9a49-4db3-b79d-7da7b1a626de</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-020_08</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_db23f59b-d7e0-4de8-9f8b-b14646e3362f" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_f12d4bdf-069c-4b7c-bc48-e0cf3d9f8783">
+		<cim:RemedialActionCost.mRID>f12d4bdf-069c-4b7c-bc48-e0cf3d9f8783</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_db23f59b-d7e0-4de8-9f8b-b14646e3362f" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c">
+		<cim:IdentifiedObject.name>Power schedule Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>41d3e32e-204f-4284-abb7-354b453b563c</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_9f8430ae-ec04-4922-9455-b950332ed575">
+		<nc:PowerTimePoint.atTime>2022-12-20T07:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>200.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_6abb582c-f1b0-40ca-b153-0bdc54070796">
+		<nc:PowerTimePoint.atTime>2022-12-20T08:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>200.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_3904c4c9-d60d-4b17-bcab-b6dfa80e8bd0">
+		<nc:PowerTimePoint.atTime>2022-12-20T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>200.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8100.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_b655f345-18cb-4dfc-8a0d-d7bd913195f6">
+		<nc:PowerTimePoint.atTime>2022-12-20T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>105.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4252.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_e3920314-bf4c-4b89-9af3-43cac54af561">
+		<nc:PowerTimePoint.atTime>2022-12-20T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_41d3e32e-204f-4284-abb7-354b453b563c" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_88ba61df-c040-4946-aff9-02938af0db69">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_RD-22-03491_13(1)MKW-014</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>88ba61df-c040-4946-aff9-02938af0db69</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_7c707299-06ba-4068-90ed-23a89d11cb27" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_4b78e646-f37a-4a46-b04b-94d71e239c2f" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_b0681cb4-b7f7-4829-8ffb-79365d177816">
+		<cim:IdentifiedObject.name>Heizkraftwerk Heilbronn Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>b0681cb4-b7f7-4829-8ffb-79365d177816</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-014_13</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_88ba61df-c040-4946-aff9-02938af0db69" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_df40b9d5-9589-442f-b555-788c75728759" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_e9592509-6685-410e-9166-6d6d3d600c3b">
+		<cim:RemedialActionCost.mRID>e9592509-6685-410e-9166-6d6d3d600c3b</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_88ba61df-c040-4946-aff9-02938af0db69" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_df40b9d5-9589-442f-b555-788c75728759">
+		<cim:IdentifiedObject.name>Power schedule Heizkraftwerk Heilbronn Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>df40b9d5-9589-442f-b555-788c75728759</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_42147e43-520c-4eae-96d4-8b84c45311ad">
+		<nc:PowerTimePoint.atTime>2022-12-20T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>205.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8302.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_df40b9d5-9589-442f-b555-788c75728759" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_bd0a3124-d296-4aca-bff9-a747be8fc2d9">
+		<nc:PowerTimePoint.atTime>2022-12-20T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_df40b9d5-9589-442f-b555-788c75728759" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_9e26678d-002b-4cb8-81bb-3897ab61ddee">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_RD-22-03490_13(1)MKW-021</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>9e26678d-002b-4cb8-81bb-3897ab61ddee</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_b6aa1d22-fd01-41ac-a4bd-3bc190baa438" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_b851833d-2239-4285-b37a-34ec4221b45d" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_88c38551-7cf2-4b4d-8c50-318ffb878b01">
+		<cim:IdentifiedObject.name>Rheinhafen-Dampfkraftwerk Karlsruhe Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>88c38551-7cf2-4b4d-8c50-318ffb878b01</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-021_11</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_9e26678d-002b-4cb8-81bb-3897ab61ddee" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_616e8126-2977-4cd3-9575-09442fc35fb6">
+		<cim:RemedialActionCost.mRID>616e8126-2977-4cd3-9575-09442fc35fb6</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_9e26678d-002b-4cb8-81bb-3897ab61ddee" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de">
+		<cim:IdentifiedObject.name>Power schedule Rheinhafen-Dampfkraftwerk Karlsruhe Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>f0fec2e0-536d-44e8-b5a2-0fbeff2b40de</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_fb59f04a-f2af-4fb9-b712-34a1bf5f7a70">
+		<nc:PowerTimePoint.atTime>2022-12-20T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_a13b42e5-8176-4d2c-bce7-a70ba3fcdeac">
+		<nc:PowerTimePoint.atTime>2022-12-20T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>395.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>15997.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_c25f643f-96d5-4893-9ae9-e2b7f8c17332">
+		<nc:PowerTimePoint.atTime>2022-12-20T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>300.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>12150.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_2f2cd29c-71ab-4773-b5c6-f0d3dbffb741">
+		<nc:PowerTimePoint.atTime>2022-12-20T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>300.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>12150.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_093aa7b7-567d-4b17-991d-35f3c1af5eaf">
+		<nc:PowerTimePoint.atTime>2022-12-20T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>300.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>12150.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_7acdf59a-f4e9-4d23-93dc-a68b6f971a81">
+		<nc:PowerTimePoint.atTime>2022-12-20T15:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>300.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>12150.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_9bf079ea-8f91-4745-a78c-248107e02b83">
+		<nc:PowerTimePoint.atTime>2022-12-20T16:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>300.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>12150.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_f0fec2e0-536d-44e8-b5a2-0fbeff2b40de" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_ced847de-11a3-4e16-9ccf-241f808d5cc4">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_RD-22-03491_13(1)MKW-013</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>ced847de-11a3-4e16-9ccf-241f808d5cc4</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_a99a0e3a-4b04-407a-8526-de25595ea1af" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_f1b952d2-a1e3-44d1-a968-1baeed64f2f1" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_4949a7dc-9f8c-4bcb-9e10-b7c220d02c1e">
+		<cim:IdentifiedObject.name>Rheinhafen-Dampfkraftwerk Karlsruhe Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>4949a7dc-9f8c-4bcb-9e10-b7c220d02c1e</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-013_12</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_ced847de-11a3-4e16-9ccf-241f808d5cc4" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_e735564b-2ad0-4063-b9cc-8935047213e6">
+		<cim:RemedialActionCost.mRID>e735564b-2ad0-4063-b9cc-8935047213e6</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_ced847de-11a3-4e16-9ccf-241f808d5cc4" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b">
+		<cim:IdentifiedObject.name>Power schedule Rheinhafen-Dampfkraftwerk Karlsruhe Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>c06df56f-23e6-46be-931d-11f71d36d77b</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_646a45b7-88f5-4f00-bbaf-72f2c06914a1">
+		<nc:PowerTimePoint.atTime>2022-12-20T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_6fcd853c-a827-41f1-b7d2-55294f1850d1">
+		<nc:PowerTimePoint.atTime>2022-12-20T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>195.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7897.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_220eb520-55e5-4255-b46c-bf1c3c5f6d9c">
+		<nc:PowerTimePoint.atTime>2022-12-20T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>195.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7897.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_9339d47f-4c03-4a66-b3ff-39eaa01a9f27">
+		<nc:PowerTimePoint.atTime>2022-12-20T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>195.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7897.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_7eafec8b-94d8-4ce0-b79f-9dcef24eee96">
+		<nc:PowerTimePoint.atTime>2022-12-20T15:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>195.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7897.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_0393915d-1b47-433c-901a-114dea9bcebf">
+		<nc:PowerTimePoint.atTime>2022-12-20T16:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>195.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7897.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_c06df56f-23e6-46be-931d-11f71d36d77b" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_ba714bf8-4656-4f88-913a-cb14b460c8f1">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_RD-22-03491_13(1)MKW-004</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>ba714bf8-4656-4f88-913a-cb14b460c8f1</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_47f92e9d-f54f-48b9-a0ea-5e7fc337b0c7" />
+		<nc:RemedialActionSchedule.Contingency rdf:resource="#_2e65be61-42a6-4cc6-aee7-8f4224675360" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_29d0d7db-3bae-4d3e-ba65-702ec6d8687c">
+		<cim:IdentifiedObject.name>Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>29d0d7db-3bae-4d3e-ba65-702ec6d8687c</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-004_07</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_ba714bf8-4656-4f88-913a-cb14b460c8f1" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_52947169-778c-4a3d-818e-830ccd1e4b1f">
+		<cim:RemedialActionCost.mRID>52947169-778c-4a3d-818e-830ccd1e4b1f</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_ba714bf8-4656-4f88-913a-cb14b460c8f1" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c">
+		<cim:IdentifiedObject.name>Power schedule Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>9583ddda-9e0e-48de-bb78-3692a4e9278c</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_0ad7651d-d86f-432a-ade7-ea67cad29018">
+		<nc:PowerTimePoint.atTime>2022-12-20T06:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>500.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>20250.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_995e7f85-7c0a-4d0a-b88b-a53944280ea4">
+		<nc:PowerTimePoint.atTime>2022-12-20T07:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>440.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>17820.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_7ce9eafd-69cc-408b-975e-edb328bc5115">
+		<nc:PowerTimePoint.atTime>2022-12-20T08:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>500.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>20250.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_83492c24-1db1-4dc6-99bc-a6ba51178b0c">
+		<nc:PowerTimePoint.atTime>2022-12-20T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>420.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>17010.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_77726d1d-e318-4f10-b843-90d76b049e7d">
+		<nc:PowerTimePoint.atTime>2022-12-20T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>6075.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_ec2f1bcb-5ef3-4d94-b981-00c7d8b45d77">
+		<nc:PowerTimePoint.atTime>2022-12-20T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_3e5ea29e-8646-4361-a7c1-96e67d37f0ca">
+		<nc:PowerTimePoint.atTime>2022-12-20T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_add713ee-dcc0-4ec7-92dc-9637c3723788">
+		<nc:PowerTimePoint.atTime>2022-12-20T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>205.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8302.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_7aef0c58-7e78-45f3-9984-5a2c74ede93d">
+		<nc:PowerTimePoint.atTime>2022-12-20T15:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>205.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8302.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_e598a5bd-1212-404f-aa6d-6485662c5147">
+		<nc:PowerTimePoint.atTime>2022-12-20T16:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>205.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8302.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_c52eb26d-3e86-4e35-8ecd-cfe759161ce9">
+		<nc:PowerTimePoint.atTime>2022-12-20T17:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>400.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>16200.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_3fe33d25-c98a-4e10-a3b7-bc201d324709">
+		<nc:PowerTimePoint.atTime>2022-12-20T18:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>400.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>16200.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_addb53bc-42de-4b16-8d8d-ed7d23a91855">
+		<nc:PowerTimePoint.atTime>2022-12-20T19:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>400.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>16200.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_9583ddda-9e0e-48de-bb78-3692a4e9278c" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:resource="#_a250a216-7024-4221-947b-c6eb395e7d2e">
+		<cim:IdentifiedObject.name>20221219_DA_CROSA_ORA_20221219_RD-22-03477_NRInland-008</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>a250a216-7024-4221-947b-c6eb395e7d2e</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_c8da99bb-1d7b-4b23-a7e1-568d15ecfac7" />
+	</nc:RemedialActionSchedule>
+	<nc:CountertradeScheduleAction rdf:ID="_bcecff24-782c-4dad-b2a7-66012a3fa60d">
+		<cim:IdentifiedObject.name>Reservekraftwerk Marbach GT 3</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>bcecff24-782c-4dad-b2a7-66012a3fa60d</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>This is the countertrade action</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_a250a216-7024-4221-947b-c6eb395e7d2e" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_daa53fe9-aada-462a-bef6-ed2983c3684d" />
+	</nc:CountertradeScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_8237684c-03df-4642-b1b4-a88ee1d5e91e">
+		<cim:RemedialActionCost.mRID>8237684c-03df-4642-b1b4-a88ee1d5e91e</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_a250a216-7024-4221-947b-c6eb395e7d2e" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_daa53fe9-aada-462a-bef6-ed2983c3684d">
+		<cim:IdentifiedObject.name>Power schedule Reservekraftwerk Marbach GT 3</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>daa53fe9-aada-462a-bef6-ed2983c3684d</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_038606c1-8eae-4ca2-8286-824688c80a51">
+		<nc:PowerTimePoint.atTime>2022-12-19T06:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_daa53fe9-aada-462a-bef6-ed2983c3684d" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_46131b10-3f66-446d-b5fb-f1960e6ce713">
+		<cim:IdentifiedObject.name>20221204_DA_CROSA_ORA_20221204_RD-22-03368_NRInland-017</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>46131b10-3f66-446d-b5fb-f1960e6ce713</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_e4ee80c6-3b25-4cc1-adf6-6ea7918c8546" />
+	</nc:RemedialActionSchedule>
+	<nc:RemedialActionCost rdf:ID="_e1e97d2f-7169-4820-8201-cec7f1bbbcfb">
+		<cim:RemedialActionCost.mRID>e1e97d2f-7169-4820-8201-cec7f1bbbcfb</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_46131b10-3f66-446d-b5fb-f1960e6ce713" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:RemedialActionSchedule rdf:ID="_c94261a6-c2de-4cd1-a2e9-eaf3a4c47b1a">
+		<cim:IdentifiedObject.name>20221204_DA_CROSA_ORA_20221204_RD-22-03368_NRInland-014</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>c94261a6-c2de-4cd1-a2e9-eaf3a4c47b1a</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_51026858-355c-46fb-95b2-60469d566359" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_d41dc68d-a891-4d84-8b50-2aa02d2afb41">
+		<cim:IdentifiedObject.name>Reservekraftwerk Altbach/Deizisau Block 1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>d41dc68d-a891-4d84-8b50-2aa02d2afb41</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_land-014_07</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_c94261a6-c2de-4cd1-a2e9-eaf3a4c47b1a" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_9ebe35c3-0d6a-478f-b04d-057f0762b8f1">
+		<cim:RemedialActionCost.mRID>9ebe35c3-0d6a-478f-b04d-057f0762b8f1</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_c94261a6-c2de-4cd1-a2e9-eaf3a4c47b1a" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_e36ec0be-73cd-4ae3-bf89-074247da29d1">
+		<cim:IdentifiedObject.name>Power schedule Reservekraftwerk Altbach/Deizisau Block 1</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>e36ec0be-73cd-4ae3-bf89-074247da29d1</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_e1c6d47f-df64-4276-8b9f-32f77c5a9a8a">
+		<nc:PowerTimePoint.atTime>2022-12-04T06:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_ddc08521-2f4c-4503-a211-ada1a7249403">
+		<nc:PowerTimePoint.atTime>2022-12-04T07:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_3bd2cf4e-9394-4b62-9832-ffdcc691c147">
+		<nc:PowerTimePoint.atTime>2022-12-04T08:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_180847cf-bd23-44bd-b6ff-6d96d90fc068">
+		<nc:PowerTimePoint.atTime>2022-12-04T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_b98a70e2-c457-49f5-9399-724b9d9ab3a0">
+		<nc:PowerTimePoint.atTime>2022-12-04T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_134ebaec-db7e-4f52-8f0c-dc3171cf2d7f">
+		<nc:PowerTimePoint.atTime>2022-12-04T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_d80fd29e-8918-40cb-89d4-58ae18d4a275">
+		<nc:PowerTimePoint.atTime>2022-12-04T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_06aa080d-4a92-4383-88d3-f73930253ae6">
+		<nc:PowerTimePoint.atTime>2022-12-04T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_fc89df48-f505-4183-9012-0e372d820d80">
+		<nc:PowerTimePoint.atTime>2022-12-04T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_e35469de-e3e8-4271-9804-97d28645bd96">
+		<nc:PowerTimePoint.atTime>2022-12-04T15:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_89b40352-53fb-493d-b609-ab90aafd502a">
+		<nc:PowerTimePoint.atTime>2022-12-04T16:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_9152728c-e0fb-4ebe-862d-d14121eb81c8">
+		<nc:PowerTimePoint.atTime>2022-12-04T17:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_655758b5-b06c-4783-835a-5ddef4db7c43">
+		<nc:PowerTimePoint.atTime>2022-12-04T18:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_36212ac3-949a-4488-8f80-e883dca67af0">
+		<nc:PowerTimePoint.atTime>2022-12-04T19:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_9891260e-d26a-47c5-a8a5-289715530f82">
+		<nc:PowerTimePoint.atTime>2022-12-04T20:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_e3c7e2ea-96e9-40d4-9a79-8b56536d37c2">
+		<nc:PowerTimePoint.atTime>2022-12-04T21:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_e17fe70b-66f2-42e4-b52f-edd9f2f2381e">
+		<nc:PowerTimePoint.atTime>2022-12-04T22:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>150.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>3787.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_e36ec0be-73cd-4ae3-bf89-074247da29d1" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_de9381ec-a26c-4e62-84bd-3f5b59180908">
+		<cim:IdentifiedObject.name>20221214_DA_CROSA_ORA_20221214_RD-22-03444_13(1)MKW-013</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>de9381ec-a26c-4e62-84bd-3f5b59180908</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_33f72e47-3743-4fcb-abe7-4ff0fc2f2ca2" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_cac0c9c5-309b-46e0-ad87-c5af4f084dad">
+		<cim:IdentifiedObject.name>Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>cac0c9c5-309b-46e0-ad87-c5af4f084dad</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-013_11</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_de9381ec-a26c-4e62-84bd-3f5b59180908" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_274ee7c3-2498-49f5-9498-f4f533276afb" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_6f50f47a-273d-40e1-9b12-23dbbc5918f8">
+		<cim:RemedialActionCost.mRID>6f50f47a-273d-40e1-9b12-23dbbc5918f8</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_de9381ec-a26c-4e62-84bd-3f5b59180908" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_274ee7c3-2498-49f5-9498-f4f533276afb">
+		<cim:IdentifiedObject.name>Power schedule Vorarlberger Ilwerke</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>274ee7c3-2498-49f5-9498-f4f533276afb</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_927c1acc-4952-4fd0-a03c-1b1bfe25f85b">
+		<nc:PowerTimePoint.atTime>2022-12-14T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_274ee7c3-2498-49f5-9498-f4f533276afb" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_2ef85d6b-6525-47cb-82c1-23f14c0d1bc9">
+		<nc:PowerTimePoint.atTime>2022-12-14T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>2.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>81.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_274ee7c3-2498-49f5-9498-f4f533276afb" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_df449ec9-3680-4b0a-87ab-2c497f958823">
+		<nc:PowerTimePoint.atTime>2022-12-14T20:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_274ee7c3-2498-49f5-9498-f4f533276afb" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_79f16a71-3c3b-4c54-ba51-5507de243da2">
+		<nc:PowerTimePoint.atTime>2022-12-14T21:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>60.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>2430.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_274ee7c3-2498-49f5-9498-f4f533276afb" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_19872e53-4c6d-4552-9827-90accecf2410">
+		<nc:PowerTimePoint.atTime>2022-12-14T22:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_274ee7c3-2498-49f5-9498-f4f533276afb" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_83e2979b-bad8-4d3b-9219-dd878afb07f0">
+		<cim:IdentifiedObject.name>20221219_DA_CROSA_ORA_20221219_RD-22-03475_13(1)MKW-031</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>83e2979b-bad8-4d3b-9219-dd878afb07f0</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_ffeeb326-e081-4c5e-89ce-dc58ce7dbc8d" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_f8f75a12-0aa2-47d2-a5cb-42a31c01d836">
+		<cim:IdentifiedObject.name>Heizkraftwerk Heilbronn Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>f8f75a12-0aa2-47d2-a5cb-42a31c01d836</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_)MKW-031_00</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_83e2979b-bad8-4d3b-9219-dd878afb07f0" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_8fd37fb8-29b2-4b51-a4b2-213fd2e3bb27">
+		<cim:RemedialActionCost.mRID>8fd37fb8-29b2-4b51-a4b2-213fd2e3bb27</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_83e2979b-bad8-4d3b-9219-dd878afb07f0" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_a2c372fc-5d63-45b7-8bd4-aed10d906cc4">
+		<cim:IdentifiedObject.name>Power schedule Heizkraftwerk Heilbronn Block 7</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>a2c372fc-5d63-45b7-8bd4-aed10d906cc4</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_6b922b42-5af5-47ff-971e-81df9c6dc45f">
+		<nc:PowerTimePoint.atTime>2022-12-18T23:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>0.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>0.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_458271a1-87e3-43f1-819c-3ac3cba01c1e">
+		<nc:PowerTimePoint.atTime>2022-12-19T00:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>50.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>2025.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_71b3a35e-da1f-45cd-a127-8e02822dfd5c">
+		<nc:PowerTimePoint.atTime>2022-12-19T01:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>50.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>2025.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_008b8a58-696e-4c50-ba87-1042e9231789">
+		<nc:PowerTimePoint.atTime>2022-12-19T02:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>100.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>4050.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_62d20975-4f61-49c1-8884-d054a4e0cc8d">
+		<nc:PowerTimePoint.atTime>2022-12-19T03:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>210.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8505.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_6a37a776-02e3-4e40-aed2-257913df9a20">
+		<nc:PowerTimePoint.atTime>2022-12-19T04:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>420.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>17010.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_bc7081f1-5e18-4113-b89b-f3a40c9fb890">
+		<nc:PowerTimePoint.atTime>2022-12-19T05:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>393.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>15916.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_c190cc38-e4fd-4823-aeda-dc2d7e76b00e">
+		<nc:PowerTimePoint.atTime>2022-12-19T06:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>255.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>10327.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_ae7549ae-c277-4942-ba24-bb6e5c6d43c3">
+		<nc:PowerTimePoint.atTime>2022-12-19T07:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>54.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>2187.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_7523989d-bfb6-4175-bfe8-09e13c77aa25">
+		<nc:PowerTimePoint.atTime>2022-12-19T08:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>53.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>2146.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_638c328d-5e43-4a12-993f-927400086cfe">
+		<nc:PowerTimePoint.atTime>2022-12-19T09:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>125.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>5062.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_3af8e60a-0708-4748-a085-5ab5a8d9d6a7">
+		<nc:PowerTimePoint.atTime>2022-12-19T10:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>185.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7492.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_ac2e2b04-1c38-45d5-81db-2ed770392e2e">
+		<nc:PowerTimePoint.atTime>2022-12-19T11:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>175.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7087.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_4d338213-4b5f-447f-a6cb-254968c9ef77">
+		<nc:PowerTimePoint.atTime>2022-12-19T12:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>187.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7573.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_aab8d22b-5174-4fe7-8f86-8cf08e8fb395">
+		<nc:PowerTimePoint.atTime>2022-12-19T13:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>187.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7573.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_a0eefa2a-ca0a-4cab-927b-a5eebbde6e2a">
+		<nc:PowerTimePoint.atTime>2022-12-19T14:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>187.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7573.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_96c2800b-566a-4009-bfd0-5f8037daed24">
+		<nc:PowerTimePoint.atTime>2022-12-19T15:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>180.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>7290.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_6c0a739c-aa92-48ce-9939-e744fd06b836">
+		<nc:PowerTimePoint.atTime>2022-12-19T16:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>255.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>10327.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_aa0bae26-80b2-47db-8efd-703fc3d5417e">
+		<nc:PowerTimePoint.atTime>2022-12-19T17:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>335.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>13567.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_4ff3f186-7987-4916-a95b-56c32fe0921d">
+		<nc:PowerTimePoint.atTime>2022-12-19T18:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>279.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>11299.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_8ea186e6-3137-4870-9f9c-edd2bd8474e8">
+		<nc:PowerTimePoint.atTime>2022-12-19T19:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>302.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>12231.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_5560fad4-a217-4435-87cc-ac4d93064bd6">
+		<nc:PowerTimePoint.atTime>2022-12-19T20:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>735.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>29767.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_ed0c42a3-8b57-459b-91be-11dd7c391b7d">
+		<nc:PowerTimePoint.atTime>2022-12-19T21:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>735.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>29767.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_8158b51b-8af9-41dc-b3e9-4ae9e13d9c40">
+		<nc:PowerTimePoint.atTime>2022-12-19T22:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>735.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>29767.5</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_a2c372fc-5d63-45b7-8bd4-aed10d906cc4" />
+	</nc:PowerTimePoint>
+	<nc:RemedialActionSchedule rdf:ID="_1c04f7f5-5878-4f87-827a-a0e5ea15985b">
+		<cim:IdentifiedObject.name>20221220_DA_CROSA_ORA_20221220_RD-22-03488_NRInland-023</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>1c04f7f5-5878-4f87-827a-a0e5ea15985b</cim:IdentifiedObject.mRID>
+		<nc:RemedialActionSchedule.statusKind rdf:resource="http://entsoe.eu/ns/nc#RemedialActionScheduleStatusKind.implemented" />
+		<nc:RemedialActionSchedule.RemedialAction rdf:resource="#_0e444808-bedc-43da-b69f-0f77f3841243" />
+	</nc:RemedialActionSchedule>
+	<nc:RedispatchScheduleAction rdf:ID="_1b77aa40-53b2-4f75-bb60-2b568886f6e2">
+		<cim:IdentifiedObject.name>Reservekraftwerk Rheinhafen-Dampfkraftwerk Karlsruhe Block 4</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>1b77aa40-53b2-4f75-bb60-2b568886f6e2</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>TransnetBW_land-023_21</cim:IdentifiedObject.description>
+		<nc:PowerScheduleAction.currency rdf:resource="https://iec.ch/TC57/CIM100#Currency.EUR" />
+		<nc:PowerScheduleAction.RemedialActionSchedule rdf:resource="#_1c04f7f5-5878-4f87-827a-a0e5ea15985b" />
+		<nc:PowerScheduleAction.PowerSchedule rdf:resource="#_7d0ca0ae-872f-45da-84d5-617409a50561" />
+	</nc:RedispatchScheduleAction>
+	<nc:RemedialActionCost rdf:ID="_0711f454-4c5c-4ca7-9f56-1c0a49a4dae9">
+		<cim:RemedialActionCost.mRID>0711f454-4c5c-4ca7-9f56-1c0a49a4dae9</cim:RemedialActionCost.mRID>
+		<nc:RemedialActionCost.startupCost>0</nc:RemedialActionCost.startupCost>
+		<nc:RemedialActionCost.shutdownCost>0</nc:RemedialActionCost.shutdownCost>
+		<nc:RemedialActionCost.otherCost>0.0</nc:RemedialActionCost.otherCost>
+		<nc:RemedialActionCost.RemedialActionSchedule rdf:resource="#_1c04f7f5-5878-4f87-827a-a0e5ea15985b" />
+		<nc:RemedialActionCost.kind rdf:resource="http://entsoe.eu/ns/nc#CostSettledKind.provisonal" />
+	</nc:RemedialActionCost>
+	<nc:PowerSchedule rdf:ID="_7d0ca0ae-872f-45da-84d5-617409a50561">
+		<cim:IdentifiedObject.name>Power schedule Reservekraftwerk Rheinhafen-Dampfkraftwerk Karlsruhe Block 4</cim:IdentifiedObject.name>
+		<cim:IdentifiedObject.mRID>7d0ca0ae-872f-45da-84d5-617409a50561</cim:IdentifiedObject.mRID>
+		<cim:IdentifiedObject.description>Power schedule for the redispatch action</cim:IdentifiedObject.description>
+		<nc:BaseTimeSeries.interpolationKind rdf:resource="http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none" />
+		<nc:BaseTimeSeries.kind  rdf:resource="http://entsoe.eu/ns/nc#BaseTimeSeriesKind.schedule" />
+	</nc:PowerSchedule>
+	<nc:PowerTimePoint rdf:ID="_67855853-9597-4d1a-9eeb-1b9cc9d0913e">
+		<nc:PowerTimePoint.atTime>2022-12-20T20:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>240.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>6060.0</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7d0ca0ae-872f-45da-84d5-617409a50561" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_728f6647-11b6-4c3c-9ea7-d9d040480cb7">
+		<nc:PowerTimePoint.atTime>2022-12-20T21:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>317.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8004.25</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7d0ca0ae-872f-45da-84d5-617409a50561" />
+	</nc:PowerTimePoint>
+	<nc:PowerTimePoint rdf:ID="_1d000402-131f-42cb-b074-434563b042c8">
+		<nc:PowerTimePoint.atTime>2022-12-20T22:30:00Z</nc:PowerTimePoint.atTime>
+		<nc:PowerTimePoint.activatedP>317.0</nc:PowerTimePoint.activatedP>
+		<nc:PowerTimePoint.activatedPrice>8004.25</nc:PowerTimePoint.activatedPrice>
+		<nc:PowerTimePoint.PowerSchedule rdf:resource="#_7d0ca0ae-872f-45da-84d5-617409a50561" />
+	</nc:PowerTimePoint>
+</rdf:RDF>

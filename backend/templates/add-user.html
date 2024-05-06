@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="/static/contact.css" />
+    <link rel="stylesheet" href="/static/notification.css" />
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="#about"></a>
+      <a href="#contact"></a>
+      <!-- <div class="login-container">
+        <button onclick="document.getElementById('id01').style.display='block'">
+          Add user
+        </button>
+      </div> -->
+    </div>
+    <div id="id01" class="modal">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+      </div>
+      <form action="users" method="post" class="modal-content" id="form">
+        <!-- <span onclick="closeModale()" class="close" title="Close Modal">X</span> -->
+        <label for="fname">User Name</label>
+        <input type="text" id="fname" name="username" placeholder=" name.." />
+        <label for="pwd">Password:</label>
+        <input
+          type="password"
+          id="pwd"
+          name="password"
+          placeholder="password.."
+        />
+        <label for="cpwd">Confirm Password:</label>
+        <input
+          type="password"
+          id="cpwd"
+          name="cpassword"
+          placeholder="confirm password.."
+        />
+        <!-- <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder="@email ..." /> -->
+        <label for="pwd">User Role:</label>
+        <select id="role" name="role">
+          <option value="2">Editor</option>
+          <option value="1">Administrator</option>
+          <!-- <option value="0">Super Administrator</option> -->
+        </select>
+        <!-- <label for="country">Company list</label>
+        <select id="company" name="company">
+          <option value="TTG">TenneT DE</option>
+          <option value="TNG">TransnetBW</option>
+          <option value="AMP">Amprion</option>
+          <option value="50Hertz">50Hertz</option>
+        </select> -->
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <div id="content-auth"></div>
+    <div id="toast"></div>
+    <script>
+      document.getElementById("id01").style.display = "block";
+    </script>
+    <script src="{{url_for('static', filename='/auth.js')}}"></script>
+    <script src="{{url_for('static', filename='/js/notification.js')}}"></script>
+
+    <script>
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        client = JSON.parse(localStorage.getItem("client"));
+        window.open("/admin/get/" + client.id, "_self");
+      };
+    </script>
+
+    <script>
+      function closeModale() {
+        document.getElementById("id01").style.display = "none";
+        location.reload();
+      }
+      function deleteUser(id) {
+        console.log(id);
+
+        let URL = `/users/user/${id}/delete`;
+
+        try {
+          fetch(URL, {
+            method: "POST",
+            body: { id: id },
+          })
+            .then((res) => res.json())
+            .then((myJson) => {
+              console.log(myJson);
+              notification(`user remove `, "#23a3f8");
+              // document.getElementById("id01").style.display = "none";
+              setTimeout(() => {
+                location.reload();
+              }, 6000);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      function create_user(form) {
+        let cp = document.getElementById("cpwd").value;
+        let pass = document.getElementById("pwd").value;
+        let fname = document.getElementById("fname").value;
+        fname = fname.replace(/ /g, "");
+        fname = fname;
+        let company = JSON.parse(localStorage.getItem("client")).company;
+        let admin_email = JSON.parse(localStorage.getItem("client")).email;
+        var formData = new FormData(form);
+        if (cp == pass) {
+          let email = false;
+          let email_ext = admin_email.split("@")[1];
+          email = `${fname}@${email_ext}`.toLowerCase();
+          for (var pair of formData.entries()) {
+            console.log(pair[0] + ": " + pair[1]);
+          }
+
+          // ...or output as an object
+
+          formData.append("company", company);
+          formData.append("email", email);
+
+          let URL = `/users`;
+          fetch(URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(Object.fromEntries(formData)),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              }
+              return Promise.reject(response);
+            })
+            .then((myJson) => {
+              notification(`user add `, "#23a3f8");
+              document.getElementById("form").reset();
+
+              // closeModale();
+            })
+            .catch((response) => {
+              console.log("icicicii errorrr");
+              console.log(response.status, response.statusText);
+              // 3. get error messages, if any
+              response.json().then((json) => {
+                console.log(json);
+                notification(`${json.error}`, "#f03740");
+              });
+            });
+        } else {
+          notification(`no password match`, "#f52c5e");
+        }
+        // iterate through entries...
+      }
+      document.getElementById("form").onsubmit = async (e) => {
+        e.preventDefault();
+        create_user(e.target);
+      };
+    </script>
+  </body>
+</html>
