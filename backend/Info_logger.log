@@ -758,3 +758,17 @@
 2024-05-06 12:35:11,880 - INFO - [log.py:54] - http://127.0.0.1:5000/builder/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzE0OTk5NzQ5LCJ1c2VybmFtZSI6InN1cGVyYWRtaW4iLCJlbWFpbCI6ImFkbWluLnRkZEB0ZGQuY29tIiwiY29tcGFueSI6InN1cGVyYWRtaW4iLCJyb2xlIjowLCJjb21wYW55X2lkIjoiMjEiLCJ0c29BYmJyZXZpYXRpb24iOiJzdXBlcmFkbWluIn0.HWKt2FwJurcdz6lBGzXYoxD69kmbU219Wgy5OOZS6D8&tso=tso
 2024-05-06 12:35:15,728 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
 2024-05-06 12:35:15,750 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-05-06 16:07:44,739 - INFO - [log.py:54] - http://localhost:5000/auth/login
+2024-05-06 16:07:47,301 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:07:47,316 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:08:37,158 - INFO - [log.py:54] - http://localhost:5000/auth/login
+2024-05-06 16:08:39,854 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:08:39,870 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:10:40,228 - INFO - [log.py:54] - http://localhost:5000/auth/login
+2024-05-06 16:10:40,430 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:10:40,440 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:17:46,879 - INFO - [log.py:54] - http://localhost:5000/auth/login
+2024-05-06 16:17:47,043 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:17:47,051 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:18:04,292 - INFO - [log.py:54] - http://localhost:5000/companies/
+2024-05-06 16:18:04,304 - INFO - [log.py:54] - http://localhost:5000/companies/
