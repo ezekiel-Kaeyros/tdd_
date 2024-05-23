@@ -16,9 +16,10 @@ jobs:
 
       - name: Build the Docker image for frontend
         run: |
-          cd frontend && docker build -t ghcr.io/ezekiel-Kaeyros/tdd-frontend:latest .
+          cd frontend && docker build -t ghcr.io/ezekiel-kaeyros/tdd-frontend:latest .
 
       - name: Push to github registry for frontend
         run: |
         
-          docker push ghcr.io/ezekiel-Kaeyros/tdd-frontend:latest
+          docker push ghcr.io/ezekiel-kaeyros/tdd-frontend:latest
+
