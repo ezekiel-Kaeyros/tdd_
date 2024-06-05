@@ -32,8 +32,10 @@ const UserTable: React.FC<Props> = ({ data }) => {
 
   let reorderedArray = reorderArrayByIsActive(data);
 
+  console.log(reorderedArray);
+
   return (
-    <div className="relative overflow-x-auto bg-white  flex justify-center shadow-md sm:rounded-lg">
+    <div className="relative  bg-white  flex justify-center shadow-md sm:rounded-lg">
       <table className="w-full text-sm mb-16 text-left text-gray-500 ">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
           <tr>
@@ -57,10 +59,7 @@ const UserTable: React.FC<Props> = ({ data }) => {
         <tbody>
           {reorderedArray?.map((element: dataType) => (
             <tr key={element?.id} className="bg-white border-b ">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+              <th scope="row" className="px-6 py-4 font-medium text-gray-900 ">
                 {element?.username}
               </th>
               <td className="px-6 py-4">{element?.email}</td>
@@ -79,7 +78,11 @@ const UserTable: React.FC<Props> = ({ data }) => {
                 )}
               </td>
               <td className="px-8 flex w-fit py-4">
-                <EditSettings role={element?.role} id={element?.id} />
+                <EditSettings
+                  role={element?.role}
+                  id={element?.id}
+                  isActive={element?.is_actif}
+                />
               </td>
             </tr>
           ))}

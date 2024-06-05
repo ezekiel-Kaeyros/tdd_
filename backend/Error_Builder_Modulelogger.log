@@ -86,3 +86,5 @@
 2023-12-13 04:42:13,520 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
 2023-12-13 04:50:46,965 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
 2023-12-13 04:50:48,971 - ERROR - [log.py:62] - [Errno 9] Bad file descriptor
+2024-05-08 09:01:50,000 - ERROR - [log.py:62] - Read crontab root: must be privileged to use -u
+

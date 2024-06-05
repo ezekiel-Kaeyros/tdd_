@@ -124,22 +124,23 @@ def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
 
         # A ce stade, on verifier si les colonnes excedentaires
         # font partie des nouvelles colonnes template..
-        col_exceed = wv_file1.columns.difference(wv_file_example.columns)
+        # ========================
+        # col_exceed = wv_file1.columns.difference(wv_file_example.columns)
 
-        col_exceed = strip_colonnes(col_exceed.to_list())
+        # col_exceed = strip_colonnes(col_exceed.to_list())
 
-        # lire les colonnes du nouveau fichier modele..
-        path_new_colonnes = r'input/WV_AMP_2024_01_202404181542.csv'
-        new_sample_columns = pd.read_csv(
-            path_new_colonnes,
-            encoding="unicode_escape",
-            sep=";",
-            skiprows=1,
-            on_bad_lines="skip",
-            low_memory=False
-        ).columns.to_list()
+        # # lire les colonnes du nouveau fichier modele..
+        # path_new_colonnes = r'input/WV_AMP_2024_01_202404181542.csv'
+        # new_sample_columns = pd.read_csv(
+        #     path_new_colonnes,
+        #     encoding="unicode_escape",
+        #     sep=";",
+        #     skiprows=1,
+        #     on_bad_lines="skip",
+        #     low_memory=False
+        # ).columns.to_list()
 
-        # -----------------
+        # -----------------==================
 
         if 'TM von' in wv_file1.columns:
 
@@ -217,17 +218,15 @@ def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
             # wv_file, arr = filter_file(wv_file1, tso)
             return True, dif, wv_file, arr
 
-        elif set(col_exceed).issubset(new_sample_columns):
-            # les colonnes excedentaires sont celles du nouveau format..
-            return True, [], wv_file, []
-        col_list = []
-        for col in wv_file_example.columns:
-            if col not in wv_file1.columns:
-                col_list.append(col)
+        # elif set(col_exceed).issubset(new_sample_columns):
+        #     return True, [], wv_file, []
+        col_list = [
+            col for col in wv_file_example.columns if col not in wv_file1.columns]
         if len(col_list) > 0:
             return False, dif, wv_file, col_list
 
-        return False, dif, wv_file, []
+        return True, dif, wv_file, arr
 
     except Exception as error:  # pylint: disable=broad-except
-        print(error)
+
+        return False, dif, error, []

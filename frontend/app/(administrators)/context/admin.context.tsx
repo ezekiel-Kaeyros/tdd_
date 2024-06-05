@@ -19,6 +19,7 @@ type TSOType = {
   refreshData: number;
   SuperAdminModalCreateUser: boolean;
   SuperAdminModalUpdateUser: boolean;
+  SuperAdminModalDeleteTSO: boolean;
   SuperAdminConfirmDeleteModal: boolean;
   idToBeDeleted: number;
   selectedIdTSO: number;
@@ -63,6 +64,7 @@ const initialState: TSOType = {
   SuperAdminModalCreateUser: false,
   SuperAdminModalUpdateUser: false,
   SuperAdminConfirmDeleteModal: false,
+  SuperAdminModalDeleteTSO: false,
   idToBeDeleted: 0,
   selectedIdTSO: 0,
   tsoList: [],
@@ -105,6 +107,11 @@ const reducer = (initialState: TSOType, action: ActionType) => {
       return {
         ...initialState,
         SuperAdminModalCreateUser: action.payload,
+      };
+    case 'SUPER_ADMIN_MODAL_DELETE_TSO':
+      return {
+        ...initialState,
+        SuperAdminModalDeleteTSO: action.payload,
       };
     case 'SUPER_ADMIN_MODAL_UPDATE_USER':
       return {
@@ -152,6 +159,11 @@ const reducer = (initialState: TSOType, action: ActionType) => {
         ...initialState,
         idToBeDeleted: action?.payload,
         SuperAdminConfirmDeleteModal: action.payload,
+      };
+    case 'ACTIVATE':
+      return {
+        ...initialState,
+        idToBeDeleted: action?.payload,
       };
 
     case 'SUPER_ADMIN_MODAL_DELETE_USER':

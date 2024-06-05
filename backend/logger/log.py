@@ -6,7 +6,7 @@ from src.app_loader import get_app
 
 def create_and_send_email(mes, module_name="unknown"):
     """send error when occured via mail to developper teams."""
-    print(mes)
+    # print(mes)
     mail = get_app()
     send_to = [
         "eric2mballa@gmail.com",
@@ -28,7 +28,7 @@ def create_and_send_email(mes, module_name="unknown"):
 
 def notify_by_email(body):
     """send error when occured via mail to developper teams."""
-    print(body)
+    # print(body)
     mail = get_app()
     send_to = [
         "eric2mballa@gmail.com",

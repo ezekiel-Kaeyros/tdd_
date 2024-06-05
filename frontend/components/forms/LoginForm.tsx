@@ -11,6 +11,7 @@ import { login } from '@/context/actions/auth-actions';
 import { notifyError } from '../notifications/ErrorNotification';
 import { AuthContext } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const LoginForm: React.FC = () => {
   // Handling login form
@@ -34,7 +35,6 @@ const LoginForm: React.FC = () => {
       setLoading(true);
       const res = await login(data);
 
-     
       if (!res?.token) {
         setLoading(false);
         setError(true);
@@ -43,12 +43,13 @@ const LoginForm: React.FC = () => {
         setLoading(false);
         setError(false);
         dispatch({ type: 'LOGIN', payload: res });
-
+        toast.success(' login successfull !!!');
         push('/convert');
         refresh();
       }
     } catch (error) {
       notifyError(`Network error please try again, ${error}`);
+      toast.error('Network error please try again!!!');
     }
   };
 

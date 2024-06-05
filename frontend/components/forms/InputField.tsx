@@ -48,7 +48,6 @@ const InputField: React.FC<Props> = ({
           value={value}
           className="bg-gray-50 border pl-12 text-2xl focus:outline-none focus:ring-1 sm:text-sm focus:ring-emerald-500 border-gray-300 text-gray-900 rounded-lg block w-full  p-2.5"
           placeholder={placeholder}
-          required
         />
       </div>
     </>

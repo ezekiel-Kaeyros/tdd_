@@ -61,7 +61,6 @@ def get_all_tso():
     Returns:
         A JSON response containing a list of TSOs.
     """
-    print('get alllll tso ===============>>>>>>>>>')
     user = is_authenticate(request)
     info_logger(request)
     tso_list = Tso.query.order_by(Tso.company).all()
@@ -127,7 +126,8 @@ def get_company(tso_id):
         return jsonify({"error": "companie not found"}), 404
 
     user_list = []
-    users = User.query.filter_by(company=tso.company).order_by(User.username).all()
+    users = User.query.filter_by(
+        company=tso.company).order_by(User.username).all()
     for user in users:
         us = {
             "username": user.username,
@@ -257,7 +257,7 @@ def read_config_file(tso_name):
         )
 
 
-@handle_tso.route("/update/<tsoid>", methods=["POST"])
+@handle_tso.route("/update/<tso_id>", methods=["POST"])
 @user_is_authenticate
 def tso_update(tso_id):
     """A function that handles the update of a TSO"""
@@ -278,11 +278,21 @@ def tso_update(tso_id):
         tso_data = check_if_exist
 
         for val in credential.keys():
+            print(" me mem mem")
+            print(credential)
             update_some_tso_row(tso_data.id, val, credential[val], db)
 
-        return {
-            "ok": 200,
-        }
+        return jsonify({
+    "id" :tso_data.id,
+    "logo_path":tso_data.logo_path,
+    "company":tso_data.company,
+    "stammdatei_file_path" :tso_data.stammdatei_file_path,
+    "config_file_path" :tso_data.config_file_path,
+    "created_at":tso_data.created_at,
+    "tsoAbbreviation":tso_data.tsoAbbreviation,
+    "email" :tso_data.email,
+    "is_actif" :tso_data.is_actif,
+    })
     return (
         jsonify(
             {
@@ -293,7 +303,7 @@ def tso_update(tso_id):
     )
 
 
-@handle_tso.route("/update/tso_logo/<tsoid>", methods=["POST"])
+@handle_tso.route("/update/tso_logo/<tso_id>", methods=["POST"])
 @user_is_authenticate
 def tso_update_logo(tso_id):
     """Update the logo of a TSO (Third-Party Service Operator)."""
@@ -310,7 +320,7 @@ def tso_update_logo(tso_id):
     return jsonify({"error": "please provide file !"}), 404
 
 
-@handle_tso.route("/delete/tso_id>", methods=["POST"])
+@handle_tso.route("/delete/<tso_id>", methods=["DELETE"])
 @user_is_authenticate
 def tso_delete(tso_id):
     """Deletes a TSO (Technical Support Officer) based on the provided TSO"""
@@ -318,14 +328,15 @@ def tso_delete(tso_id):
     tso_data = db.get_or_404(Tso, tso_id)
 
     if tso_data:
-        tso_data.is_actif = False
+        db.session.delete(tso_data)
         db.session.commit()
-        return jsonify({"id": tso_data.id, "is_actif": tso_data.is_actif}), 200
+
+        return jsonify({'message': 'TSO deleted successfully'}), 200
 
     return jsonify({"error": "this companie not found !"}), 404
 
 
-@handle_tso.route("/activate/<int:tso_id>", methods=["POST"])
+@handle_tso.route("/activate/<int:tso_id>", methods=["GET"])
 @user_is_authenticate
 def tso_activate(tso_id):
     """Activate a TSO."""

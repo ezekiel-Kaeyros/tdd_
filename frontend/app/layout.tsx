@@ -1,8 +1,8 @@
 import localFont from 'next/font/local';
 import './globals.css';
 import { ReactNode } from 'react';
-import { AuthProvider } from '@/context/AuthContext'; 
-import { Toaster } from 'react-hot-toast'; 
+import { AuthProvider } from '@/context/AuthContext';
+import { Toaster } from 'react-hot-toast';
 import { ToastContainer } from 'react-toastify';
 import LayoutComponent from './LayoutComponent';
 import { FileContextProvider } from './convert/context/file.context';
@@ -49,11 +49,10 @@ export default function RootLayout({ children }: IProps) {
           pauseOnHover={false}
           theme="light"
         />
+        <Toaster position="top-center" reverseOrder={false} />
         <FileContextProvider>
           {/* <LayoutComponent children={ children } /> */}
-          <LayoutComponent>
-            { children }
-          </LayoutComponent>
+          <LayoutComponent>{children}</LayoutComponent>
         </FileContextProvider>
 
         {/* <AuthProvider>{children}</AuthProvider> */}

@@ -222,6 +222,9 @@ def update_some_row(user_id, row, newvalue, database):
     if row == "role":
         user.role = newvalue
         database.session.commit()
+    if row == "is_actif":
+        user.is_actif = newvalue
+        database.session.commit()
     return True
 
 
@@ -229,8 +232,18 @@ def update_some_tso_row(tso_id, row, newvalue, database):
     """Function Handle user"""
     print(row)
     tso = Tso.query.filter_by(id=tso_id).first()
-    tso.config_file_path = newvalue
-    database.session.commit()
+    if row == "company":
+        tso.company = newvalue
+        database.session.commit()
+    if row == "stammdatei_file_path":
+        tso.stammdatei_file_path = newvalue
+        database.session.commit()
+    if row == "config_file_path":
+        tso.config_file_path = newvalue
+        database.session.commit()
+    if row == "tsoAbbreviation":
+        tso.tsoAbbreviation = newvalue
+        database.session.commit()
     return True
 
 
@@ -460,8 +473,8 @@ def notification(req, body, get_socketio, send_email=None, email=None):
 
         get_socketio().emit("new-notification" + found.company_id, notifie)
         get_socketio().emit("new-notification" + "all", notifie)
-        if send_email:
-            send_email(notifi.body)
+        # if send_email:
+        #     send_email(notifi.body)
         return notifi
     return False
 

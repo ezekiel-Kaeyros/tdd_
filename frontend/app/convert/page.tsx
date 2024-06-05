@@ -8,19 +8,20 @@ const Page = () => {
   return (
     <div>
       {/* <FileContextProvider> */}
-        <div>
-          <TipsComponent />
-        </div>
+      <div>
+        <TipsComponent />
+      </div>
 
-        <div className="">
-          <NavBar />
-        </div>
+      <div className="">
+        <NavBar />
+      </div>
 
-        <div className="py-8   max-w-xl px-2 mx-auto h-[90vh] flex items-center justify-center">
-          <FileUpload />
-        </div>
-
+      <div className="pt-8   max-w-xl px-2 mx-auto h-[80vh] flex items-center justify-center">
+        <FileUpload />
+      </div>
+      <div className=" flex justify-center">
         <Footer _companies={undefined} />
+      </div>
       {/* </FileContextProvider> */}
     </div>
   );

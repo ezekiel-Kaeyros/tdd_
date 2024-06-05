@@ -291,7 +291,8 @@ def password_update(user_id):
 @user_is_authenticate
 def user_delete(user_id):
     """Function Handle user"""
-    info_logger(request)
+    # info_logger(request)
+    print(user_id)
 
     user_data = User.query.filter_by(id=user_id).first()
 
@@ -353,7 +354,7 @@ def reset_password(email):
     )
 
 
-@user.route("/activate/<userid>", methods=["POST"])
+@user.route("/activate/<user_id>", methods=["GET"])
 @user_is_authenticate
 def user_activate(user_id):
     """Function Handle user Auth"""

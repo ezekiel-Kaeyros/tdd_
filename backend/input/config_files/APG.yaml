@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  APG: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  APG: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  APG: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  APG: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  APG: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  APG: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  APG: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  APG: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  APG: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  APG: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  APG: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  APG: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  APG: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  APG: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  APG: APG
+tso:
+  APG: APG

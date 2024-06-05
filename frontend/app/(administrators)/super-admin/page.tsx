@@ -19,50 +19,43 @@ import axios from 'axios';
 type Tso = Object[];
 
 const Page = () => {
-  console.log("PAGE START")
+  console.log('PAGE START');
   const [tsoList, setTsoList] = useState<Tso>([]);
   const { dispatch, state } = useContext(SuperAdminContext);
 
-  const { data, error, isLoading }: { data: [], error: any, isLoading: any } = useSWR(`${BACKEND_URL}/companies/`, async () => {
-    const res = await axios.get(`${BACKEND_URL}/companies/`, {
-      headers: {
-        Authorization: `bearer ${getToken()}`,
+  const { data, error, isLoading }: { data: []; error: any; isLoading: any } =
+    useSWR(
+      `${BACKEND_URL}/companies/`,
+      async () => {
+        const res = await axios.get(`${BACKEND_URL}/companies/`, {
+          headers: {
+            Authorization: `bearer ${getToken()}`,
+          },
+        });
+        return res?.data?.tso_list;
       },
-    });
-    return res?.data?.tso_list
-  }, { 
-    refreshInterval: 1000, 
-    // revalidateIfStale: false,
-    // revalidateOnFocus: false,
-    // revalidateOnReconnect: false
-  })
+      {
+        // refreshInterval: 1000,
+        // revalidateIfStale: false,
+        // revalidateOnFocus: false,
+        // revalidateOnReconnect: false
+      }
+    );
 
   return (
     <div>
       <DisplaySuperAdminForm />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-        theme="light"
-      />
+
       <HeaderButtonGroup />
-        <main className="w-fit mx-auto relative px-4 h-fit py-4 mt-32 place-items-center grid ">
-          <div className="elements grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 place-items-center  mx-auto gap-5 center w-fit">
-            {
-              data?.length === 0 ? 
-              <>
-                Loading TSOs List...
-              </>
-              :
-              data?.map((tso: any) => {
-                return (
+      <main className="w-fit mx-auto relative px-4 h-fit py-4 mt-32 place-items-center grid ">
+        <div className="elements grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 place-items-center  mx-auto gap-5 center w-fit">
+          {data?.length === 0 ? (
+            <>Loading TSOs List...</>
+          ) : (
+            data?.map((tso: any) => {
+              console.log(tso);
+
+              return (
                 <div
                   onClick={() =>
                     dispatch({ type: 'SELECT_TSO', payload: tso?.id })
@@ -70,6 +63,7 @@ const Page = () => {
                   key={tso?.id}
                 >
                   <TsoCards
+                    tsoId={tso?.id}
                     tsoName={tso?.company}
                     tsoLogo={tso?.logo_path}
                     detailsIcon={menuBtn}
@@ -82,10 +76,11 @@ const Page = () => {
                     link={`/super-admin/${tso?.tsoAbbreviation}`}
                   />
                 </div>
-              )})
-            }
-          </div>
-        </main>
+              );
+            })
+          )}
+        </div>
+      </main>
       {/* <Suspense>
       </Suspense> */}
     </div>

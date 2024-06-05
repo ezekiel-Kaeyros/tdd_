@@ -1,51 +1,51 @@
-# name: CI Pipelines
+name: CI Pipelines
 
-# on:
-#   push:
-#     branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Login Dockerhub
-#         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - name: Login Dockerhub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-#       # - name: create .env file
-#       #   run: |
-#       #     cd backend && \
-#       #     touch .env && \
-#       #     echo "API_PORT=4000" > .env && \
-#       #     echo "API_URL=https://backend_swivi.swivy.net" >> .env && \
-#       #     echo "NODE_ENV=production" >> .env && \
-#       #     echo "SECRET=WriteYourSecret" >> .env && \
-#       #     echo "FRONTEND_URL=https://swivy.net" >> .env && \
-#       #     echo "MONGO_URL=mongodb+srv://eric2mballus:tititata85@cluster0.e1pkdu7.mongodb.net/swivy_db" >> .env && \
-#       #     echo "MAILGUN_API_KEY=YOUR_MAILGUN_API_KEY" >> .env && \
-#       #     echo "MAILGUN_DOMAIN=YOUR_MAILGUN_DOMAIN" >> .env && \
-#       #     echo "SECRET=swivyApp" >> .env && \
-#       #     echo "HOST=smtp.ionos.de" >> .env && \
-#       #     echo "EMAIL_USERNAME=test@kaeyros-analytics.de" >> .env && \
-#       #     echo "EMAIL_PASSWORD=@@Test$$ " >> .env && \
-#       #     echo "EMAIL_HOST=smtp.ionos.de " >> .env && \
-#       #     echo "EMAIL_USERNAME=test@kaeyros-analytics.de" >> .env
+      # - name: create .env file
+      #   run: |
+      #     cd backend && \
+      #     touch .env && \
+      #     echo "API_PORT=4000" > .env && \
+      #     echo "API_URL=https://backend_swivi.swivy.net" >> .env && \
+      #     echo "NODE_ENV=production" >> .env && \
+      #     echo "SECRET=WriteYourSecret" >> .env && \
+      #     echo "FRONTEND_URL=https://swivy.net" >> .env && \
+      #     echo "MONGO_URL=mongodb+srv://eric2mballus:tititata85@cluster0.e1pkdu7.mongodb.net/swivy_db" >> .env && \
+      #     echo "MAILGUN_API_KEY=YOUR_MAILGUN_API_KEY" >> .env && \
+      #     echo "MAILGUN_DOMAIN=YOUR_MAILGUN_DOMAIN" >> .env && \
+      #     echo "SECRET=swivyApp" >> .env && \
+      #     echo "HOST=smtp.ionos.de" >> .env && \
+      #     echo "EMAIL_USERNAME=test@kaeyros-analytics.de" >> .env && \
+      #     echo "EMAIL_PASSWORD=@@Test$$ " >> .env && \
+      #     echo "EMAIL_HOST=smtp.ionos.de " >> .env && \
+      #     echo "EMAIL_USERNAME=test@kaeyros-analytics.de" >> .env
 
-#       - name: Build the Docker image for backend
-#         run: |
-#           cd backend && docker build -t  ezekielkaeyros/tdd-backend .
+      - name: Build the Docker image for backend
+        run: |
+          cd backend && docker build -t  ezekielkaeyros/tdd-backend .
 
-#       - name: Push to Dockerhub for backend
-#         run: |
+      - name: Push to Dockerhub for backend
+        run: |
  
-#           docker push  ezekielkaeyros/tdd-backend:latest
+          docker push  ezekielkaeyros/tdd-backend:latest
 
-#       - name: Build the Docker image for frontend
-#         run: |
-#           cd frontend && docker build -t ezekielkaeyros/tdd-frontend .
+      - name: Build the Docker image for frontend
+        run: |
+          cd frontend && docker build -t ezekielkaeyros/tdd-frontend .
 
-#       - name: Push to Dockerhub for frontend
-#         run: |
+      - name: Push to Dockerhub for frontend
+        run: |
         
-#           docker push ezekielkaeyros/tdd-frontend:latest
+          docker push ezekielkaeyros/tdd-frontend:latest

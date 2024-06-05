@@ -1,3 +1,4 @@
+'use client';
 import React, { ReactNode, useContext } from 'react';
 import closeIcon from '../../../../public/icons/closeIcon.svg';
 import { motion } from 'framer-motion';
@@ -10,7 +11,7 @@ type Props = {
 export const FormCard: React.FC<Props> = ({ children }) => {
   const { dispatch } = useContext(SuperAdminContext);
   return (
-    <div className="bg-slate-100 border border-slate-300 relative rounded-lg w-full shadow-lg p-8 max-w-md">
+    <div className="bg-slate-100 border border-slate-300 relative rounded-lg w-full shadow-sm p-8 max-w-md">
       <motion.div
         whileHover={{ scale: 1 }}
         whileTap={{ scale: 0.9 }}
@@ -25,6 +26,10 @@ export const FormCard: React.FC<Props> = ({ children }) => {
           });
           dispatch({
             type: 'SUPER_ADMIN_MODAL_UPDATE_USER',
+            payload: false,
+          });
+          dispatch({
+            type: 'SUPER_ADMIN_MODAL_DELETE_TSO',
             payload: false,
           });
         }}
