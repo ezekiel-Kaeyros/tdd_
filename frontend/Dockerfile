@@ -5,6 +5,7 @@ COPY package*.json ./
 COPY .env ./
 COPY next.config.js ./
 RUN npm install
+RUN npm install swiper react-id-swiper
 COPY . .
 RUN npm run build
 
