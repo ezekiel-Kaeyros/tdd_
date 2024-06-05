@@ -15,10 +15,7 @@ from routes.admin import admin_module
 from routes.auth import authentication
 from routes.usecase import use_case_module
 from routes.notification import notification_module
-from routes.sftp import sftp
 from logger.log import create_and_send_email, error_logger
-from apscheduler.schedulers.background import BackgroundScheduler
-from flask import Flask
 # from flask_request_params import bind_request_params
 
 UPLOAD_FOLDER = "/static/img/"

@@ -1,0 +1,9 @@
+2024-06-05 17:47:06,801 - INFO - [log.py:54] - http://127.0.0.1:5000/auth/login
+2024-06-05 17:47:07,336 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-06-05 17:47:07,358 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-06-05 17:47:36,715 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-06-05 17:47:55,716 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-06-05 17:47:55,755 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-06-05 17:47:55,785 - INFO - [log.py:54] - http://127.0.0.1:5000/companies/
+2024-06-05 17:55:13,276 - INFO - [log.py:54] - http://localhost:5000/auth/login
+2024-06-05 18:13:12,956 - INFO - [log.py:54] - http://localhost:5000/auth/login
