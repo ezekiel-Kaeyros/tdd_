@@ -1,5 +1,6 @@
 """functions python version."""
 
+
 def filter_case_one(wv_file):
     """
     This class create user for tso
@@ -42,7 +43,8 @@ def filter_case_three(wv_file):
     This class create user for tso
     """
     first_filter = wv_file[wv_file["gm_art"] != "Countertrade"]
-    result = first_filter.loc[(first_filter["auslosender_prozess"] == "PRD2 (DACF)")]
+    result = first_filter.loc[(
+        first_filter["auslosender_prozess"] == "PRD2 (DACF)")]
     wv_file_date = result[
         result.groupby(["tm_von", "tm_bis", "zeit_von", "zeit_bis"])[
             "tm_von"
@@ -53,6 +55,7 @@ def filter_case_three(wv_file):
         print(row)
         wv_file = wv_file.drop(index=i)
     return wv_file_date, wv_file
+
 
 def filter_case_four(wv_file):
     """
@@ -77,7 +80,7 @@ def filter_case_four(wv_file):
 def filter_case_five(wv_file):
     """
     This class create user for tso
-    
+
     """
     first_filter = wv_file[wv_file["gm_art"] != "Countertrade"]
     df1 = first_filter[first_filter.duplicated("tages_tm_ident", keep=False)]
@@ -93,9 +96,6 @@ def filter_case_five(wv_file):
         )
         & (df1["ursache"] == "I")
     ]
-    print('five case end checking ===>')
-    print(len(wv_file))
-    print(len(df2))
     return df1, df2
 
 

@@ -22,7 +22,6 @@ def create_case_four(
     # wv_file = wv_file.loc[wv_file['tm_art'] == "Markt-KW 13(1)"]
 
     # wv_file_date = wv_file.drop_duplicates(subset=["tm_von"], keep = 'first')
-    print(socketio)
     wv_file_date = wv_file
     array_action_ora = []
 
