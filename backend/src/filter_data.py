@@ -83,11 +83,11 @@ def filter_case_five(wv_file):
 
     """
     first_filter = wv_file[wv_file["gm_art"] != "Countertrade"]
-    df1 = first_filter[first_filter.duplicated("tages_tm_ident", keep=False)]
+    df1 = wv_file[wv_file.duplicated("tages_tm_ident", keep=False)]
 
     df2 = wv_file.drop_duplicates(subset=["tages_tm_ident"], keep=False)
     df1 = df1.loc[
-        (df1["gm_art"] == "Redispatch")
+        (df1["gm_art"] == "Redispatch" | df1["gm_art"] == "Countertrade")
         & (
             (
                 (df1["auslosender_prozess"] == "FAP-Replacement")
