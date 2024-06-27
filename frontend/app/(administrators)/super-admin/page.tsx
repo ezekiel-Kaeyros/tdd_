@@ -1,20 +1,23 @@
 'use client';
 
+import {
+  useContext,
+  useState,
+} from 'react';
+
+import axios from 'axios';
+import useSWR from 'swr';
+
+import { getToken } from '@/app/utils/getToken';
+import { BACKEND_URL } from '@/types/backendUrl';
+
 import adminicon from '../../../public/icons/grommet-icons_user-admin.svg';
 import usericon from '../../../public/icons/mdi_users.svg';
 import menuBtn from '../../../public/icons/menu-btn.svg';
-
-import TsoCards from '../components/TsoCards';
 import DisplaySuperAdminForm from '../components/forms/DisplaySuperAdminForm';
 import HeaderButtonGroup from '../components/HeaderButtonGroup';
-import { ToastContainer } from 'react-toastify';
-import { Suspense, useContext, useEffect, useState } from 'react';
+import TsoCards from '../components/TsoCards';
 import { SuperAdminContext } from '../context/admin.context';
-import { getTsoList } from '../actions/get-tsoList';
-import useSWR from 'swr';
-import { BACKEND_URL } from '@/types/backendUrl';
-import { getToken } from '@/app/utils/getToken';
-import axios from 'axios';
 
 type Tso = Object[];
 
@@ -41,6 +44,8 @@ const Page = () => {
         // revalidateOnReconnect: false
       }
     );
+
+    console.log("compa", data)
 
   return (
     <div>

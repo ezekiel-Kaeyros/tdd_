@@ -1,19 +1,32 @@
 'use client';
 
-import UserTable from '@/app/(administrators)/components/UserTable';
-import { useContext, useEffect, useState } from 'react';
-import { SuperAdminContext } from '@/app/(administrators)/context/admin.context';
-import { redirect, usePathname } from 'next/navigation';
-import { Button } from '@/components/Button';
-import PlusIcon from '../../../../../public/icons/plusicon.svg';
-import CreateUserForm from '@/app/(administrators)/components/forms/CreateUserForm';
-import Modal from '@/components/Modal';
-import FormCard from '@/app/(administrators)/components/forms/FormCard';
-import { gettingAbbr } from '@/app/utils/utils';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+
+import {
+  redirect,
+  usePathname,
+} from 'next/navigation';
+import { ToastContainer } from 'react-toastify';
+
 import { getUsers } from '@/app/(administrators)/actions/get-users';
+import CreateUserForm
+  from '@/app/(administrators)/components/forms/CreateUserForm';
+import FormCard from '@/app/(administrators)/components/forms/FormCard';
+import UserTable from '@/app/(administrators)/components/UserTable';
+import {
+  SuperAdminContext,
+} from '@/app/(administrators)/context/admin.context';
 import { useAuth } from '@/app/hooks/useAuth';
+import { Button } from '@/components/Button';
+import Modal from '@/components/Modal';
+
+import PlusIcon from '../../../../../public/icons/plusicon.svg';
 
 const Users = () => {
   const { state, dispatch } = useContext(SuperAdminContext);
@@ -22,6 +35,8 @@ const Users = () => {
   const paths = pathname.split('/');
 
   const { user } = useAuth();
+
+  console.log(state.currentTSO, "lllll11111")
 
   useEffect(() => {
     if (user?.role !== 0 && !user?.token) {
@@ -38,6 +53,8 @@ const Users = () => {
       fetchUsers();
       // ...
     }
+
+    
 
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps

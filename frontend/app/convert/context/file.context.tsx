@@ -1,6 +1,10 @@
 'use client';
 
-import React, { Dispatch, createContext, useReducer } from 'react';
+import React, {
+  createContext,
+  Dispatch,
+  useReducer,
+} from 'react';
 
 type StateType = {
   uploaded: boolean;
@@ -97,7 +101,7 @@ export const FileContextProvider = ({
 
   return (
     <FileContext.Provider value={{ state, dispatch }}>
-      <main>{children}</main>
+      <div>{children}</div>
     </FileContext.Provider>
   );
 };

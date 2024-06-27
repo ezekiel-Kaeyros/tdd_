@@ -1,12 +1,15 @@
 'use client';
-import Image from 'next/image';
 import React, { useContext } from 'react';
-import DeleteIcon from '../../../public/icons/delete.svg';
+
+import Image from 'next/image';
+
 import { Button } from '@/components/Button';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-import { SuperAdminContext } from '../context/admin.context';
-import { deleteSingleUser } from '../actions/delete-user';
 import { notifyError } from '@/components/notifications/ErrorNotification';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+
+import DeleteIcon from '../../../public/icons/delete.svg';
+import { deleteSingleUser } from '../actions/delete-user';
+import { SuperAdminContext } from '../context/admin.context';
 
 type Props = {
   id?: number;
@@ -37,10 +40,12 @@ const ConfirmDelete: React.FC<Props> = () => {
       <div className="flex items-start">
         <Image src={DeleteIcon} alt="Delete icon" />
         <div className="flex ml-8 mb-8 flex-col">
-          <div className="font-bold text-2xl">Delete user</div>
+          <div className="font-bold text-2xl">Deativate user</div>
           <div className="mt-4">
-            Are you sure you want to delete this user? if you delete this user,
-            you will permanently all data
+            Are you sure you want to deactivate this user? if you deactivate this user,
+            he will no longer have access to the platform
+            {/* Are you sure you want to delete this user? if you delete this user,
+            you will permanently all data */}
           </div>
         </div>
       </div>
@@ -63,7 +68,7 @@ const ConfirmDelete: React.FC<Props> = () => {
             variant={'danger'}
             onClick={() => deleteUser(state?.idToBeDeleted)}
           >
-            Delete
+            Deactivate
           </Button>
         </div>
       </div>

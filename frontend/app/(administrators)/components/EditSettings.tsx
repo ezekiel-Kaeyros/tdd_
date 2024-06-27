@@ -1,19 +1,25 @@
 'use client';
-import Image from 'next/image';
-import menuBtn from '../../../public/icons/menu-btn.svg';
+import {
+  useContext,
+  useState,
+} from 'react';
+
 import { motion } from 'framer-motion';
-import { useContext, useState } from 'react';
+import Image from 'next/image';
+import { FaRegCheckCircle } from 'react-icons/fa';
+
+import { useAuth } from '@/app/hooks/useAuth';
+import { useClickOutside } from '@/app/hooks/useClickOutside';
+import Modal from '@/components/Modal';
+
 import deleteIcon from '../../../public/icons/delete.svg';
 import editIcon from '../../../public/icons/edit.svg';
-import UpdateUserForm from './forms/UpdateUserForm';
-import FormCard from './forms/FormCard';
-import Modal from '@/components/Modal';
+import menuBtn from '../../../public/icons/menu-btn.svg';
 import { SuperAdminContext } from '../context/admin.context';
-import ConfirmDelete from './ConfirmDelete';
-import { useClickOutside } from '@/app/hooks/useClickOutside';
-import { useAuth } from '@/app/hooks/useAuth';
-import { FaRegCheckCircle } from 'react-icons/fa';
 import ConfirmActivation from './ConfirmActivation';
+import ConfirmDelete from './ConfirmDelete';
+import FormCard from './forms/FormCard';
+import UpdateUserForm from './forms/UpdateUserForm';
 
 type Props = {
   id: number;
@@ -111,7 +117,7 @@ const EditSettings: React.FC<Props> = ({ id, role, isActive }) => {
                       src={deleteIcon}
                       alt="Delete icon"
                     />
-                    <div className="pr-4">Delete</div>
+                    <div className="pr-4">Dactivate</div>
                   </div>
                 )}
                 {!isActive && (

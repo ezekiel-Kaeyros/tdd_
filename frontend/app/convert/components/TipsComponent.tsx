@@ -1,6 +1,11 @@
 'use client';
-import React, { useContext, useEffect } from 'react';
+import React, {
+  useContext,
+  useEffect,
+} from 'react';
+
 import ReactJoyride from 'react-joyride';
+
 import { FileContext } from '../context/file.context';
 
 const TipsComponent = () => {
@@ -43,7 +48,7 @@ const TipsComponent = () => {
   }, []);
 
   return (
-    <main>
+    <div>
       <ReactJoyride
         steps={stepsConvert}
         hideBackButton={true}
@@ -62,7 +67,7 @@ const TipsComponent = () => {
         }}
         locale={{ next: 'Next', last: 'Close' }}
       />
-    </main>
+    </div>
   );
 };
 

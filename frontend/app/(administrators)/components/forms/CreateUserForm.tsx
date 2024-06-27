@@ -1,14 +1,20 @@
 'use client';
+import React, { useContext } from 'react';
+
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
 import { Button } from '@/components/Button';
 import InputField from '@/components/forms/InputField';
 import SelectField from '@/components/forms/SelectField';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-import React, { useContext } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { SuperAdminContext } from '../../context/admin.context';
 // import { encryptData } from '@/app/utils/encryptData';
 import { notifyError } from '@/components/notifications/ErrorNotification';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+
 import { createUser } from '../../actions/create-user';
+import { SuperAdminContext } from '../../context/admin.context';
 
 const CreateUserForm: React.FC = () => {
   interface IFormInput {
@@ -21,7 +27,9 @@ const CreateUserForm: React.FC = () => {
   }
 
   const { register, handleSubmit, watch } = useForm<IFormInput>();
-  const { dispatch } = useContext(SuperAdminContext);
+  const { state, dispatch } = useContext(SuperAdminContext);
+
+  console.log(state.currentTSO, "it is present in the form pane")
 
   // When submitting form
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
@@ -69,6 +77,7 @@ const CreateUserForm: React.FC = () => {
   );
 
   return (
+    
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-2">
         <InputField
@@ -147,6 +156,7 @@ const CreateUserForm: React.FC = () => {
       <div className="my-2">
         <SelectField
           company={true}
+          companyValue={ state?.currentTSO?.tsoAbbreviation }
           props={{
             ...register('company', { required: true }),
           }}

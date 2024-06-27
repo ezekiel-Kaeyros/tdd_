@@ -1,13 +1,22 @@
 'use client';
-import { useContext, useEffect } from 'react';
-import settingIcon from '../../../../public/icons/settings_suggest.svg';
-import userIcon from '../../../../public/icons/users.svg';
-import SuperAdminCardSettings from '../../components/SuperAdminCardSettings';
-import { redirect, usePathname } from 'next/navigation';
-import { getTSOById } from '../../actions/get-tsoById';
-import { SuperAdminContext } from '../../context/admin.context';
+import {
+  useContext,
+  useEffect,
+} from 'react';
+
+import {
+  redirect,
+  usePathname,
+} from 'next/navigation';
+
 import { useAuth } from '@/app/hooks/useAuth';
 import { useLocalStorage } from '@/app/hooks/useLocalStorage';
+
+import settingIcon from '../../../../public/icons/settings_suggest.svg';
+import userIcon from '../../../../public/icons/users.svg';
+import { getTSOById } from '../../actions/get-tsoById';
+import SuperAdminCardSettings from '../../components/SuperAdminCardSettings';
+import { SuperAdminContext } from '../../context/admin.context';
 
 const Page = () => {
   const pathname = usePathname();
@@ -26,6 +35,8 @@ const Page = () => {
     if (state?.selectedIdTSO) {
       const fetchCurrentTSO = async (id: number) => {
         const res = await getTSOById(id);
+
+        console.log(res, "..//..//..")
 
         setCurrentTSO(res?.company);
 
