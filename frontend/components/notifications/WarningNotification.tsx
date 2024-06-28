@@ -1,6 +1,21 @@
-import { ToastContainer, toast } from 'react-toastify';
+import {
+  toast,
+  ToastContainer,
+} from 'react-toastify';
 
 export const notify = (message: string) =>
+  toast.warn(`${message}`, {
+    position: 'top-right',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+  });
+
+export const Notify = (message: string) =>
   toast.warn(`${message}`, {
     position: 'top-right',
     autoClose: 2000,

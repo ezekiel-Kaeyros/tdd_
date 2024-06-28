@@ -2,43 +2,49 @@
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import {
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React from 'react';
 
+import dynamic from 'next/dynamic';
 import {
   redirect,
   usePathname,
 } from 'next/navigation';
 import { ToastContainer } from 'react-toastify';
 
+// import CreateUserForm
+//   from '@/app/(administrators)/components/forms/CreateUserForm';
+// import FormCard from '@/app/(administrators)/components/forms/FormCard';
+// import UserTable from '@/app/(administrators)/components/UserTable';
+// import { Button } from '@/components/Button';
+// import Modal from '@/components/Modal'; 
 import { getUsers } from '@/app/(administrators)/actions/get-users';
-import CreateUserForm
-  from '@/app/(administrators)/components/forms/CreateUserForm';
-import FormCard from '@/app/(administrators)/components/forms/FormCard';
-import UserTable from '@/app/(administrators)/components/UserTable';
 import {
   SuperAdminContext,
 } from '@/app/(administrators)/context/admin.context';
 import { useAuth } from '@/app/hooks/useAuth';
-import { Button } from '@/components/Button';
-import Modal from '@/components/Modal';
 
 import PlusIcon from '../../../../../public/icons/plusicon.svg';
 
+const FormCard = dynamic(() => import('@/app/(administrators)/components/forms/FormCard'), { ssr: false }); 
+const Modal = dynamic(() => import('@/components/Modal'), { ssr: false }); 
+const UserTable = dynamic(() => import('@/app/(administrators)/components/UserTable'), { ssr: false }); 
+const CreateUserForm = dynamic(() => import('@/app/(administrators)/components/forms/CreateUserForm'), { ssr: false }); 
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+
 const Users = () => {
-  const { state, dispatch } = useContext(SuperAdminContext);
-  const [users, setUsers] = useState<any>([]);
+  const { state, dispatch } = React.useContext(SuperAdminContext);
+  const [ users, setUsers ] = React.useState<any>([]);
   const pathname = usePathname();
   const paths = pathname.split('/');
 
   const { user } = useAuth();
 
-  console.log(state.currentTSO, "lllll11111")
+  // console.log(state.currentTSO, "lllll11111")
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (user?.role !== 0 && !user?.token) {
       return redirect('/');
     }
@@ -53,8 +59,6 @@ const Users = () => {
       fetchUsers();
       // ...
     }
-
-    
 
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps

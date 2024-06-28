@@ -1,16 +1,40 @@
 'use client';
-import { Button } from '@/components/Button';
-import FileUploadField from '@/components/forms/FileUploadField';
-import InputField from '@/components/forms/InputField';
-import React, { useContext, useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { SuperAdminContext } from '../../context/admin.context';
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
+// const Notify = dynamic(() =>
+//   import('@/components/notifications/WarningNotification').then((mod) => mod.Notify),
+//   { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+// );
+// import { Button } from '@/components/Button';
+// import FileUploadField from '@/components/forms/FileUploadField';
+// import InputField from '@/components/forms/InputField';
 import { notify } from '@/components/notifications/WarningNotification';
 
+import { SuperAdminContext } from '../../context/admin.context';
+
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+const FileUploadField = dynamic(() => import('@/components/forms/FileUploadField'), { ssr: false }); 
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false });
+
 export const SuperAdminFirstForm = () => {
-  const { state, dispatch } = useContext(SuperAdminContext);
+  const { state, dispatch } = React.useContext(SuperAdminContext); 
+
+  // const handleNotification = async (tsoAbbreviation: string) => {
+  //   const { Notify } = await import('@/components/notifications/WarningNotification');
+  //   Notify(`Stammdatei non valid, must be ${`Stammdatei_mRID_${tsoAbbreviation}`}`);
+  // };
+
   // eslint-disable-next-line no-unused-vars
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = React.useState(true);
 
   interface IFormInput {
     tsoName: string;
@@ -31,9 +55,8 @@ export const SuperAdminFirstForm = () => {
       stammdateiName[0]?.name.split('.')[0].toString() !==
       `Stammdatei_mRID_${tsoAbbreviation}`
     ) {
-      notify(
-        `Stammdatei non valid, must be ${`Stammdatei_mRID_${tsoAbbreviation}`}`
-      );
+      notify(`Stammdatei non valid, must be ${`Stammdatei_mRID_${tsoAbbreviation}`}`)
+      // handleNotification(tsoAbbreviation);
       setValue('tsoStammdateiFile', '');
     }
   }
@@ -55,7 +78,7 @@ export const SuperAdminFirstForm = () => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setValue('tsoName', state.tsoName);
     setValue('tsoLogo', state.tsoLogo);
     setValue('tsoAbbreviation', state?.tsoAbbreviation);

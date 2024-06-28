@@ -1,14 +1,15 @@
 'use client';
-import React, { useContext } from 'react';
+import React from 'react';
 
-import closeIcon from '../public/icons/closeIcon.svg';
 import Image from 'next/image';
-import { FileContext } from '@/app/convert/context/file.context';
-import { Button } from './Button';
 import { usePathname } from 'next/navigation';
 
+import { FileContext } from '@/app/convert/context/file.context';
+
+import closeIcon from '../public/icons/closeIcon.svg';
+
 const MessageModal = () => {
-  const { state, dispatch } = useContext(FileContext);
+  const { state, dispatch } = React.useContext(FileContext);
   const closeWindow = () =>
     dispatch({ type: 'CLOSE_MESSAGE_WINDOW', payload: false });
   const pathName = usePathname();

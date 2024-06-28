@@ -5,21 +5,29 @@ import {
 } from 'react';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { FaRegCheckCircle } from 'react-icons/fa';
 
 import { useAuth } from '@/app/hooks/useAuth';
 import { useClickOutside } from '@/app/hooks/useClickOutside';
-import Modal from '@/components/Modal';
 
+// import Modal from '@/components/Modal';
 import deleteIcon from '../../../public/icons/delete.svg';
 import editIcon from '../../../public/icons/edit.svg';
 import menuBtn from '../../../public/icons/menu-btn.svg';
 import { SuperAdminContext } from '../context/admin.context';
-import ConfirmActivation from './ConfirmActivation';
-import ConfirmDelete from './ConfirmDelete';
-import FormCard from './forms/FormCard';
-import UpdateUserForm from './forms/UpdateUserForm';
+
+// import ConfirmActivation from './ConfirmActivation';
+// import ConfirmDelete from './ConfirmDelete';
+// import FormCard from './forms/FormCard';
+// import UpdateUserForm from './forms/UpdateUserForm'; 
+
+const FormCard = dynamic(() => import('./forms/FormCard'), { ssr: false }); 
+const Modal = dynamic(() => import('@/components/Modal'), { ssr: false }); 
+const ConfirmDelete = dynamic(() => import('./ConfirmDelete'), { ssr: false }); 
+const UpdateUserForm = dynamic(() => import('./forms/UpdateUserForm'), { ssr: false }); 
+const ConfirmActivation = dynamic(() => import('./ConfirmActivation'), { ssr: false }); 
 
 type Props = {
   id: number;
@@ -117,7 +125,7 @@ const EditSettings: React.FC<Props> = ({ id, role, isActive }) => {
                       src={deleteIcon}
                       alt="Delete icon"
                     />
-                    <div className="pr-4">Dactivate</div>
+                    <div className="pr-4">Deactivate</div>
                   </div>
                 )}
                 {!isActive && (

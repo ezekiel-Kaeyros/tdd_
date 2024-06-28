@@ -1,5 +1,6 @@
 //const {BACKEND_URL} = require("./types/backendUrl");
 /** @type {import('next').NextConfig} */
+const webpack = require('webpack');
 const nextConfig = {
   images: {
     domains: [
@@ -10,7 +11,28 @@ const nextConfig = {
       'http://13.58.91.109:5000',
       '13.58.91.109:5000'
     ],
-  },
+  }, 
+  // webpack: (config, { isServer }) => {
+  //   config.plugins.push(
+  //     new webpack.IgnorePlugin({
+  //       resourceRegExp: /warning/,
+  //     })
+  //   );
+
+  //   return config;
+  // }
+  // webpack: (config, { dev }) => {
+  //   if (!dev) {
+  //     // Suppress specific warnings in production
+  //     config.plugins.push(
+  //       new webpack.DefinePlugin({
+  //         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+  //       })
+  //     );
+  //   }
+
+  //   return config;
+  // },
 };
 
 module.exports = nextConfig;

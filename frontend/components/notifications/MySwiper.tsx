@@ -45,7 +45,7 @@ export default function App() {
       }
     );
 
-    console.log(data, "jjjjjjjjjjjjjj")
+    // console.log(data, "jjjjjjjjjjjjjj")
 
   return (
     <>

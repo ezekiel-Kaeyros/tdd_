@@ -1,13 +1,9 @@
 'use client';
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React from 'react';
 
 import { usePathname } from 'next/navigation';
 
 import { useAuth } from '@/app/hooks/useAuth';
-import { BACKEND_URL } from '@/types/backendUrl';
 
 type Props = {
   name: string;
@@ -29,22 +25,22 @@ const SelectField: React.FC<Props> = ({
   title,
 }) => {
   const { user } = useAuth();
-  const [, setComanies] = useState<Tso>();
+  const [, setComanies] = React.useState<Tso>();
   const pathname = usePathname();
   const paths = pathname.split('/');
 
-  useEffect(() => {
-    async function fetchForm() {
-      await fetch(`${BACKEND_URL}/company/`)
-        .then((res) => res.json())
-        .then((result) => setComanies(result?.tso_list));
-    }
+  // React.useEffect(() => {
+  //   async function fetchForm() {
+  //     await fetch(`${BACKEND_URL}/company/`)
+  //       .then((res) => res.json())
+  //       .then((result) => setComanies(result?.tso_list));
+  //   }
 
-    fetchForm();
-    return () => {
-      //
-    };
-  }, []);
+  //   fetchForm();
+  //   return () => {
+  //     //
+  //   };
+  // }, []);
 
   return (
     <>

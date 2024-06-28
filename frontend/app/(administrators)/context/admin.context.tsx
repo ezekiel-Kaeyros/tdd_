@@ -1,10 +1,6 @@
 'use client';
 
-import React, {
-  createContext,
-  Dispatch,
-  useReducer,
-} from 'react';
+import React from 'react';
 
 type TSOType = {
   tsoName: string;
@@ -203,15 +199,15 @@ const reducer = (initialState: TSOType, action: ActionType) => {
   }
 };
 
-export const SuperAdminContext = createContext<{
+export const SuperAdminContext = React.createContext<{
   state: TSOType;
-  dispatch: Dispatch<ActionType>;
+  dispatch: React.Dispatch<ActionType>;
 }>({ state: initialState, dispatch: () => null });
 
 export const SuperAdminProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
     <SuperAdminContext.Provider value={{ state, dispatch }}>

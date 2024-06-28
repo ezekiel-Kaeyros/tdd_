@@ -1,13 +1,27 @@
-import { Button } from '@/components/Button';
-import InputField from '@/components/forms/InputField';
-import SelectField from '@/components/forms/SelectField';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-import React, { useContext, useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { SuperAdminContext } from '../../context/admin.context';
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
 import { notifyError } from '@/components/notifications/ErrorNotification';
-import { updateUser } from '../../actions/update-user';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+
 import { getUsers } from '../../actions/get-users';
+import { updateUser } from '../../actions/update-user';
+import { SuperAdminContext } from '../../context/admin.context';
+
+// import { Button } from '@/components/Button'; 
+
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
+const SelectField = dynamic(() => import('@/components/forms/SelectField'), { ssr: false }); 
 
 type Props = {
   id: number;
@@ -16,8 +30,17 @@ type Props = {
 type User = [] | any;
 
 const UpdateUserForm: React.FC<Props> = () => {
-  const [user, setUser] = useState<User>();
-  const { state } = useContext(SuperAdminContext);
+  const [user, setUser] = React.useState<User>();
+  const { state } = React.useContext(SuperAdminContext); 
+
+  const handleNotification = async (message: string) => {
+    const { notifyError } = await import('@/components/notifications/ErrorNotification');
+    notifyError(message);
+  };
+  const handleNotificationSuccess = async (message: string) => {
+    const { notifySuccess } = await import('@/components/notifications/SuccessNotification');
+    notifySuccess(message);
+  };
   interface IFormInput {
     username: string;
     email: string;
@@ -28,7 +51,7 @@ const UpdateUserForm: React.FC<Props> = () => {
   }
 
   const { register, handleSubmit, setValue, watch } = useForm<IFormInput>();
-  const { dispatch } = useContext(SuperAdminContext);
+  const { dispatch } = React.useContext(SuperAdminContext);
   // When submitting form
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     let id = state?.idToBeUpdated;
@@ -54,20 +77,23 @@ const UpdateUserForm: React.FC<Props> = () => {
 
       if (result?.status === 200) {
         dispatch({ type: 'SUPER_ADMIN_MODAL_UPDATE_USER', payload: false });
-        notifySuccess('Updated successfully');
+        notifySuccess ('Updated successfully')
+        // handleNotificationSuccess('Updated successfully');
         dispatch({ type: 'REFRESH', payload: '' });
       } else {
         // Something went wrong
+        // handleNotification('Something went wrong, try again');
         notifyError('Something went wrong, try again');
       }
     } catch (error) {
-      notifyError('Server error, try again');
+      // handleNotification('Server error, try again');
+      notifyError('Server error, try again');;
     }
   };
 
   // Setting selected users value
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function fetchData() {
       // You can await here
       const fetchUsers = async () => {

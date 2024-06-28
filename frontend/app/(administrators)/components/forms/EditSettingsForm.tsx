@@ -1,16 +1,34 @@
 'use client';
-import { Button } from '@/components/Button';
-import FileUploadField from '@/components/forms/FileUploadField';
-import InputField from '@/components/forms/InputField';
-import { BACKEND_URL } from '@/types/backendUrl';
+
+import React, {
+  ChangeEvent,
+  useRef,
+} from 'react';
+
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import EditProfile from '../../../../public/icons/company/editProfile.svg';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useLocalStorage } from '@/app/hooks/useLocalStorage';
-import { updateLogoTSO } from '../../actions/update-logoTso';
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
 import { toast } from 'react-toastify';
+
+import { useLocalStorage } from '@/app/hooks/useLocalStorage';
+// import { Button } from '@/components/Button';
+// import FileUploadField from '@/components/forms/FileUploadField';
+// import InputField from '@/components/forms/InputField';
+import { BACKEND_URL } from '@/types/backendUrl';
+
+import EditProfile from '../../../../public/icons/company/editProfile.svg';
+import { updateLogoTSO } from '../../actions/update-logoTso';
 import { updateConfigFileTso } from '../../actions/update-tso';
+
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+
 
 const EditSettingsForm = () => {
   interface IFormInput {
@@ -23,10 +41,9 @@ const EditSettingsForm = () => {
   const { register, handleSubmit, setValue } = useForm<IFormInput>();
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [files, setFiles] = useState<File>();
-  const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-  const [getCurrentTSO, setCurrentTSO, clearCurrentTSO] =
-    useLocalStorage('currentTso');
+  const [files, setFiles] = React.useState<File>();
+  const [image, setImage] = React.useState<string | ArrayBuffer | null>(null);
+  const [getCurrentTSO, setCurrentTSO, clearCurrentTSO] = useLocalStorage('currentTso');
   const currentTSO = getCurrentTSO();
   // When submitting
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
@@ -67,7 +84,7 @@ const EditSettingsForm = () => {
       inputRef.current.click();
     }
   };
-  useEffect(() => {
+  React.useEffect(() => {
     setValue('tsoName', `${currentTSO?.company}`);
     setValue('tsoAbbreviation', `${currentTSO?.tsoAbbreviation}`);
     setValue('stammdatei_file', `${currentTSO?.stammdatei_file_path}`);

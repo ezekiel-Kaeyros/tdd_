@@ -1,19 +1,37 @@
 'use client';
+import React from 'react';
+
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext, useState } from 'react';
-import { motion } from 'framer-motion';
-import { BACKEND_URL } from '@/types/backendUrl';
-import userIcon from '../../../public/icons/usersicon.svg';
-import { MdClose } from 'react-icons/md';
-import { SuperAdminContext } from '../context/admin.context';
-import Modal from '@/components/Modal';
-import FormCard from './forms/FormCard';
-import { Button } from '@/components/Button';
-import { deleteTSO } from '../actions/delete-tso';
-import closeIcon from '../../../public/icons/closeIcon.svg';
 import toast from 'react-hot-toast';
+import { MdClose } from 'react-icons/md';
 import { mutate } from 'swr';
+
+import { BACKEND_URL } from '@/types/backendUrl';
+
+import closeIcon from '../../../public/icons/closeIcon.svg';
+import userIcon from '../../../public/icons/usersicon.svg';
+// import Modal from '@/components/Modal';
+// import FormCard from './forms/FormCard';
+// import { Button } from '@/components/Button';
+import { deleteTSO } from '../actions/delete-tso';
+import { SuperAdminContext } from '../context/admin.context';
+
+const Modal = dynamic(() => import('@/components/Modal'), { ssr: false }); 
+const FormCard = dynamic(() => import('./forms/FormCard'), { ssr: false }); 
+// Dynamically import the Button component
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+
+// const deleteTSO = dynamic(() =>
+//   import('../actions/delete-tso').then((mod) => mod.deleteTSO),
+//   { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+// );
+
 type Props = {
   userIcon?: any;
   userCount: number;
@@ -35,8 +53,8 @@ const TsoCards: React.FC<Props> = ({
   link,
   tsoName,
 }) => {
-  const { state, dispatch } = useContext(SuperAdminContext);
-  const [open, setOpen] = useState(false);
+  const { state, dispatch } = React.useContext(SuperAdminContext);
+  const [open, setOpen] = React.useState(false);
   async function deleteTso() {
     const response = await deleteTSO(tsoId);
     if (response.status === 200) {
@@ -48,7 +66,7 @@ const TsoCards: React.FC<Props> = ({
     }
     return;
   }
-  console.log(tsoId, tsoName);
+  // console.log(tsoId, tsoName);
 
   return (
     <motion.div
@@ -89,6 +107,7 @@ const TsoCards: React.FC<Props> = ({
             ''
           )}
         </div>
+        {/*   */}
       </Link>
       {open ? (
         <Modal>

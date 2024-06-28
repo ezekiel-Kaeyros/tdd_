@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 
 import axios from 'axios';
 import Image from 'next/image';
@@ -24,8 +24,11 @@ type Props = {
   _companies: any;
 };
 
-const Footer: React.FC<Props> = () => {
-  const scrollContainerRef: any = useRef(null);
+const Footer: React.FC<Props> = ({ _companies }) => {
+
+  const scrollContainerRef: any = React.useRef(_companies); 
+
+  // const [ newData, setNewData ] = React.useState(_companies); 
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -38,7 +41,8 @@ const Footer: React.FC<Props> = () => {
       scrollContainerRef.current.scrollBy({ left: 200, behavior: 'smooth' });
     }
   };
-  const { data, error, isLoading }: { data: []; error: any; isLoading: any } = useSWR(
+
+  const { data }: { data: []; error: any; isLoading: any } = useSWR (
     `${BACKEND_URL}/companies/`,
     async () => {
       const res = await axios.get(`${BACKEND_URL}/companies/`, {
@@ -56,7 +60,7 @@ const Footer: React.FC<Props> = () => {
     }
   );
 
-  console.log(data, "jjjjjjjjjjjjjj")
+  // console.log(data, "jjjjjjjjjjjjjj")
   return (
     <footer className="w-full  bottom-0 flex justify-center md:w-1/2   md:mb-8  h-20">
       {/* <SwiperComponent /> */}

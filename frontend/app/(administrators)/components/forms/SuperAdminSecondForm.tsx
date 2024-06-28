@@ -1,16 +1,23 @@
+import 'react-toastify/dist/ReactToastify.css';
+
+import React from 'react';
+
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
 import { Button } from '@/components/Button';
 import InputField from '@/components/forms/InputField';
 import SelectField from '@/components/forms/SelectField';
-import React, { useContext } from 'react';
-import { SuperAdminContext } from '../../context/admin.context';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import 'react-toastify/dist/ReactToastify.css';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
 import { notifyError } from '@/components/notifications/ErrorNotification';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+
 import { createTSO } from '../../actions/create-tso';
+import { SuperAdminContext } from '../../context/admin.context';
 
 export const SuperAdminSecondForm = () => {
-  const { state, dispatch } = useContext(SuperAdminContext);
+  const { state, dispatch } = React.useContext(SuperAdminContext);
 
   interface IFormInput {
     tsoAdminName: string;

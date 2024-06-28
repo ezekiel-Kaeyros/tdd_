@@ -1,20 +1,28 @@
 'use client';
-import React, { useContext } from 'react';
+import React from 'react';
 
+import dynamic from 'next/dynamic';
 import {
   SubmitHandler,
   useForm,
 } from 'react-hook-form';
 
-import { Button } from '@/components/Button';
-import InputField from '@/components/forms/InputField';
-import SelectField from '@/components/forms/SelectField';
+// import { Button } from '@/components/Button';
+// import InputField from '@/components/forms/InputField';
+// import SelectField from '@/components/forms/SelectField';
 // import { encryptData } from '@/app/utils/encryptData';
 import { notifyError } from '@/components/notifications/ErrorNotification';
 import { notifySuccess } from '@/components/notifications/SuccessNotification';
 
 import { createUser } from '../../actions/create-user';
 import { SuperAdminContext } from '../../context/admin.context';
+
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
+const SelectField = dynamic(() => import('@/components/forms/SelectField'), { ssr: false }); 
 
 const CreateUserForm: React.FC = () => {
   interface IFormInput {
@@ -27,9 +35,9 @@ const CreateUserForm: React.FC = () => {
   }
 
   const { register, handleSubmit, watch } = useForm<IFormInput>();
-  const { state, dispatch } = useContext(SuperAdminContext);
+  const { state, dispatch } = React.useContext(SuperAdminContext);
 
-  console.log(state.currentTSO, "it is present in the form pane")
+  // console.log(state.currentTSO, "it is present in the form pane")
 
   // When submitting form
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {

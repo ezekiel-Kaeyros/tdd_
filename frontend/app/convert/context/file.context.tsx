@@ -1,10 +1,6 @@
 'use client';
 
-import React, {
-  createContext,
-  Dispatch,
-  useReducer,
-} from 'react';
+import React from 'react';
 
 type StateType = {
   uploaded: boolean;
@@ -87,9 +83,9 @@ const reducer = (initialState: StateType, action: ActionType) => {
   }
 };
 
-export const FileContext = createContext<{
+export const FileContext = React.createContext<{
   state: StateType;
-  dispatch: Dispatch<ActionType>;
+  dispatch: React.Dispatch<ActionType>;
 }>({ state: initialState, dispatch: () => null });
 
 export const FileContextProvider = ({
@@ -97,7 +93,7 @@ export const FileContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
     <FileContext.Provider value={{ state, dispatch }}>

@@ -1,15 +1,18 @@
 'use client';
-import React, { ReactNode, useContext } from 'react';
-import closeIcon from '../../../../public/icons/closeIcon.svg';
+import React, { ReactNode } from 'react';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+
+import closeIcon from '../../../../public/icons/closeIcon.svg';
 import { SuperAdminContext } from '../../context/admin.context';
+
 type Props = {
   children: ReactNode;
 };
 
 export const FormCard: React.FC<Props> = ({ children }) => {
-  const { dispatch } = useContext(SuperAdminContext);
+  const { dispatch } = React.useContext(SuperAdminContext);
   return (
     <div className="bg-slate-100 border border-slate-300 relative rounded-lg w-full shadow-sm p-8 max-w-md">
       <motion.div
