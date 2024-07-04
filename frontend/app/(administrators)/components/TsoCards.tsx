@@ -60,6 +60,11 @@ const TsoCards: React.FC<Props> = ({
     if (response.status === 200) {
       toast.success('Löschen erfolgreich!');
       mutate(`${BACKEND_URL}/companies/`);
+      setOpen(false); 
+      dispatch({
+          type: 'REFRESHAFTERACTION',
+          payload: !state?.refresh,
+      })
     } else {
       toast.error('Beim Löschen des TSO ist ein Fehler aufgetreten!');
       setOpen(false);

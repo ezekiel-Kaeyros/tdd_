@@ -15,18 +15,6 @@ export const notify = (message: string) =>
     theme: 'light',
   });
 
-export const Notify = (message: string) =>
-  toast.warn(`${message}`, {
-    position: 'top-right',
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'light',
-  });
-
 function WarningNotification() {
   return (
     <ToastContainer

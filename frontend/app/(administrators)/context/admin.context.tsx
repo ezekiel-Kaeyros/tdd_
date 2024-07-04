@@ -26,6 +26,8 @@ type TSOType = {
   tsoList: any | null;
   currentTSO: currentTSO | null;
   notifications: any;
+  refresh: boolean; 
+  dataFromServerIsEmpty: boolean; 
 };
 
 // current TSO type
@@ -69,7 +71,9 @@ const initialState: TSOType = {
   selectedIdTSO: 0,
   tsoList: [],
   currentTSO: null,
-  notifications: [],
+  notifications: [], 
+  refresh: false, 
+  dataFromServerIsEmpty: false
 };
 
 const reducer = (initialState: TSOType, action: ActionType) => {
@@ -153,6 +157,24 @@ const reducer = (initialState: TSOType, action: ActionType) => {
         ...initialState,
         refreshData: initialState?.refreshData + 1,
       };
+
+    case 'REFRESHAFTERACTION': 
+      return {
+        ...initialState, 
+        refresh: !initialState?.refresh
+      }
+
+    case 'ISDATAFROMSERVEREMPTY': 
+      return {
+        ...initialState, 
+        dataFromServerIsEmpty: true
+      }
+
+    case 'ISDATAFROMSERVEREMPTYFALSE': 
+      return {
+        ...initialState, 
+        dataFromServerIsEmpty: false
+      }
 
     case 'DELETE':
       return {

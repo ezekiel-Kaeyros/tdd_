@@ -2,8 +2,12 @@
 
 import React from 'react';
 
+import axios from 'axios';
+// import axios from 'axios';
 import dynamic from 'next/dynamic';
+import useSWR from 'swr';
 
+// import useSWR from 'swr';
 import { getToken } from '@/app/utils/getToken';
 import { BACKEND_URL } from '@/types/backendUrl';
 
@@ -25,43 +29,74 @@ const PageComponent = ({ initialData }: any) => {
 
     console.log('PAGE START');
 
-    const { dispatch } = React.useContext(SuperAdminContext); 
+    const { dispatch, state } = React.useContext(SuperAdminContext); 
 
-    const [data, setData] = React.useState(initialData);
+    // const [ data, setData ] = React.useState(initialData); 
 
-    // const { data }: { data: [] } = useSWR(
-    //     `${BACKEND_URL}/companies/`,
-    //     async () => {
-    //         const res = await axios.get(`${BACKEND_URL}/companies/`, {
-    //             headers: {
-    //                 Authorization: `bearer ${getToken()}`,
-    //             },
-    //         });
-    //         return res?.data?.tso_list;
-    //     },
-    //     {
-    //         // refreshInterval: 1000,
-    //         // revalidateIfStale: false,
-    //         // revalidateOnFocus: false,
-    //         // revalidateOnReconnect: false
-    //     }
-    // );
+    const [ dataFromServerIsEmpty, setDataFromServerIsEmpty ] = React.useState(false)
 
-    React.useEffect (() => {
-        if (data && data?.length > 0) {
-            console.log("")
-        } else {
-            fetch(`${BACKEND_URL}/companies/`, {
+    const { data }: { data: [] } = useSWR(
+        `${BACKEND_URL}/companies/`,
+        async () => {
+            const res = await axios.get(`${BACKEND_URL}/companies/`, {
                 headers: {
                     Authorization: `bearer ${getToken()}`,
                 },
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                setData(data?.tso_list)
             });
+            return res?.data?.tso_list;
+        },
+        {
+            refreshInterval: 1000,
+            // revalidateIfStale: false,
+            // revalidateOnFocus: false,
+            // revalidateOnReconnect: false
         }
-    }, [ data ])
+    );
+
+    // React.useEffect (() => {
+    //     if (data && data?.length > 0) {
+    //         console.log("")
+    //         if (state?.refresh === true) {
+    //             fetch(`${BACKEND_URL}/companies/`, {
+    //                 headers: {
+    //                     Authorization: `bearer ${getToken()}`,
+    //                 },
+    //             })
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 if (data?.tso_list?.length === 0) {
+    //                     setDataFromServerIsEmpty (true)
+    //                 }
+    //                 setData(data?.tso_list)
+    //             });
+
+    //             dispatch({
+    //                 type: 'REFRESHAFTERACTION',
+    //                 payload: !state?.refresh,
+    //             })
+    //         }
+    //     } else {
+    //         if (state?.dataFromServerIsEmpty === false) {
+    //             // setDataFromServerIsEmpty (true)
+    //             fetch(`${BACKEND_URL}/companies/`, {
+    //                 headers: {
+    //                     Authorization: `bearer ${getToken()}`,
+    //                 },
+    //             })
+    //             .then((response) => response.json())
+    //             .then((data) => {
+    //                 if (data?.tso_list?.length === 0) {
+    //                     setDataFromServerIsEmpty (true)
+    //                     dispatch({
+    //                         type: 'ISDATAFROMSERVEREMPTY',
+    //                         payload: true,
+    //                     })
+    //                 }
+    //                 setData(data?.tso_list)
+    //             });
+    //         }
+    //     }
+    // }, [ data, state?.refresh ])
 
 
     return (

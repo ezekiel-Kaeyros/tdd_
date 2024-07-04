@@ -1,8 +1,15 @@
-import { ReactNode } from 'react';
-import NavBar from '../../../../../components/NavBar';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Sidebar from '@/app/(administrators)/components/settingsComponents/Sidebar';
+
+import { ReactNode } from 'react';
+
+import dynamic from 'next/dynamic';
+// import NavBar from '../../../../../components/NavBar';
+import { ToastContainer } from 'react-toastify';
+
+const NavBar = dynamic(() => import('../../../../../components/NavBar'), { ssr: false }); 
+const Sidebar = dynamic(() => import('@/app/(administrators)/components/settingsComponents/Sidebar'), { ssr: false });
+
+// import Sidebar from '@/app/(administrators)/components/settingsComponents/Sidebar';
 interface IProps {
   children: ReactNode;
 }

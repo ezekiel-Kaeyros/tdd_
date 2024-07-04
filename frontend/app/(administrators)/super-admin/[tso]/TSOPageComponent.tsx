@@ -23,7 +23,7 @@ const TSOPageComponent = ({ data }: any) => {
     const pathname = usePathname();
     const { user } = useAuth();
     // eslint-disable-next-line no-unused-vars
-    const [getCurrentTSO, setCurrentTSO, clearCurrentTSO] = useLocalStorage('currentTso'); 
+    const [ getCurrentTSO, setCurrentTSO, clearCurrentTSO ] = useLocalStorage('currentTso'); 
     const [ currentTSOLocal, setCurrentTSOLocal ] = React.useState (data)
 
     const { state, dispatch } = React.useContext(SuperAdminContext);

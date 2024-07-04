@@ -1,14 +1,27 @@
 'use client';
-import { Button } from '@/components/Button';
-import InputField from '@/components/forms/InputField';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-import React, { useContext, useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { SuperAdminContext } from '../../context/admin.context';
-import { updateConfigFile } from '../../actions/update-configfile';
-import { getTSOConfigFile } from '../../actions/get-tso-configFile';
-import { notifyError } from '@/components/notifications/ErrorNotification';
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
 import { useLocalStorage } from '@/app/hooks/useLocalStorage';
+import { notifyError } from '@/components/notifications/ErrorNotification';
+// import { Button } from '@/components/Button';
+// import InputField from '@/components/forms/InputField';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+
+import { getTSOConfigFile } from '../../actions/get-tso-configFile';
+import { updateConfigFile } from '../../actions/update-configfile';
+import { SuperAdminContext } from '../../context/admin.context';
+
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+{ ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
 
 interface IFormInput {
   FullModel_dcterms_Model_creator: string;
@@ -29,9 +42,9 @@ interface IFormInput {
 }
 
 const ConfigForm: React.FC = () => {
-  const { state } = useContext(SuperAdminContext);
-  const [formValues, setFormValues] = useState<Object>({});
-  const [error] = useState(false);
+  const { state } = React.useContext(SuperAdminContext);
+  const [formValues, setFormValues] = React.useState<Object>({});
+  const [error] = React.useState(false);
   const [getCurrentTSO] = useLocalStorage('currentTso');
 
   const currentTSO = getCurrentTSO();
@@ -130,7 +143,7 @@ const ConfigForm: React.FC = () => {
 
   // UseEffect to get the form data to set into the fields
 
-  useEffect(() => {
+  React.useEffect(() => {
     async function fetchForm() {
       const result = await getTSOConfigFile(`${company}`);
 

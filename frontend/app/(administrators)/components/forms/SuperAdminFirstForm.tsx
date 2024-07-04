@@ -51,10 +51,7 @@ export const SuperAdminFirstForm = () => {
   let tsoAbbreviation = watch('tsoAbbreviation');
 
   if (stammdateiName) {
-    if (
-      stammdateiName[0]?.name.split('.')[0].toString() !==
-      `Stammdatei_mRID_${tsoAbbreviation}`
-    ) {
+    if (stammdateiName[0]?.name.split('.')[0].toString() !== `Stammdatei_mRID_${tsoAbbreviation}`) {
       notify(`Stammdatei non valid, must be ${`Stammdatei_mRID_${tsoAbbreviation}`}`)
       // handleNotification(tsoAbbreviation);
       setValue('tsoStammdateiFile', '');

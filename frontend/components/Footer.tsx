@@ -76,7 +76,7 @@ const Footer: React.FC<Props> = ({ _companies }) => {
           data && data?.length > 0 ? 
             data?.map((image: any) => {
               return (
-                <Image key={ image?.id } height={70} width={80} src={`${BACKEND_URL}/${image?.logo_path}`} alt={image?.company} />
+                <Image key={ image?.id } height={60} width={80} src={`${BACKEND_URL}/${image?.logo_path}`} alt={image?.company} />
               )
             })
             :

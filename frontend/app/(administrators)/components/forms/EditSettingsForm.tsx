@@ -164,8 +164,8 @@ const EditSettingsForm = () => {
           name="stammdatei_file"
           placeholder=""
           props={{
-            ...register('stammdatei_file'),
-            require: false,
+            ...register('stammdatei_file', { required: false }), 
+            // require: false,
           }}
         />
       </div>
