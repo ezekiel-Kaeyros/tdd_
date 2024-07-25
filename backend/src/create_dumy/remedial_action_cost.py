@@ -1,11 +1,14 @@
 """Module."""
 import uuid
 import pandas as pd
+import sys
+import traceback
+import time
 
 
 def create_remedial_action_cost(
     row, remedial_action_schedule, config_yaml, modifie="case"
-): # pylint: disable=too-many-locals
+):  # pylint: disable=too-many-locals
     """Function."""
     remedial_action_cost = pd.DataFrame({"FIELD": [], "VALUE": []})
     index_df = 0
@@ -15,7 +18,6 @@ def create_remedial_action_cost(
         remedial_action_cost.at[index_df, "VALUE"] = 'rdf:ID="_' + mrid + '"'
         remedial_action_cost.at[index_df, "FIELD"] = "nc:RemedialActionCost"
         index_df += 1
-
         remedial_action_cost.at[index_df, "VALUE"] = mrid
         remedial_action_cost.at[
             index_df, "FIELD"
@@ -24,7 +26,8 @@ def create_remedial_action_cost(
 
         startup_cost = "0"
         if row["tm_richtung"] == "Quelle":
-            startup_cost = str(row["kosten_fur_an_und_abfahrt"])
+            if "kosten_fur_an_und_abfahrt" in row:
+                startup_cost = str(row["kosten_fur_an_und_abfahrt"])
 
         remedial_action_cost.at[index_df, "VALUE"] = startup_cost
         remedial_action_cost.at[
@@ -34,7 +37,8 @@ def create_remedial_action_cost(
 
         shutdown_cost = "0"
         if row["tm_richtung"] == "Senke":
-            shutdown_cost = str(row["kosten_fur_an_und_abfahrt"])
+            if "kosten_fur_an_und_abfahrt" in row:
+                shutdown_cost = str(row["kosten_fur_an_und_abfahrt"])
 
         remedial_action_cost.at[index_df, "VALUE"] = shutdown_cost
         remedial_action_cost.at[
@@ -47,12 +51,9 @@ def create_remedial_action_cost(
             index_df, "FIELD"
         ] = "nc:RemedialActionCost/nc:RemedialActionCost.otherCost"
         index_df += 1
-    except Exception as error:  # pylint: disable=broad-except
-        print(error)
-        print("error remedial action coast here")
-        # time.sleep(2000)
-        # print(e)
-    # print(f'remedial schedule ====> {remedial_action_schedule["VALUE"][0]}')
+    except Exception:  # pylint: disable=broad-except
+        e = sys.exc_info()
+        traceback.print_tb(e[2], None, sys.stdout)
     try:
         val = remedial_action_schedule["VALUE"][0].split("_")
         newval = val[0] + "#" + "_" + val[1]

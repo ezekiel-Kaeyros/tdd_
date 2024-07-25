@@ -40,6 +40,10 @@ const InputField: React.FC<Props> = ({
         )}
 
         <input
+          // autoComplete='off'
+          // autoComplete='off'
+          // autocomplete="off"
+          // autofill="off"
           name={name}
           type={type}
           {...props}

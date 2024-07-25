@@ -1,16 +1,24 @@
+import 'react-toastify/dist/ReactToastify.css';
+
+import React from 'react';
+
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
 import { Button } from '@/components/Button';
 import InputField from '@/components/forms/InputField';
 import SelectField from '@/components/forms/SelectField';
-import React, { useContext } from 'react';
-import { SuperAdminContext } from '../../context/admin.context';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import 'react-toastify/dist/ReactToastify.css';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
 import { notifyError } from '@/components/notifications/ErrorNotification';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+import { EyeSvgIcon } from '@/components/SvgIcons';
+
 import { createTSO } from '../../actions/create-tso';
+import { SuperAdminContext } from '../../context/admin.context';
 
 export const SuperAdminSecondForm = () => {
-  const { state, dispatch } = useContext(SuperAdminContext);
+  const { state, dispatch } = React.useContext(SuperAdminContext);
 
   interface IFormInput {
     tsoAdminName: string;
@@ -71,8 +79,13 @@ export const SuperAdminSecondForm = () => {
           dispatch({ type: 'REFRESH', payload: '' });
         } else {
           // Something went wrong
-          notifyError('Something went wrong, try again');
+          // notifyError('Something went wrong, try again');
+          notifyError('Email already exist');
         }
+        dispatch({
+          type: 'REFRESH',
+          payload: 1,
+        })
       } catch (error) {
         notifyError(`${error}`);
       }
@@ -87,6 +100,17 @@ export const SuperAdminSecondForm = () => {
   let passwordRegex = new RegExp(
     '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})'
   );
+
+  const [ passwordType, setPasswordType ] = React.useState (true); 
+  const [ confPasswordType, setConfPasswordType ] = React.useState (true); 
+
+  const toggleSeePassword = () => {
+    setPasswordType ((passwordType: any) => !passwordType)
+  }
+  const toggleSeeConfPassword = () => {
+    setConfPasswordType ((confPasswordType: any) => !confPasswordType)
+  }
+
 
   return (
     <form className="mt-8" onSubmit={handleSubmit(onSubmitFullForm)}>
@@ -110,15 +134,19 @@ export const SuperAdminSecondForm = () => {
           props={{ ...register('tsoAdminEmail', { required: true }) }}
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 relative">
         <InputField
-          type="password"
+          // type="password"
+          type={ passwordType ? "password" : "text" }
           title="TSO Admin Password"
           id="tsoAdminPassword"
           name="tsoAdminPassword"
           placeholder="Password"
           props={{ ...register('tsoAdminPassword', { required: true }) }}
         />
+        <div onClick={ () => toggleSeePassword ()} className="absolute cursor-pointer bottom-[15%] z-10 right-[5%] ">
+          <EyeSvgIcon width={ 18 } height={ 18 } color='grey' />
+        </div>
       </div>
       {!passwordRegex.test(password) && password?.length !== 0 ? (
         <span className="text-xs text-red-600">
@@ -133,15 +161,20 @@ export const SuperAdminSecondForm = () => {
         ''
       )}
 
-      <div className="mt-4">
+      <div className="mt-4 relative">
         <InputField
-          type="password"
+          // type="password"
+          type={ confPasswordType ? "password" : "text" }
           title="Confirm password"
           id="confirmPassword"
           name="confirmPassword"
           placeholder="Confirm password"
           props={{ ...register('confirmPassword', { required: true }) }}
         />
+        
+        <div onClick={ () => toggleSeeConfPassword ()} className="absolute cursor-pointer bottom-[15%] z-10 right-[5%] ">
+          <EyeSvgIcon width={ 18 } height={ 18 } color='grey' />
+        </div>
       </div>
       <span className="text-xs text-red-600">
         {password !== confirmPassword && confirmPassword?.length !== 0

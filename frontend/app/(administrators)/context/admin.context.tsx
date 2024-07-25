@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Dispatch, createContext, useReducer } from 'react';
+import React from 'react';
 
 type TSOType = {
   tsoName: string;
@@ -173,6 +173,7 @@ const reducer = (initialState: TSOType, action: ActionType) => {
       };
 
     case 'SELECT_TSO':
+      localStorage.setItem("selectedIdTSO", action.payload)
       return {
         ...initialState,
         selectedIdTSO: action.payload,
@@ -199,15 +200,15 @@ const reducer = (initialState: TSOType, action: ActionType) => {
   }
 };
 
-export const SuperAdminContext = createContext<{
+export const SuperAdminContext = React.createContext<{
   state: TSOType;
-  dispatch: Dispatch<ActionType>;
+  dispatch: React.Dispatch<ActionType>;
 }>({ state: initialState, dispatch: () => null });
 
 export const SuperAdminProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
     <SuperAdminContext.Provider value={{ state, dispatch }}>
@@ -215,3 +216,5 @@ export const SuperAdminProvider: React.FC<{ children: React.ReactNode }> = ({
     </SuperAdminContext.Provider>
   );
 };
+// John.paul@gmail.com123
+// Norbert@gmail.com123

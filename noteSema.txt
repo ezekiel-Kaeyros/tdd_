@@ -1,0 +1,67 @@
+Deadline 31.08.24
+ 
+APP (Android & App) --> 6 semaines (2 personnes) -----> 3 dernieres semaines  LAST STEP (MF, IW)
+    Dashboard (Money spent, and others...)
+    Stat de chaque campagne
+    Activer / Désactiver un scénario
+    Chat (notifications / possibility to answer messages / change message status)
+
+
+Monitoring --> 2 semaines (2 personnes)-----> ????
+
+ 
+Refactoring Bulk Message --> 1 semaine (1 personne) ----> 4jours == STEP2 (BRICE)
+    Introduire des boutons en fin de template. Ca doit permettre d'appeler des scénarios
+
+
+ 
+Contacts feature --> 1 semaine (1 personne) ----> ???
+    Importer des contacts
+    Exporter les contacts
+    Enregistrer des contacts
+ 
+Booking --> 2 semaines (2 personnes) ---> 5 jours ==   STEP1 (IW,MF,B)
+    Calendriers multiples pour le même client (différents services par exemple)
+    Possibilité de booker plusieurs fois la même plage horaire (le nombre de booking est défini dans les settings)
+    Peut-on éviter l’étape qui demande de cliquer sur un lien ? V2
+    Customisation du calendrier dans le scenario builder
+    Image
+    Logo
+    Couleur
+
+
+Recap des scénarios --> 3 jours (1 personne)  ----> 4 jours == STEP1 (MF)
+    Il faudrait une fonctionnalité qui permettent d'extraire les scénario en pdf ou txt 
+    Regrouper les étapes en bloc
+
+
+Intégration des paiements --> 6 semaines (2 personnes) ----> 2 jours == STEP2
+
+ 
+Gestion des réservations --> 6 semaines (2 personnes) ---->  du 26-07-2024 au 31-07-2024 == STEP1 (IW)
+    Générer un numéro
+    Annuler
+    Rappeler
+    Modifier
+
+
+Loyalty program ?
+
+ 
+Gérer l'infra pour supporter les connexions multiples ?
+
+    
+Optimiser le code pour optimiser la performance ?
+    
+    V2
+    Intégrations d'autres canaux de communication (Insta, email, FB messenger, Telegram,...) 
+    
+    Tombola
+    Taux de gain
+    Configuration du nombre de participations
+    Quizz / Sondage
+    
+    Catalog --> v2 ?
+    Pour le moment, on demande au client de nous prévenir avant de modifier la structure de son catalogue
+    S’assurer que les mises à jour du catalogue sur Meta sont bien retranscrites dans Sema
+ 

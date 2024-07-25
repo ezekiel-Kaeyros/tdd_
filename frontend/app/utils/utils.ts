@@ -1,4 +1,7 @@
-import { ClassValue, clsx } from 'clsx';
+import {
+  ClassValue,
+  clsx,
+} from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function absoluteUrl(path: string) {
@@ -57,12 +60,30 @@ export const gettingAbbrReverse = (company: any) => {
       return 'helloElectrica';
     case 'SEPS':
       return 'SEPS';
-    case 'ELIA':
+    
+    // case 'ELIA':
+    //   return 'Elia';
+    case 'Elia':
       return 'Elia';
     case 'APG':
       return 'APG';
     case 'PSE':
       return 'PSE';
+
+    case 'ELES':
+      return 'ELES';
+    case 'CEPS':
+      return 'CEPS';
+    case 'MAVIR':
+      return 'MAVIR';
+    case 'TSO':
+      return 'TSO';
+    case 'TTN':
+      return 'TTN';
+    case 'TransnetBW':
+      return 'TransnetBW';
+
+      
 
     default:
       break;

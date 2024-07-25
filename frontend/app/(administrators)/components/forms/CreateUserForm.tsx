@@ -1,14 +1,30 @@
 'use client';
-import { Button } from '@/components/Button';
-import InputField from '@/components/forms/InputField';
-import SelectField from '@/components/forms/SelectField';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-import React, { useContext } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { SuperAdminContext } from '../../context/admin.context';
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+
+import { useLocalStorage } from '@/app/hooks/useLocalStorage';
+// import { Button } from '@/components/Button';
+// import InputField from '@/components/forms/InputField';
+// import SelectField from '@/components/forms/SelectField';
 // import { encryptData } from '@/app/utils/encryptData';
 import { notifyError } from '@/components/notifications/ErrorNotification';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+import { EyeSvgIcon } from '@/components/SvgIcons';
+
 import { createUser } from '../../actions/create-user';
+import { SuperAdminContext } from '../../context/admin.context';
+
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
+const SelectField = dynamic(() => import('@/components/forms/SelectField'), { ssr: false }); 
 
 const CreateUserForm: React.FC = () => {
   interface IFormInput {
@@ -21,7 +37,10 @@ const CreateUserForm: React.FC = () => {
   }
 
   const { register, handleSubmit, watch } = useForm<IFormInput>();
-  const { dispatch } = useContext(SuperAdminContext);
+  const [getCurrentTSO, setCurrentTSO, clearCurrentTSO] = useLocalStorage('currentTso'); 
+  const { state, dispatch } = React.useContext(SuperAdminContext);
+
+  // console.log(state.currentTSO, "it is present in the form pane")
 
   // When submitting form
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
@@ -68,12 +87,23 @@ const CreateUserForm: React.FC = () => {
     '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})'
   );
 
+  const [ passwordType, setPasswordType ] = React.useState (true); 
+  const [ confPasswordType, setConfPasswordType ] = React.useState (true); 
+
+  const toggleSeePassword = () => {
+    setPasswordType ((passwordType: any) => !passwordType)
+  }
+  const toggleSeeConfPassword = () => {
+    setConfPasswordType ((confPasswordType: any) => !confPasswordType)
+  }
+
   return (
+    
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-2">
         <InputField
           name="username"
-          title="Username"
+          title="Username *"
           placeholder="Username"
           id="username"
           type="text"
@@ -85,7 +115,7 @@ const CreateUserForm: React.FC = () => {
       <div className="my-2">
         <InputField
           name="email"
-          title="Email"
+          title="Email *"
           placeholder="abc@email.com"
           id="email"
           type="email"
@@ -94,17 +124,20 @@ const CreateUserForm: React.FC = () => {
           }}
         />
       </div>
-      <div className="my-2">
+      <div className="my-2 relative">
         <InputField
           name="password"
-          title="Password"
+          title="Password *"
           placeholder="Password"
           id="password"
-          type="password"
+          type={ passwordType ? "password" : "text" }
           props={{
             ...register('password', { required: true }),
           }}
         />
+        <div onClick={ () => toggleSeePassword ()} className="absolute cursor-pointer bottom-[15%] z-10 right-[5%] ">
+          <EyeSvgIcon width={ 18 } height={ 18 } color='grey' />
+        </div>
       </div>
       {!passwordRegex.test(password) && password?.length !== 0 ? (
         <span className="text-xs text-red-600">
@@ -118,17 +151,20 @@ const CreateUserForm: React.FC = () => {
       ) : (
         ''
       )}
-      <div className="my-2">
+      <div className="my-2 relative">
         <InputField
           name="confirmPassword"
-          title="Confirm password"
+          title="Confirm password *"
           placeholder="Confirm password"
           id="confirmPassword"
-          type="password"
+          type={ confPasswordType ? "password" : "text" }
           props={{
             ...register('confirmPassword', { required: true }),
           }}
         />
+        <div onClick={ () => toggleSeeConfPassword ()} className="absolute cursor-pointer bottom-[15%] z-10 right-[5%] ">
+          <EyeSvgIcon width={ 18 } height={ 18 } color='grey' />
+        </div>
       </div>
       <span className="text-xs text-red-600">
         {password !== confirmPassword && confirmPassword?.length !== 0
@@ -147,6 +183,8 @@ const CreateUserForm: React.FC = () => {
       <div className="my-2">
         <SelectField
           company={true}
+          // companyValue={ state?.currentTSO?.tsoAbbreviation }
+          companyValue={JSON.parse(localStorage.getItem("currentTso") as any)?.tsoAbbreviation}
           props={{
             ...register('company', { required: true }),
           }}

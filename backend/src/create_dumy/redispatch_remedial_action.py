@@ -5,17 +5,17 @@ import pandas as pd
 
 def create_redispatch_remedial_action(
     wv_file, aktivierungsobjekt, mrids, full_model, socketio, socketid
-): # pylint: disable=too-many-locals, too-many-statements,too-many-arguments
+):  # pylint: disable=too-many-locals, too-many-statements,too-many-arguments
     """Function."""
     try:
-        print(socketid)
         redispatch_remedial_action = pd.DataFrame({"FIELD": [], "VALUE": []})
         index_df = 0
         array_mrid_redispatch_remedial_action = []
         for item in enumerate(aktivierungsobjekt):
             socketio.emit("update-progress", "Redispatch remedial action")
             dataframe = wv_file.loc[wv_file["aktivierungsobjekt"] == item]
-            wv_file_date = dataframe.drop_duplicates(subset=["tm_von"], keep="first")
+            wv_file_date = dataframe.drop_duplicates(
+                subset=["tm_von"], keep="first")
             for row in wv_file_date.iterrows():
                 redispatch_remedial_action.at[index_df, "VALUE"] = (
                     "rdf:about=" + '"_' + str(uuid.uuid1()) + '"'

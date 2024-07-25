@@ -15,9 +15,6 @@ def build_min_date(date_list, time_zone):
         d = dateti.split(" ")
         start = d[0]
         t = d[1].split(":")
-        print('hello')
-        print(d[1])
-        print('hello')
         if len(t) >= 3:
             t.pop()
             t = ":".join(t)
@@ -34,7 +31,6 @@ def build_min_date(date_list, time_zone):
             print("generate date error line 34 #########################")
             time.sleep(3000)
 
-        print(datetime_obj)
         # checking timezone information
 
         # Listing all available time zones
@@ -42,13 +38,18 @@ def build_min_date(date_list, time_zone):
 
         # defining the required timezone
         # 'Europe/Berlin'
+
+        # utc_dt = datetime(2002, 10, 27, 6, 0, 0, tzinfo=utc)
+        # loc_dt = utc_dt.astimezone(eastern)
+
         local_tz = pytz.timezone(time_zone)
         # localising the datetime object to the timezone
         datetime_obj_local_tz = local_tz.localize(datetime_obj)
         utc_tz = pytz.timezone("UTC")
         datetime_obj_utc = datetime_obj_local_tz.astimezone(utc_tz)
-        datetime_obj_utc = datetime_obj_utc + timedelta(minutes=30)
-        arr.append(str(datetime_obj_utc))
+        # datetime_obj_utc = datetime_obj_utc + timedelta(minutes=30)
+        arr.append(str(datetime_obj))
+        # arr.append(str(datetime_obj_utc))
     return min(arr)
 
 
@@ -65,7 +66,6 @@ def build_max_date(date_list, time_zone):
         t = d[1].split(":")
         if len(t) >= 3:
             t.pop()
-            print(t)
             t = ":".join(t)
             if len(t.split(":")) <= 2:
                 t = t + ":00"
@@ -85,8 +85,9 @@ def build_max_date(date_list, time_zone):
         #    print(datetime_obj_local_tz)
         utc_tz = pytz.timezone("UTC")
         datetime_obj_utc = datetime_obj_local_tz.astimezone(utc_tz)
-        datetime_obj_utc = datetime_obj_utc + timedelta(minutes=30)
-        arr.append(str(datetime_obj_utc))
+        # datetime_obj_utc = datetime_obj_utc + timedelta(minutes=30)
+        arr.append(str(datetime_obj))
+        # arr.append(str(datetime_obj_utc))
 
     return max(arr)
 
@@ -96,7 +97,6 @@ def generate_date(date_string):
 
     # "19.12.2022 07:59:02"
     # create a datetime-object using the string-format from WV-file
-    print('====>', date_string)
     date_string1 = date_string.replace(".", "/")
     date_string1 = date_string.replace("-", "/")
     # arr1= date_string1.split("/")

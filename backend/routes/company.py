@@ -6,6 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from flask import request, jsonify, Blueprint
 from logger.log import create_and_send_email, info_logger, error_logger, notify_by_email
 from src.database import db, User, Tso
+import time
 from src.utils import (
     create_user_with_password,
     create_new_tso,
@@ -17,7 +18,7 @@ from src.utils import (
     update_user,
     add_tso_to_ref_zone,
 )
-
+import time
 
 handle_tso = Blueprint(
     "tso", __name__, url_prefix="/companies", template_folder="templates"
@@ -61,7 +62,6 @@ def get_all_tso():
     Returns:
         A JSON response containing a list of TSOs.
     """
-    print('get alllll tso ===============>>>>>>>>>')
     user = is_authenticate(request)
     info_logger(request)
     tso_list = Tso.query.order_by(Tso.company).all()
@@ -127,7 +127,8 @@ def get_company(tso_id):
         return jsonify({"error": "companie not found"}), 404
 
     user_list = []
-    users = User.query.filter_by(company=tso.company).order_by(User.username).all()
+    users = User.query.filter_by(
+        company=tso.company).order_by(User.username).all()
     for user in users:
         us = {
             "username": user.username,
@@ -165,6 +166,10 @@ def create_tso():
 
     try:
         logo_path = ""
+        if request.form["company"]:
+            tso = Tso.query.filter_by(company=request.form["company"]).first()
+            if tso:
+                return jsonify({"error": "company already exist"}), 409
         if request.form["role"] == 1:
             pass
         if request.files["file"]:
@@ -262,7 +267,6 @@ def read_config_file(tso_name):
 def tso_update(tso_id):
     """A function that handles the update of a TSO"""
     info_logger(request)
-    credential = request.get_json()
     if tso_id:
         # id = tso_id
         check_if_exist = Tso.query.filter_by(id=tso_id).first()
@@ -276,31 +280,47 @@ def tso_update(tso_id):
                 404,
             )
         tso_data = check_if_exist
+    print()
+    # print()
 
-        for val in credential.keys():
-            print(" me mem mem")
-            print(credential)
-            update_some_tso_row(tso_data.id, val, credential[val], db)
+    if request.files and request.files["stammdatei_file"]:
+        # time.sleep(1000)
+        stammdatei_file_path = save_stammdatei_file(request)
+        update_some_tso_row(
+            tso_data.id, "stammdatei_file_path", stammdatei_file_path, db)
 
-        return jsonify({
-    "id" :tso_data.id,
-    "logo_path":tso_data.logo_path,
-    "company":tso_data.company,
-    "stammdatei_file_path" :tso_data.stammdatei_file_path,
-    "config_file_path" :tso_data.config_file_path,
-    "created_at":tso_data.created_at,
-    "tsoAbbreviation":tso_data.tsoAbbreviation,
-    "email" :tso_data.email,
-    "is_actif" :tso_data.is_actif,
+    # if request.files['file']:
+    #     logo_path = upload_file(request)
+    #     update_some_tso_row(tso_data.id, "logo_path", logo_path, db)
+
+    if request.form.get('tsoAbbreviation'):
+        tso_data.tsoAbbreviation = request.form.get('tsoAbbreviation')
+        update_some_tso_row(tso_data.id, "tsoAbbreviation",
+                            tso_data.tsoAbbreviation, db)
+
+    if request.form.get('email'):
+        tso_data.email = request.form.get('email')
+        update_some_tso_row(tso_data.id, "email", tso_data.email, db)
+
+    if request.form.get('is_actif'):
+        tso_data.is_actif = request.form.get('is_actif')
+        update_some_tso_row(tso_data.id, "is_actif", tso_data.is_actif, db)
+
+    if request.form.get('company'):
+        tso_data.company = request.form.get('company')
+        update_some_tso_row(tso_data.id, "company", tso_data.company, db)
+
+    return jsonify({
+        "id": tso_data.id,
+        "logo_path": tso_data.logo_path,
+        "company": tso_data.company,
+        "stammdatei_file_path": tso_data.stammdatei_file_path,
+        "config_file_path": tso_data.config_file_path,
+        "created_at": tso_data.created_at,
+        "tsoAbbreviation": tso_data.tsoAbbreviation,
+        "email": tso_data.email,
+        "is_actif": tso_data.is_actif,
     })
-    return (
-        jsonify(
-            {
-                "error": "bad request id not found",
-            }
-        ),
-        404,
-    )
 
 
 @handle_tso.route("/update/tso_logo/<tso_id>", methods=["POST"])
@@ -330,8 +350,13 @@ def tso_delete(tso_id):
     if tso_data:
         db.session.delete(tso_data)
         db.session.commit()
+        users = User.query.order_by(User.username).all()
+        for user in users:
+            if str(user.company_id) == str(tso_data.id):
+                db.session.delete(user)
+                db.session.commit()
 
-    return jsonify({'message': 'TSO deleted successfully'}), 200
+        return jsonify({'message': 'TSO deleted successfully'}), 200
 
     return jsonify({"error": "this companie not found !"}), 404
 

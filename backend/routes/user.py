@@ -11,9 +11,11 @@ from src.utils import (
     notification,
     user_is_authenticate,
     get_tso_abbrevition,
+    get_tso_by_name,
     update_user_password,
 )
 from src.app_loader import get_socketio
+import time
 
 handle_user = Blueprint(
     "user", __name__, url_prefix="/users", template_folder="templates"
@@ -43,15 +45,19 @@ def user_list():
         tso_abbreviation = "not found"
         if get_tso_abbrevition(x.company):
             tso_abbreviation = get_tso_abbrevition(x.company)
+            # tso = get_tso_by_name(x.company)
+            # print(tso)
 
         us = {
             "username": x.username,
+            "company_id": x.company_id,
             "id": x.id,
             "company": x.company,
             "role": x.role,
             "email": x.email,
             "is_actif": x.is_actif,
             "tsoAbbreviation": tso_abbreviation,
+            "company_id": x.company_id,
         }
         result.append(us)
     return jsonify(
@@ -74,9 +80,11 @@ def user_detail(user_id):
                 "username": us.username,
                 "id": us.id,
                 "company": us.company,
+                "company_id": us.company_id,
                 "role": us.role,
                 "email": us.email,
                 "is_actif": us.is_actif,
+                "company_id": us.company_id,
             }
         )
     return (
@@ -90,7 +98,7 @@ def user_detail(user_id):
 
 
 @user.route("/create", methods=["POST"])
-@user_is_authenticate
+# @user_is_authenticate
 def user_create():
     """Function Handle user Auth"""
     info_logger(request)
@@ -98,6 +106,7 @@ def user_create():
     if request.method == "POST":
         email = request.get_json()["email"]
         check_email = User.query.filter_by(email=email).first()
+        print('check_email', check_email)
         if check_email:
             send_error("email exist please provide another one")
         if not request.get_json()["password"]:
@@ -221,6 +230,11 @@ def password_update(user_id):
     info_logger(request)
     if is_authenticate(request):
         credential = request.get_json()
+        # print(credential.keys())
+        # for val in credential.keys():
+        #     print(val)
+        # time.sleep(5000)
+        user_connect = is_authenticate(request)
         if credential["new_email"]:
             email = credential["new_email"]
             check_email = User.query.filter_by(email=email).first()
@@ -237,12 +251,16 @@ def password_update(user_id):
         verify = True
         if verify:
             for val in credential.keys():
-                if val in ("oldpassword", "newpassword"):
+                if user_connect['role'] == 0 and val == "newpassword":
                     upd = update_user_password(
                         user_data.id, credential["newpassword"], db
                     )
-                    print(upd)
-                elif val in ("new_email"):
+
+                if val == "newpassword" and credential["newpassword"] and user_connect['role'] != 0:
+                    upd = update_user_password(
+                        user_data.id, credential["newpassword"], db
+                    )
+                elif val == "new_email" and credential['new_email']:
                     update_some_row(user_data.id, "email",
                                     credential["new_email"], db)
 
@@ -256,13 +274,14 @@ def password_update(user_id):
                 elif val in ("email"):
                     pass
                 else:
-                    update_some_row(user_data.id, val, credential[val], db)
-                    notification(
-                        request,
-                        f"update {user_data} {credential[val]}",
-                        get_socketio,
-                        notify_by_email,
-                    )
+                    print('hello')
+                    # update_some_row(user_data.id, val, credential[val], db)
+                    # notification(
+                    #     request,
+                    #     f"update {user_data} {credential[val]}",
+                    #     get_socketio,
+                    #     notify_by_email,
+                    # )
             return (
                 jsonify(
                     {
@@ -372,6 +391,27 @@ def user_activate(user_id):
             }
         )
     return jsonify({"error": "user not found"}), 404
+
+
+@user.route("/remove/<user_id>", methods=["POST"])
+# @user_is_authenticate
+def remove_user(user_id):
+    """Function Handle user"""
+    # info_logger(request)
+    print(user_id)
+
+    user_data = User.query.filter_by(id=user_id).first()
+    if request.method == "POST" and user_data:
+        print(user_data)
+        db.session.delete(user_data)
+        db.session.commit()
+
+        return jsonify({'message': 'Remove deleted successfully'}), 200
+    return jsonify(
+        {
+            "error": "invalid method request",
+        }
+    )
 
 
 def send_error(msg):

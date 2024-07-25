@@ -5,17 +5,20 @@ import pandas as pd
 
 def create_countertrade_schedule_action(
     row, remedial_action_schedule, config_yamlp, client_p
-):# pylint: disable=too-many-locals
+):  # pylint: disable=too-many-locals
     """Function."""
     countertrade_schedule_action = pd.DataFrame({"FIELD": [], "VALUE": []})
     index_df = 0
     mrid = str(uuid.uuid4())
 
-    countertrade_schedule_action.at[index_df, "VALUE"] = 'rdf:ID="_' + mrid + '"'
-    countertrade_schedule_action.at[index_df, "FIELD"] = "nc:CountertradeScheduleAction"
+    countertrade_schedule_action.at[index_df,
+                                    "VALUE"] = 'rdf:ID="_' + mrid + '"'
+    countertrade_schedule_action.at[index_df,
+                                    "FIELD"] = "nc:CountertradeScheduleAction"
     index_df += 1
 
-    countertrade_schedule_action.at[index_df, "VALUE"] = row["aktivierungsobjekt"]
+    countertrade_schedule_action.at[index_df,
+                                    "VALUE"] = row["aktivierungsobjekt"]
     countertrade_schedule_action.at[
         index_df, "FIELD"
     ] = "nc:CountertradeScheduleAction/cim:IdentifiedObject.name"
@@ -50,14 +53,10 @@ def create_countertrade_schedule_action(
         remedial_action_schedule["VALUE"][0] = remedial_action_schedule["VALUE"][
             0
         ].replace("rdf:ID=", "rdf:resource=#")
-    #  .replace("rdf:ID=\"_", "rdf:resource=\"#_")
-    # remedial_action_schedule["VALUE"][0]= remedial_action_schedule["VALUE"][0].replace('_', '#_')
-    # print(remedial_action_schedule["VALUE"][0])
-    # time.sleep(5000)
     val = remedial_action_schedule["VALUE"][0]
     # str="Hello, World!"
     if val.find("#") != -1:
-        print("Found the string")
+        pass
     else:
         val = val.replace("_", "#_")
 

@@ -1,0 +1,35 @@
+CountertradeScheduleAction/nc:PowerScheduleAction.currency:
+  Tennet De: https://iec.ch/TC57/CIM100#Currency.EUR
+EIC:
+  Tennet De: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.conformsTo.PowerSchedule:
+  Tennet De: http://entsoe.eu/ns/CIM/PowerSchedule-EU/2.2
+FullModel/dcterms:Model.conformsTo.RemedialActionSchedule:
+  Tennet De: http://entsoe.eu/ns/CIM/RemedialActionSchedule-EU/2.2
+FullModel/dcterms:Model.creator:
+  Tennet De: 10XDE-VE-TRANSMK
+FullModel/dcterms:Model.description:
+  Tennet De: This is an example of  remedial action schedule profile.
+FullModel/dcterms:Model.license:
+  Tennet De: https://creativecommons.org/licenses/by/4.0/
+FullModel/eumd:Model.applicationSoftware:
+  Tennet De: TDD-Tool
+FullModel/md:Model.wasAttributedTo:
+  Tennet De: 10XDE-VE-TRANSMK
+PowerSchedule/cim:IdentifiedObject.description:
+  Tennet De: Power schedule for the redispatch action
+PowerSchedule/nc:BaseTimeSeries.interpolationKind:
+  Tennet De: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.none
+RedispatchScheduleAction/nc:PowerScheduleAction.currency:
+  Tennet De: https://iec.ch/TC57/CIM100#Currency.EUR
+RemedialActionCost/nc:RemedialActionCost.kind:
+  Tennet De: provisonal
+  value1: provisonal
+  value2: indicativ
+  value3: final
+RemedialActionScheduleAcceptance/nc:RemedialActionScheduleAcceptance.kind:
+  Tennet De: http://entsoe.eu/ns/nc#TimeSeriesInterpolationKind.next
+clients:
+  TTG: Tennet De
+tso:
+  TTG: Tennet De

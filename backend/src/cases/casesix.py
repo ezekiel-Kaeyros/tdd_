@@ -14,19 +14,16 @@ from src.create_dumy.proposing_remedial_action_schedule_share import (
 )
 
 
-
-def create_case_six(wv_file, config_yaml, client, socketio, user_email): # pylint: disable=too-many-locals
+def create_case_six(wv_file, config_yaml, client, socketio, user_email, client_zone):  # pylint: disable=too-many-locals
     """Function to create case six."""
     try:
         array_action_ora = []
-        print(socketio)
-        print(user_email)
         for idx, row in wv_file.iterrows():
             # socketio.emit('update-progress', "Case 1")
             remedial_action_schedule = create_remedial_action_schedule(row)
             power_schedule = create_power_schedule(row, config_yaml, client)
             redispatch_schedule_action = create_redispatch_schedule_action(
-                row, remedial_action_schedule, power_schedule, config_yaml, client
+                row, remedial_action_schedule, power_schedule, config_yaml, client, client_zone
             )
             remedial_action_cost = create_remedial_action_cost(
                 row, remedial_action_schedule, config_yaml
@@ -42,7 +39,6 @@ def create_case_six(wv_file, config_yaml, client, socketio, user_email): # pylin
                 val = wv_file.loc[idx][col]
                 val = float(val)
                 if not math.isnan(val):
-                    print(val)
                     if val > 0:
                         remedial_action_schedule_accepatnce = (
                             create_remedial_action_schedule_acceptance(
@@ -54,11 +50,13 @@ def create_case_six(wv_file, config_yaml, client, socketio, user_email): # pylin
                                 row, config_yaml, client, remedial_action_schedule, val
                             )
                         )
-                        array_action_ora.append(remedial_action_schedule_accepatnce)
+                        array_action_ora.append(
+                            remedial_action_schedule_accepatnce)
                         array_action_ora.append(
                             proposing_remedial_action_schedule_share
                         )
-            power_time_point = create_power_time_point(row, power_schedule)
+            power_time_point = create_power_time_point(
+                row, power_schedule, client_zone)
             array_action_ora.append(remedial_action_schedule)
             array_action_ora.append(redispatch_schedule_action)
             array_action_ora.append(remedial_action_cost)

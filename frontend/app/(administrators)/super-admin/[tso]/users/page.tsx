@@ -1,29 +1,53 @@
 'use client';
 
-import UserTable from '@/app/(administrators)/components/UserTable';
-import { useContext, useEffect, useState } from 'react';
-import { SuperAdminContext } from '@/app/(administrators)/context/admin.context';
-import { redirect, usePathname } from 'next/navigation';
-import { Button } from '@/components/Button';
-import PlusIcon from '../../../../../public/icons/plusicon.svg';
-import CreateUserForm from '@/app/(administrators)/components/forms/CreateUserForm';
-import Modal from '@/components/Modal';
-import FormCard from '@/app/(administrators)/components/forms/FormCard';
-import { gettingAbbr } from '@/app/utils/utils';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+import {
+  redirect,
+  usePathname,
+} from 'next/navigation';
+import { ToastContainer } from 'react-toastify';
+
+// import CreateUserForm
+//   from '@/app/(administrators)/components/forms/CreateUserForm';
+// import FormCard from '@/app/(administrators)/components/forms/FormCard';
+// import UserTable from '@/app/(administrators)/components/UserTable';
+// import { Button } from '@/components/Button';
+// import Modal from '@/components/Modal'; 
 import { getUsers } from '@/app/(administrators)/actions/get-users';
+import {
+  SuperAdminContext,
+} from '@/app/(administrators)/context/admin.context';
 import { useAuth } from '@/app/hooks/useAuth';
 
+import PlusIcon from '../../../../../public/icons/plusicon.svg';
+
+const FormCard = dynamic(() => import('@/app/(administrators)/components/forms/FormCard'), { ssr: false }); 
+const Modal = dynamic(() => import('@/components/Modal'), { ssr: false }); 
+const UserTable = dynamic(() => import('@/app/(administrators)/components/UserTable'), { ssr: false }); 
+const CreateUserForm = dynamic(() => import('@/app/(administrators)/components/forms/CreateUserForm'), { ssr: false }); 
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+
 const Users = () => {
-  const { state, dispatch } = useContext(SuperAdminContext);
-  const [users, setUsers] = useState<any>([]);
+  const { state, dispatch } = React.useContext(SuperAdminContext);
+  const [ users, setUsers ] = React.useState<any>([]);
+  const [ selectedIdTSO, setSelectedIdTSO ] = React.useState<any>("");
   const pathname = usePathname();
   const paths = pathname.split('/');
 
+
   const { user } = useAuth();
 
-  useEffect(() => {
+  // console.log(state.currentTSO, "lllll11111")
+
+  React.useEffect(() => {
+    setSelectedIdTSO (localStorage.getItem("selectedIdTSO"))
     if (user?.role !== 0 && !user?.token) {
       return redirect('/');
     }
@@ -32,6 +56,8 @@ const Users = () => {
       // You can await here
       const fetchUsers = async () => {
         const res = await getUsers();
+
+        // console.log(res?.usersList, "llllffffkkkk")
 
         setUsers(res?.usersList);
       };
@@ -46,6 +72,13 @@ const Users = () => {
   let actualUsers = users?.filter(
     (user: any) => user?.tsoAbbreviation === paths[2]
   );
+
+  // 
+  let actualUsersV2 = users?.filter(
+    (user: any) => parseInt(user?.company_id) === parseInt(selectedIdTSO) // state?.selectedIdTSO
+  );
+
+  // console.log(actualUsersV2, users, "jjjjjjjjjjjjjjjjj", selectedIdTSO)
 
   return (
     <div className="mt-16">
@@ -91,7 +124,7 @@ const Users = () => {
           <br />
           Configuration
         </h1>
-        <UserTable data={actualUsers} />
+        <UserTable data={actualUsersV2} />
       </main>
     </div>
   );

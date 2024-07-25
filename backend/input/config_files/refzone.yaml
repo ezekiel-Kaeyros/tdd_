@@ -2,9 +2,14 @@ Time_zone_tso:
   50Hertz: Europe/Berlin
   AMP: Europe/Berlin
   APG: Europe/Berlin
+  Amprion: Europe/Berlin
+  CEPS: Europe/Berlin
+  ELES: Europe/Berlin
   ELIA: Europe/Berlin
+  Elia: Europe/Berlin
   HL: Europe/Berlin
   HOPS: Europe/Berlin
+  MAVIR: Europe/Berlin
   PSE: Europe/Berlin
   SEPS: Europe/Berlin
   TNG: Europe/Berlin
@@ -13,3 +18,6 @@ Time_zone_tso:
   TSO1: Europe/Berlin
   TSO2: Europe/Berlin
   TTG: Europe/Berlin
+  TTN: Europe/Berlin
+  Tennet De: Europe/Berlin
+  TransnetBW: Europe/Berlin

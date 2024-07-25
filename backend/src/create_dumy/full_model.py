@@ -2,16 +2,14 @@
 import os
 import uuid
 from datetime import datetime as dt
+import time
 import yaml
 from pytz import timezone
 import pandas as pd
 from yaml.loader import SafeLoader
 from src.generate_date import build_min_date
 from src.generate_date import build_max_date
-
-
-# socketio.emit("update-progress", "Full model")
-# client_time_zone = timezone('Europe/Berlin')
+from src.utils import get_utc_time
 
 
 def get_min_date(date_list, client_zone):  # pylint: disable=too-many-locals
@@ -21,7 +19,6 @@ def get_min_date(date_list, client_zone):  # pylint: disable=too-many-locals
     client_zone = timezone(str(client_zone))
 
     time_zone = build_min_date(date_list, str(client_zone))
-    print('eeeeeeeeee', time_zone)
 
     fully = str(time_zone).split(" ", maxsplit=1)[0]
     fullt = str(time_zone).split(" ")[1]
@@ -42,22 +39,11 @@ def get_max_date(date_list, client_zone):  # pylint: disable=too-many-locals
     return fully + "T" + fullt + "Z"
 
 
-def create_full_model(path_csv, config_yaml, client, max_date_list, min_date_list):  # pylint: disable=too-many-locals, too-many-statements
+def create_full_model(path_csv, config_yaml, client, max_date_list, min_date_list, client_zone):  # pylint: disable=too-many-locals, too-many-statements
     """Function."""
 
     tso = config_yaml["tso"][client]
     full_model = pd.DataFrame({"FIELD": [], "VALUE": []})
-    path = os.path.abspath("./input/config_files/refzone.yaml")
-    client_zone = ""
-    with open(path, "rb") as file:
-        try:
-            client_zone_yaml = yaml.load(file, Loader=SafeLoader)
-            for data in client_zone_yaml:
-                for key in list(client_zone_yaml[data]):
-                    if key == client:
-                        client_zone = client_zone_yaml[data][key]
-        except yaml.YAMLError as exc:
-            print(exc)
 
     # add FullModel value
     timestamp = os.path.basename(path_csv).split(".")[0]
@@ -66,7 +52,8 @@ def create_full_model(path_csv, config_yaml, client, max_date_list, min_date_lis
     # 202211071015
     date_obj = pd.to_datetime(timestamp, format="%Y%m%d%H%M")
 
-    date_str = date_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
+    # date_str = date_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
+    date_str = date_obj.strftime("%Y-%m-%d %H:%M:%SZ")
     uuid_full_model = str(uuid.uuid4())
     index_df = 0
     full_model.at[index_df, "VALUE"] = (
@@ -74,12 +61,16 @@ def create_full_model(path_csv, config_yaml, client, max_date_list, min_date_lis
     )
     full_model.at[index_df, "FIELD"] = "md:FullModel"
     index_df += 1
+    # # time.sleep(1000)
+    date_str = get_utc_time(client_zone, date_str)
 
-    full_model.at[index_df, "VALUE"] = date_str
+    full_model.at[index_df, "VALUE"] = str(
+        date_str).replace(" ", "T").replace('+00:00', 'Z')
     full_model.at[index_df, "FIELD"] = "md:FullModel/prov:generatedAtTime"
     index_df += 1
 
-    full_model.at[index_df, "VALUE"] = dt.now().isoformat()
+    full_model.at[index_df, "VALUE"] = str(
+        date_str).replace(" ", "T").replace('+00:00', 'Z')
     full_model.at[index_df, "FIELD"] = "md:FullModel/dcterms:issued"
     index_df += 1
 
@@ -121,15 +112,17 @@ def create_full_model(path_csv, config_yaml, client, max_date_list, min_date_lis
     index_df += 1
 
     start_date = get_min_date(min_date_list, client_zone)
-    # time.sleep(3000)
 
     end_date = get_max_date(max_date_list, client_zone)
-
-    full_model.at[index_df, "VALUE"] = start_date
+    start_date = get_utc_time(client_zone, str(start_date))
+    end_date = get_utc_time(client_zone, str(end_date))
+    full_model.at[index_df, "VALUE"] = str(
+        start_date).replace(" ", "T").replace('+00:00', 'Z')
     full_model.at[index_df, "FIELD"] = "md:FullModel/dcat:startDate"
     index_df += 1
 
-    full_model.at[index_df, "VALUE"] = end_date
+    full_model.at[index_df, "VALUE"] = str(
+        end_date).replace(" ", "T").replace('+00:00', 'Z')
     full_model.at[index_df, "FIELD"] = "md:FullModel/dcat:endDate"
     index_df += 1
 
@@ -167,7 +160,8 @@ def create_full_model(path_csv, config_yaml, client, max_date_list, min_date_lis
     full_model.at[index_df, "FIELD"] = "md:FullModel/dcterms:spatial"
     index_df += 1
 
-    full_model.at[index_df, "VALUE"] = start_date + \
+    full_model.at[index_df, "VALUE"] = str(
+        start_date).replace(" ", "T").replace('+00:00', 'Z') + \
         "_" + tso + "_" + "CGM-1D-RAS"
     full_model.at[index_df, "FIELD"] = "md:FullModel/dcterms:title"
     index_df += 1

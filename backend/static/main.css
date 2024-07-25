@@ -521,7 +521,7 @@ footer {
 circle {
   fill: none;
   stroke: url(#GradientColor);
-  stroke-width: 20px;
+  strokeWidth: 20px;
   stroke-dasharray: 450;
   stroke-dashoffset: 350;
 }

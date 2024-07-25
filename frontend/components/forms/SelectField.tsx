@@ -1,16 +1,17 @@
 'use client';
-import { useAuth } from '@/app/hooks/useAuth';
-import { gettingAbbrReverse } from '@/app/utils/utils';
-import { BACKEND_URL } from '@/types/backendUrl';
+import React from 'react';
+
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+
+import { useAuth } from '@/app/hooks/useAuth';
 
 type Props = {
   name: string;
   props: any;
   company?: any;
   type?: string;
-  title?: string;
+  title?: string; 
+  companyValue?: string; 
 };
 
 type Tso = Object[];
@@ -19,26 +20,27 @@ const SelectField: React.FC<Props> = ({
   name,
   props,
   company,
-  type,
+  type, 
+  companyValue, 
   title,
 }) => {
   const { user } = useAuth();
-  const [, setComanies] = useState<Tso>();
+  const [, setComanies] = React.useState<Tso>();
   const pathname = usePathname();
   const paths = pathname.split('/');
 
-  useEffect(() => {
-    async function fetchForm() {
-      await fetch(`${BACKEND_URL}/company/`)
-        .then((res) => res.json())
-        .then((result) => setComanies(result?.tso_list));
-    }
+  // React.useEffect(() => {
+  //   async function fetchForm() {
+  //     await fetch(`${BACKEND_URL}/company/`)
+  //       .then((res) => res.json())
+  //       .then((result) => setComanies(result?.tso_list));
+  //   }
 
-    fetchForm();
-    return () => {
-      //
-    };
-  }, []);
+  //   fetchForm();
+  //   return () => {
+  //     //
+  //   };
+  // }, []);
 
   return (
     <>
@@ -81,7 +83,12 @@ const SelectField: React.FC<Props> = ({
             {user?.role === 0 ? (
               <>
                 <option value="1">Administrator</option>
-                <option value="2">User</option>
+                {
+                  paths[paths.length - 1] === "users" ? 
+                    <option value="2">User</option>
+                    :
+                    ""
+                }
               </>
             ) : (
               <>
@@ -105,10 +112,15 @@ const SelectField: React.FC<Props> = ({
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-greenpale focus:border-greenpale block w-full p-2.5  dark:focus:ring-greenpale dark:focus:border-greenpale"
           >
             {user?.role === 0 ? (
+              // <>
+              //   <option
+              //     value={`${gettingAbbrReverse(paths[2])}`}
+              //   >{`${gettingAbbrReverse(paths[2])}`}</option>
+              // </>
               <>
                 <option
-                  value={`${gettingAbbrReverse(paths[2])}`}
-                >{`${gettingAbbrReverse(paths[2])}`}</option>
+                  value={ companyValue }
+                >{ companyValue }</option>
               </>
             ) : (
               <>

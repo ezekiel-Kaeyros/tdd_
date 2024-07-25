@@ -1,0 +1,1 @@
+1- changer le text  de la suppression d un user ainsi que le texte dans le boutton : remplacer delete par update

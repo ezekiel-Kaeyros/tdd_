@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 import configparser
 import yaml
+from yaml.loader import SafeLoader
 import pandas as pd
 from src.create_dumy.full_model import create_full_model
 from src.cases.casesone import create_case_one
@@ -96,6 +97,20 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
     ):  # pylint: disable=too-many-locals, too-many-branches, too-many-statements
         """function to create dummy."""
         try:
+            client_zone = ""
+
+            path = os.path.abspath("./input/config_files/refzone.yaml")
+
+            with open(path, "rb") as file:
+                try:
+                    client_zone_yaml = yaml.load(file, Loader=SafeLoader)
+                    for data in client_zone_yaml:
+                        for key in list(client_zone_yaml[data]):
+                            if key == self.client:
+                                client_zone = client_zone_yaml[data][key]
+                except yaml.YAMLError as exc:
+                    print(exc)
+
             # create FullModel dataframe
 
             self.socketio.emit(
@@ -106,6 +121,7 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                 self.client,
                 self.max_date_list,
                 self.min_date_list,
+                client_zone
             )
 
             self.actions.append(full_model)
@@ -121,6 +137,7 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                     self.config_yaml["tso"][self.client],
                     self.socketio,
                     self.user_email,
+                    client_zone
                 )
 
                 self.socketio.emit("update-progress" +
@@ -141,6 +158,7 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                         self.config_yaml,
                         self.config_yaml["tso"][self.client],
                         self.socketio,
+                        client_zone
                     )
 
                     # self.socketio.emit("update-progress" +
@@ -149,8 +167,8 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                         self.actions.append(case4)
                     # build case two
                     # first of all filter data frame
+
             if len(reste) > 0:
-                print(len(reste))
                 data_case_2, reste = filter_case_two(reste)
 
                 if len(data_case_2) > 0:
@@ -160,13 +178,13 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                         data_case_2,
                         self.config_yaml,
                         self.config_yaml["tso"][self.client],
+                        client_zone
                     )
 
                     if len(case2) > 0:
                         self.actions.append(case2)
-                        print("case two")
                     else:
-                        print("len(case2)")
+                        pass
 
             # build case five
             # first of all filter data frame
@@ -181,19 +199,17 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                         self.config_yaml,
                         self.config_yaml["tso"][self.client],
                         self.socketio,
+                        client_zone
                     )
                     if len(case5) > 0:
                         self.actions.append(case5)
-                        print("case 5")
                 else:
-                    print("value")
+                    pass
             if len(reste) > 0:
                 self.socketio.emit(
                     "display-step" + self.user_email, "filter Case 3")
                 data_case_3, reste = filter_case_three(reste)
                 if len(data_case_3) > 0:
-                    # print('case 3 here ====>')
-                    # time.sleep(2000)
 
                     self.socketio.emit("update-progress" +
                                        self.user_email, "Case 3")
@@ -203,14 +219,14 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                         self.config_yaml["tso"][self.client],
                         self.socketio,
                         self.user_email,
+                        client_zone
                     )
                     if len(case3) > 0:
                         self.actions.append(case3)
-                        print("case 3")
                     else:
-                        print("no data case 3")
+                        pass
                 else:
-                    print("not found data case 3")
+                    pass
 
             # build case one
             # first of all filter data frame
@@ -224,15 +240,15 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                     case1 = create_case_one(
                         data_case_1,
                         self.config_yaml,
-                        self.config_yaml["tso"][self.client]
+                        self.config_yaml["tso"][self.client], client_zone
                     )
                     if len(case1) > 0:
                         self.actions.append(case1)
                         # print(f" case1")
                     else:
-                        print("no data case 1")
+                        pass
                 else:
-                    print("no data found")
+                    pass
 
             dumy_df = pd.concat(self.actions, axis=0)
 
@@ -294,4 +310,3 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
             # print('exist =====>')
             # time.sleep(2000)
             return error
-            # self.socketio.emit("except-progress" + self.user_email, 1)

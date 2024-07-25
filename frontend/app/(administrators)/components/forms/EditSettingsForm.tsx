@@ -1,16 +1,36 @@
 'use client';
-import { Button } from '@/components/Button';
-import FileUploadField from '@/components/forms/FileUploadField';
-import InputField from '@/components/forms/InputField';
-import { BACKEND_URL } from '@/types/backendUrl';
+
+import React, {
+  ChangeEvent,
+  useRef,
+} from 'react';
+
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import EditProfile from '../../../../public/icons/company/editProfile.svg';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useLocalStorage } from '@/app/hooks/useLocalStorage';
-import { updateLogoTSO } from '../../actions/update-logoTso';
+import { useRouter } from 'next/navigation';
+import {
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
 import { toast } from 'react-toastify';
+
+import { useLocalStorage } from '@/app/hooks/useLocalStorage';
+import FileUploadField from '@/components/forms/FileUploadField';
+// import { Button } from '@/components/Button';
+// import FileUploadField from '@/components/forms/FileUploadField';
+// import InputField from '@/components/forms/InputField';
+import { BACKEND_URL } from '@/types/backendUrl';
+
+import EditProfile from '../../../../public/icons/company/editProfile.svg';
+import { updateLogoTSO } from '../../actions/update-logoTso';
 import { updateConfigFileTso } from '../../actions/update-tso';
+
+const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
+const Button = dynamic(() =>
+  import('@/components/Button').then((mod) => mod.Button),
+  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
+);
+
 
 const EditSettingsForm = () => {
   interface IFormInput {
@@ -21,16 +41,20 @@ const EditSettingsForm = () => {
   }
   // Initializing React-hook-form
   const { register, handleSubmit, setValue } = useForm<IFormInput>();
+  const router = useRouter ()
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [files, setFiles] = useState<File>();
-  const [image, setImage] = useState<string | ArrayBuffer | null>(null);
-  const [getCurrentTSO, setCurrentTSO, clearCurrentTSO] =
-    useLocalStorage('currentTso');
+  const [files, setFiles] = React.useState<File>();
+  const [stammDataifiles, setStammDataiFiles] = React.useState<File>();
+  const [image, setImage] = React.useState<string | ArrayBuffer | null>(null);
+  const [getCurrentTSO, setCurrentTSO, clearCurrentTSO] = useLocalStorage('currentTso');
   const currentTSO = getCurrentTSO();
   // When submitting
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     if (files) {
+      const formData = new FormData();
+      formData.append('file', files);
+      // const res = await updateLogoTSO(currentTSO.id, formData);
       const res = await updateLogoTSO(currentTSO.id, { file: files });
       console.log(res);
 
@@ -40,11 +64,29 @@ const EditSettingsForm = () => {
         toast.error('update of logo failed !!!');
       }
     }
+
     if (data) {
-      const response = await updateConfigFileTso(currentTSO.id, data);
+      const formData = new FormData();
+      formData.append('company', data?.tsoName as string);
+      formData.append('tsoAbbreviation', data?.tsoAbbreviation as string);
+      if(data?.stammdatei_file[0] ){
+        formData.append('stammdatei_file', data.stammdatei_file[0]);
+      }
+      
+     
+      // formData.append('company', data?.tsoName as string);
+      // const newestData = {
+      //   company: data?.tsoName, 
+      //   tsoAbbreviation: data?.tsoAbbreviation, 
+      //   stammdatei_file_path: data?.stammdatei_file
+      // }
+
+      const response = await updateConfigFileTso(currentTSO.id, formData);
       if (response && response.status === 200) {
-        toast.success('update of logo successfull !!!');
+        toast.success('TSO Information updated successfully !!!');
         setCurrentTSO(response.data);
+        // router.push(`/super-admin/${ response.data.tsoAbbreviation }`)
+        router.push(`/super-admin`)
       } else {
         toast.error('update of TSO failed !!!');
       }
@@ -62,12 +104,23 @@ const EditSettingsForm = () => {
     reader.readAsDataURL(file);
   };
 
+  const handleFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setStammDataiFiles(event.target.files?.[0]);
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleButtonClick = () => {
     if (inputRef.current) {
       inputRef.current.click();
     }
   };
-  useEffect(() => {
+  React.useEffect(() => {
     setValue('tsoName', `${currentTSO?.company}`);
     setValue('tsoAbbreviation', `${currentTSO?.tsoAbbreviation}`);
     setValue('stammdatei_file', `${currentTSO?.stammdatei_file_path}`);
@@ -140,7 +193,7 @@ const EditSettingsForm = () => {
         />
       </div>
       <div className="my-2">
-        <InputField
+        {/* <InputField
           title="Stammdatei"
           id="stammdatei_file"
           type="file"
@@ -149,7 +202,17 @@ const EditSettingsForm = () => {
           props={{
             ...register('stammdatei_file'),
             require: false,
+            onchange: (event: any) => {
+              console.log("ggggggggggggg", event.target.value)
+            }
           }}
+        /> */}
+        <FileUploadField
+          title="TSO  xlsx/csv file"
+          name="stammdatei_file"
+          id="stammdatei_file"
+          fileTypeDescription=".xlsx,.csv"
+          props={{ ...register('stammdatei_file', { required: false }) }}
         />
       </div>
       <div className="mt-8">

@@ -5,6 +5,7 @@ import math
 import uuid
 from datetime import time as times
 from datetime import datetime, timedelta
+import pytz
 from functools import wraps
 import dataclasses
 import pathlib
@@ -222,6 +223,9 @@ def update_some_row(user_id, row, newvalue, database):
     if row == "role":
         user.role = newvalue
         database.session.commit()
+    if row == "is_actif":
+        user.is_actif = newvalue
+        database.session.commit()
     return True
 
 
@@ -232,6 +236,10 @@ def update_some_tso_row(tso_id, row, newvalue, database):
     if row == "company":
         tso.company = newvalue
         database.session.commit()
+    if row == "tsoName":
+        tso.company = newvalue
+        print(0000000)
+        database.session.commit()
     if row == "stammdatei_file_path":
         tso.stammdatei_file_path = newvalue
         database.session.commit()
@@ -240,6 +248,9 @@ def update_some_tso_row(tso_id, row, newvalue, database):
         database.session.commit()
     if row == "tsoAbbreviation":
         tso.tsoAbbreviation = newvalue
+        database.session.commit()
+    if row == "logo_path":
+        tso.logo_path = newvalue
         database.session.commit()
     return True
 
@@ -643,3 +654,40 @@ def get_tso_abbrevition(tsoname):
     if tso:
         return tso.tsoAbbreviation
     return False
+
+
+def get_tso_by_name(tsoname):
+    """Function"""
+    tso = Tso.query.filter_by(company=tsoname).first()
+
+    if tso:
+        return tso
+    return False
+
+
+def get_utc_time(time_zone, date_time):
+    """Function"""
+    # if time_zone == "UTC":
+    #     return date_time
+    # return date_time.astimezone(timezone(time_zone))
+    # time.sleep(5000)
+
+    local = pytz.timezone(str(time_zone))
+    date_time = str(date_time).replace(".", "-")
+    if "Z" in str(date_time):
+        arr = str(date_time).split("Z")
+        date_time = arr[0]
+    if "T" in date_time:
+        tab = date_time.split("T")
+        date_time = tab[0] + " " + tab[1]
+    # "2001-2-3 10:11:12"
+    # time.sleep(5000)
+    naive = datetime.strptime(str(date_time), "%Y-%m-%d %H:%M:%S")
+    local_dt = local.localize(naive, is_dst=None)
+    utc_dt = local_dt.astimezone(pytz.utc)
+    # print(utc_dt)
+    # print(str(utc_dt).replace('+00:00', 'Z'))
+    # utc_dt = str(utc_dt).replace(" ", "T")
+    # print(str(utc_dt).replace(" ", "T"))
+    # time.sleep(5000)
+    return str(utc_dt)

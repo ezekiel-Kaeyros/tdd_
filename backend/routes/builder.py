@@ -16,6 +16,9 @@ from src.utils import get_path_to_yaml, user_is_authenticate, allow_download
 from src.convert_xlsx import convert_to_csv
 import time
 import json
+import sys
+import traceback
+import threading
 builder = Blueprint(
     "builder", __name__, url_prefix="/builder", template_folder="templates"
 )
@@ -40,8 +43,8 @@ def activate():
             path_csv = os.path.abspath(file_name)
             name, file_extension = os.path.splitext(os.path.abspath(file_name))
             if file_extension == ".xlsx":
-
                 path_csv = convert_to_csv(path_csv, file_name)
+
             path = get_path_to_yaml(
                 request.args.get("email"), abreviation_aame)
 
@@ -54,6 +57,7 @@ def activate():
                     raise exc
 
             client = os.path.basename(path_csv).split(".")[0].split("_")[1]
+
             clent_name = config_yaml["clients"][client]
             tso = config_yaml["tso"][client]
             with open(path_csv, "rb") as file:
@@ -65,6 +69,7 @@ def activate():
             )
 
             if len(arr_not_found_row) > 0:
+                print('error one', arr_not_found_row)
                 return jsonify(
                     {
                         "error": arr_not_found_row,
@@ -72,6 +77,7 @@ def activate():
                 ), 400
 
             if is_valid is False and len(columns_expects) > 0:
+                print('error two', columns_expects)
                 # get_socketio().emit(
                 #     "except-progress" +
                 #     request.args.get("email"), set(columns_expects)
@@ -83,6 +89,7 @@ def activate():
                 ), 400
 
             if len(wv_file) == 0:
+                print('error three', wv_file)
                 msg = f"No data in this file for Tso {clent_name}"
                 return jsonify(
                     {
@@ -105,10 +112,16 @@ def activate():
 
             try:
                 child.create_dummy(tso, abreviation_aame)
+                # t = threading.Thread(
+                #     target=child.create_dummy, args=(tso, abreviation_aame))
+                # t.start()
 
-            except Exception as error:  # pylint: disable=broad-except
-                error_logger(error, "Builder_Module")
-                create_and_send_email(str(error), "Builder_Module")
+            except Exception:  # pylint: disable=broad-except
+                e = sys.exc_info()
+                traceback.print_tb(e[2], None, sys.stdout)
+                # time.sleep(5000)
+                # error_logger(error, "Builder_Module")
+                # create_and_send_email(str(error), "Builder_Module")
                 return jsonify({"error": ["invalide file format!"]}), 400
 
             inputpath, outputpath, filenames = read_config()

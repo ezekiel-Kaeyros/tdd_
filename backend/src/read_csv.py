@@ -10,8 +10,16 @@ def clean_columns_name(wv_file):
     """Function to clean name."""
     columns = wv_file.columns
     messy_df = pd.DataFrame(data=[], columns=columns, index=[0])
+    # print(messy_df.columns)
     clean_df = clean_columns(messy_df)
     wv_file.rename(columns=dict(zip(columns, clean_df)), inplace=True)
+    # if 'zustandiger_ras_unb' in wv_file.columns:
+    #     print('zustandiger_ras_unb   existe')
+    #     time.sleep(1000)
+    # else:
+    #     print('zustandiger_ras_unb   not existe')
+    #     time.sleep(1000)
+
     return wv_file
 
 
@@ -34,7 +42,6 @@ def rename_column(min_index, max_index, file, str_prefix_col):
 
 def renam_column_name_one(wv_file):
     """Function to rename column."""
-    print(".... renam_column_name_one ....")
     cols = wv_file.columns[17:117]
     wv_file.rename(columns=dict(
         zip(cols, "Art der Anweisung_" + cols)), inplace=True)
@@ -47,7 +54,7 @@ def filter_file(wv_file, client_name):
     wv_file = wv_file.loc[wv_file["ursache"] == "I"]
     wv_file = wv_file.fillna(0)
     wv_file = wv_file.loc[wv_file["zustandiger_ras_unb"] == client_name]
-    if len(wv_file) == 0 and len(wv_file.loc[wv_file["zustandiger_ras_unb"] == client_name]) == 0:
+    if len(wv_file) == 0:
         arr.append(
             f"Not found value {client_name} in zustandiger_ras_unb column")
     return wv_file, arr
@@ -101,6 +108,11 @@ def strip_colonnes(liste_colonnes):
 def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso):
     """Function to verify dataframe variable"""
 
+    columns_required = ['gm_art', 'ursache', 'auslosender_prozess', 'tm_von',
+                        'zeit_von', 'tm_bis', 'zeit_bis', 'zustandiger_ras_unb',
+                        'tm_art', 'art_der_anweisung', 'leistung', 'variable_erzeugungsauslagen',
+                        'tages_tm_ident', 'sonstige_kosten', 'anteiliger_werteverbrauch',]
+
     try:
 
         wv_file1 = pd.read_csv(
@@ -113,34 +125,14 @@ def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
         )
 
         # -----------------
-        path_csv_example = r"input/WV_AMP_2022_12_202301161652.csv"
-        wv_file_example = pd.read_csv(
-            path_csv_example,
-            encoding="unicode_escape",
-            sep=";",
-            skiprows=1,
-            on_bad_lines="skip"
-        )
-
-        # A ce stade, on verifier si les colonnes excedentaires
-        # font partie des nouvelles colonnes template..
-        # ========================
-        # col_exceed = wv_file1.columns.difference(wv_file_example.columns)
-
-        # col_exceed = strip_colonnes(col_exceed.to_list())
-
-        # # lire les colonnes du nouveau fichier modele..
-        # path_new_colonnes = r'input/WV_AMP_2024_01_202404181542.csv'
-        # new_sample_columns = pd.read_csv(
-        #     path_new_colonnes,
+        # path_csv_example = r"input/WV_AMP_2022_12_202301161652.csv"
+        # wv_file_example = pd.read_csv(
+        #     path_csv_example,
         #     encoding="unicode_escape",
         #     sep=";",
         #     skiprows=1,
-        #     on_bad_lines="skip",
-        #     low_memory=False
-        # ).columns.to_list()
-
-        # -----------------==================
+        #     on_bad_lines="skip"
+        # )
 
         if 'TM von' in wv_file1.columns:
 
@@ -158,6 +150,10 @@ def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
 
         cols1 = wv_file1.columns[17:117]
         socketio.emit("display-step" + user_email, "verify variable")
+        # print('position ===>',  wv_file1.columns.get_loc(
+        #     "RD 2.0 Ersparte Aufwendungen [€/Viertelstunde]"))
+
+        # print('hello', position)
 
         wv_file1.rename(
             columns=dict(zip(cols1, "Art der Anweisung_" + cols1)), inplace=True
@@ -175,11 +171,70 @@ def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
 
         wv_file1 = rename_column(542, 642, wv_file1, "Entgangene_Intraday_")
 
+        if 'RD 2.0 Ersparte Aufwendungen [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "RD 2.0 Ersparte Aufwendungen [€/Viertelstunde]")
+            wv_file1.rename(
+                columns=dict(zip(wv_file1.columns[position:position + 99], "RD 2.0 Ersparte Aufwendungen_" + wv_file1.columns[position:position + 99])), inplace=True
+            )
+
+        if 'RD 2.0 Entschädigung Entgangene Einnahmen EEG und KWK [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "RD 2.0 Entschädigung Entgangene Einnahmen EEG und KWK [€/Viertelstunde]")
+            # wv_file1.rename(
+            #     columns=dict(zip(wv_file1.columns[position:position + 99], "RD 2.0 Entschädigung Entgangene Einnahmen EEG und KWK_" + wv_file1.columns[position:position + 99])), inplace=True
+            # )
+            wv_file1 = rename_column(
+                position-1, position + 99, wv_file1, "RD_2_0 Entschädigung_Entgangene_Einnahmen_EEG_und_KWK_")
+
+        if 'RD 2.0 Zusätzliche Aufwendungen [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "RD 2.0 Zusätzliche Aufwendungen [€/Viertelstunde]")
+            # wv_file1.rename(
+            #     columns=dict(zip(wv_file1.columns[position:position + 99], "RD 2.0 Zusätzliche Aufwendungen_" + wv_file1.columns[position:position + 99])), inplace=True
+            # )
+            wv_file1 = rename_column(
+                position-1, position + 99, wv_file1, "RD 2.0 Zusätzliche Aufwendungen_")
+
+        if 'RD 2.0 Ersparte Aufwendungen [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "RD 2.0 Ersparte Aufwendungen [€/Viertelstunde]")
+            wv_file1.rename(
+                columns=dict(zip(wv_file1.columns[position:position + 99], "RD 2.0 Ersparte Aufwendungen_" + wv_file1.columns[position:position + 99])), inplace=True
+            )
+
+        if 'RD 2.0 Abweichung zwischen dem bilanziellen Ausgleich und der Ausfallarbeit [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "RD 2.0 Abweichung zwischen dem bilanziellen Ausgleich und der Ausfallarbeit [€/Viertelstunde]")
+            wv_file1.rename(
+                columns=dict(zip(wv_file1.columns[position:position + 99], "RD 2.0 Abweichung zwischen dem bilanziellen Ausgleich und der Ausfallarbeit_" + wv_file1.columns[position:position + 99])), inplace=True
+            )
+
+        if 'Abweichungen zu dem vom anfNB als BK-Fahrplan gelieferten energetischen Ausgleich im Clusterfall [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "Abweichungen zu dem vom anfNB als BK-Fahrplan gelieferten energetischen Ausgleich im Clusterfall [€/Viertelstunde]")
+
+            wv_file1 = rename_column(
+                position, position + 99, wv_file1, "abweichungen_zu_dem_vom_anfNB_als_BK_Fahrplan_gelieferten_energetischen_Ausgleich_im_Clusterfall_")
+
+        if 'RD 2.0 Entschädigung Energetischer Ausgleich [€/Viertelstunde]' in wv_file1.columns:
+            position = wv_file1.columns.get_loc(
+                "RD 2.0 Entschädigung Energetischer Ausgleich [€/Viertelstunde]")
+            wv_file1 = rename_column(
+                position, position + 99, wv_file1, "rd_2_0_entschädigung_energetischer_ausgleich_")
+
         wv_file1 = clean_columns_name(wv_file1)
-
         wv_file1.drop(wv_file1.columns[644:830], axis=1, inplace=True)
-
-        # time.sleep(200)
+        wv_file1 = wv_file1.loc[:, ~ wv_file1.columns.duplicated()]
+        # print('wv_file1', wv_file1.columns[844:1030])
+        # arr = []
+        # for col in wv_file1.columns:
+        #     if "rd_2_0" in col:
+        #         if col not in arr:
+        #             arr.append(col)
+        #     if 'abweichungen_zu' in col:
+        #         if col not in arr:
+        #             arr.append(col)
 
         path_csv_example = r"input/WV_AMP_2022_12_202301161652.csv"
         wv_file_example = pd.read_csv(
@@ -214,15 +269,30 @@ def verify_variable_dataframe(wv_file_path, encodage, socketio, user_email, tso)
 
         wv_file, arr = filter_file(wv_file1, tso)
 
+        col_required_list = [
+            col for col in columns_required if col not in wv_file1.columns]
+
+        if len(col_required_list) > 0:
+            # time.sleep(2000)
+            return True, [], wv_file, []
+        if len(col_required_list) == 0:
+
+            return True, dif, wv_file, []
+
         if len(dif) == 0:
             # wv_file, arr = filter_file(wv_file1, tso)
             return True, dif, wv_file, arr
 
         # elif set(col_exceed).issubset(new_sample_columns):
         #     return True, [], wv_file, []
+
         col_list = [
             col for col in wv_file_example.columns if col not in wv_file1.columns]
         if len(col_list) > 0:
+            # print(len(wv_file))
+            # print(len(arr))
+
+            # time.sleep(2000)
             return False, dif, wv_file, col_list
 
         return True, dif, wv_file, arr

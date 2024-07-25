@@ -1,9 +1,10 @@
 'use client';
-import React, { useContext } from 'react';
+import React from 'react';
+
 import { SuperAdminContext } from '../../context/admin.context';
 
 export const SuperAdminFormHeader = () => {
-  const { state } = useContext(SuperAdminContext);
+  const { state } = React.useContext(SuperAdminContext);
   return (
     <ol className="flex items-center justify-between w-full p-3 shadow-lg text-sm font-medium text-center text-gray-500 bg-white border border-gray-200 rounded-lg dark:text-gray-400 sm:text-base  sm:p-4 sm:space-x-4">
       <li
@@ -28,9 +29,9 @@ export const SuperAdminFormHeader = () => {
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="m7 9 4-4-4-4M1 9l4-4-4-4"
           />
         </svg>

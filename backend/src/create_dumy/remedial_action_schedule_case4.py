@@ -4,7 +4,7 @@ import pandas as pd
 import time
 
 
-def create_remedial_action_schedule(row):  # pylint: disable=too-many-locals
+def create_remedial_action_schedule(row, case_name=''):  # pylint: disable=too-many-locals
     """Function."""
 
     remedial_action_schedule = pd.DataFrame({"FIELD": [], "VALUE": []})
@@ -27,7 +27,7 @@ def create_remedial_action_schedule(row):  # pylint: disable=too-many-locals
         index_df, "FIELD"
     ] = "nc:RemedialActionSchedule/cim:IdentifiedObject.name"
     index_df += 1
-    remedial_action_schedule.at[index_df, "VALUE"] = mrid
+    remedial_action_schedule.at[index_df, "VALUE"] = '_' + mrid
     remedial_action_schedule.at[
         index_df, "FIELD"
     ] = "nc:RemedialActionSchedule/cim:IdentifiedObject.mRID"
@@ -50,12 +50,21 @@ def create_remedial_action_schedule(row):  # pylint: disable=too-many-locals
     ] = "nc:RemedialActionSchedule/nc:RemedialActionSchedule.RemedialAction"
     index_df += 1
 
-    remedial_action_schedule.at[index_df, "VALUE"] = (
-        'rdf:resource="#_' + str(uuid.uuid4()) + '"'
-    )
+    remedial_action_schedule.at[
+        index_df, "VALUE"
+    ] = "rdf:resource=http://energy.referencedata.eu/energy/EIC/22XCORESO------Ss"
     remedial_action_schedule.at[
         index_df, "FIELD"
-    ] = "nc:RemedialActionSchedule/nc:RemedialActionSchedule.Contingency"
+    ] = "nc:RemedialActionSchedule/nc:RemedialActionSchedule.ProposingEntity"
     index_df += 1
+
+    if case_name == "case4":
+        remedial_action_schedule.at[index_df, "VALUE"] = (
+            'rdf:resource="#_' + str(uuid.uuid4()) + '"'
+        )
+        remedial_action_schedule.at[
+            index_df, "FIELD"
+        ] = "nc:RemedialActionSchedule/nc:RemedialActionSchedule.Contingency"
+        index_df += 1
 
     return remedial_action_schedule

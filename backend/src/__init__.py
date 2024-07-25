@@ -8,6 +8,7 @@ from src.app_loader import create_app
 from src.app_loader import get_socketio
 # from src.sftp_server import connect_to_sftp
 from flask_session import Session
+from flask import request
 from routes.company import handle_tso
 from routes.builder import builder
 from routes.user import handle_user
@@ -15,10 +16,7 @@ from routes.admin import admin_module
 from routes.auth import authentication
 from routes.usecase import use_case_module
 from routes.notification import notification_module
-from routes.sftp import sftp
 from logger.log import create_and_send_email, error_logger
-from apscheduler.schedulers.background import BackgroundScheduler
-from flask import Flask
 # from flask_request_params import bind_request_params
 
 UPLOAD_FOLDER = "/static/img/"
@@ -28,6 +26,8 @@ load_dotenv()
 app = create_app()
 app.config["SECRET_KEY"] = os.environ.get("APP_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+# // mysql+pymysql://
+# 'mysql://username:password@localhost/db_name'
 
 
 db.app = app
@@ -48,6 +48,15 @@ socketio = get_socketio()
 
 
 # app.register_blueprint(home)
+
+@app.before_request
+def handle_every_request():
+    """This Function Load app"""
+    print("Scheduler is alive!")
+    print(
+        f"Request Methode:{request.method}  URL:{request.url} IP:{request.remote_addr} User:{request.user_agent.platform} Host:{request.host}")
+
+
 app.register_blueprint(handle_tso)
 app.register_blueprint(builder)
 app.register_blueprint(handle_user)
@@ -55,6 +64,7 @@ app.register_blueprint(admin_module)
 app.register_blueprint(authentication)
 app.register_blueprint(notification_module)
 app.register_blueprint(use_case_module)
+
 
 get_socketio().emit("test", 1)
 

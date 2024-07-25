@@ -1,23 +1,25 @@
 'use client';
 
+import 'react-toastify/dist/ReactToastify.css';
+
+import React from 'react';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useContext, useEffect } from 'react';
-import CSVIconUploaded from '../../../public/icons/csv-icon.svg';
-import CSVIcon from '../../../public/icons/csvIcon.svg';
-import { fileTypeValidator } from '../hooks/fileTypeValidator';
-import FileUploadingProgress from './FileUploadingProgress';
-import UploadPlaceholder from './UploadPlaceholder';
-import { usePathname, useRouter } from 'next/navigation'
+import { ToastContainer } from 'react-toastify';
 
 import { useAuth } from '@/app/hooks/useAuth';
 import { Button } from '@/components/Button';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { notify } from '../../../components/notifications/WarningNotification';
+import CSVIconUploaded from '../../../public/icons/csv-icon.svg';
+import CSVIcon from '../../../public/icons/csvIcon.svg';
 import { regexGenerator } from '../actions/get-tsoList';
 import { postFile } from '../actions/post-file';
 import { FileContext } from '../context/file.context';
+import { fileTypeValidator } from '../hooks/fileTypeValidator';
+import FileUploadingProgress from './FileUploadingProgress';
+import UploadPlaceholder from './UploadPlaceholder';
 
 // Animating button
 
@@ -45,21 +47,21 @@ const dropIn = {
 };
 
 // drag drop file component
-const FileUpload = () => {
-  const { state, dispatch } = useContext(FileContext);
+const FileUpload = ({ dragActiv, regexData }: { dragActiv: any, regexData: any}) => {
+  const { state, dispatch } = React.useContext(FileContext);
   // Getting users session
 
   const { user } = useAuth();
 
   // drag state
-  const [dragActive, setDragActive] = React.useState(false);
+  const [dragActive, setDragActive] = React.useState(dragActiv);
 
   // ref
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   // const Getting regex from backend data
 
-  const [regex, setRegex] = React.useState<RegExp | undefined>();
+  const [regex, setRegex] = React.useState<RegExp | undefined>(regexData);
 
   // Notification
 
@@ -67,7 +69,7 @@ const FileUpload = () => {
     localStorage?.setItem('token', `${user?.token}`);
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchRegex = async () => {
       const reg = await regexGenerator();
       if (reg) return setRegex(reg);
@@ -78,6 +80,7 @@ const FileUpload = () => {
 
   // handle drag events
   const handleDrag = function (e: any) {
+
     e.preventDefault();
 
     if (e.type === 'dragenter' || e.type === 'dragover') {

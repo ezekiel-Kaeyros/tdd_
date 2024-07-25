@@ -1,8 +1,17 @@
 'use client';
-import EditSettingsForm from '@/app/(administrators)/components/forms/EditSettingsForm';
+
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+import {
+  redirect,
+  usePathname,
+} from 'next/navigation';
+
+// import EditSettingsForm from '@/app/(administrators)/components/forms/EditSettingsForm';
 import { useAuth } from '@/app/hooks/useAuth';
-import { redirect, usePathname } from 'next/navigation';
-import React, { useEffect } from 'react';
+
+const EditSettingsForm = dynamic(() => import('@/app/(administrators)/components/forms/EditSettingsForm'), { ssr: false });
 
 const Profile = () => {
   const { user } = useAuth();
@@ -10,7 +19,7 @@ const Profile = () => {
 
   const tsoAbbr = paths.split('/').pop();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (user?.tsoAbbreviation != tsoAbbr && user?.role != 0) {
       return redirect('/');
     }

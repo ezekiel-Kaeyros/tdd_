@@ -1,19 +1,33 @@
 'use client';
-import Image from 'next/image';
-import menuBtn from '../../../public/icons/menu-btn.svg';
+import {
+  useContext,
+  useState,
+} from 'react';
+
 import { motion } from 'framer-motion';
-import { useContext, useState } from 'react';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { FaRegCheckCircle } from 'react-icons/fa';
+
+import { useAuth } from '@/app/hooks/useAuth';
+import { useClickOutside } from '@/app/hooks/useClickOutside';
+
+// import Modal from '@/components/Modal';
 import deleteIcon from '../../../public/icons/delete.svg';
 import editIcon from '../../../public/icons/edit.svg';
-import UpdateUserForm from './forms/UpdateUserForm';
-import FormCard from './forms/FormCard';
-import Modal from '@/components/Modal';
+import menuBtn from '../../../public/icons/menu-btn.svg';
 import { SuperAdminContext } from '../context/admin.context';
-import ConfirmDelete from './ConfirmDelete';
-import { useClickOutside } from '@/app/hooks/useClickOutside';
-import { useAuth } from '@/app/hooks/useAuth';
-import { FaRegCheckCircle } from 'react-icons/fa';
-import ConfirmActivation from './ConfirmActivation';
+
+// import ConfirmActivation from './ConfirmActivation';
+// import ConfirmDelete from './ConfirmDelete';
+// import FormCard from './forms/FormCard';
+// import UpdateUserForm from './forms/UpdateUserForm'; 
+
+const FormCard = dynamic(() => import('./forms/FormCard'), { ssr: false }); 
+const Modal = dynamic(() => import('@/components/Modal'), { ssr: false }); 
+const ConfirmDelete = dynamic(() => import('./ConfirmDelete'), { ssr: false }); 
+const UpdateUserForm = dynamic(() => import('./forms/UpdateUserForm'), { ssr: false }); 
+const ConfirmActivation = dynamic(() => import('./ConfirmActivation'), { ssr: false }); 
 
 type Props = {
   id: number;
@@ -67,7 +81,7 @@ const EditSettings: React.FC<Props> = ({ id, role, isActive }) => {
       )}
       <div ref={domNode}>
         <motion.div
-          className="cursor-pointer  mt-2 relative hover:text-green-600"
+          className="cursor-pointer z-30 mt-2 relative hover:text-green-600"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setOpen(!open)}
@@ -75,7 +89,9 @@ const EditSettings: React.FC<Props> = ({ id, role, isActive }) => {
           <Image src={menuBtn} width={30} height={20} alt="icon" />
         </motion.div>
         {open ? (
-          <div className="  rounded-md border  border-slate-300 mt-2 absolute flex flex-col justify-start items-start py-2 px-4 bg-slate-100 shadow-xl">
+          <div style={{
+            zIndex: "2000"
+          }} className="-z-100  rounded-md border  border-slate-300 mt-2 absolute flex flex-col justify-start items-start py-2 px-4 bg-slate-100 shadow-xl">
             {role == 1 && user?.role == 1 ? (
               <>Not allowed</>
             ) : (
@@ -111,7 +127,7 @@ const EditSettings: React.FC<Props> = ({ id, role, isActive }) => {
                       src={deleteIcon}
                       alt="Delete icon"
                     />
-                    <div className="pr-4">Delete</div>
+                    <div className="pr-4">Deactivate</div>
                   </div>
                 )}
                 {!isActive && (

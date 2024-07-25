@@ -64,7 +64,6 @@ class Converter:
 
     def clean_excel(self):
         """functions clean doc."""
-        print("Reading Excel...")
         self.df = pd.read_excel(self.inputpath)
 
     def register_namespaces(self):
@@ -74,7 +73,6 @@ class Converter:
 
     def create_xml(self):
         """functions to create xml."""
-        print("Starting to convert to XML...")
         # empty dictionary to store filepath: xml-tree pairs in
         self.trees = {}
         for i in tqdm(list(range(len(self.df.columns) - 1))):
@@ -88,14 +86,14 @@ class Converter:
             # store in self.trees dictionary
             self.trees[self.output_filenames[i]] = tree
 
-    def create_xml_tree(self, col): # pylint: disable=too-many-locals, too-many-statements
+    def create_xml_tree(self, col):  # pylint: disable=too-many-locals, too-many-statements
         """functions to create xml tree."""
 
         # function that checks if there is a attribute stored
         # in "value" field
         def is_attribute(_str):
             if isinstance(_str, str):
-                print(True)
+                pass
             else:
                 _str = str(_str)
             return "rdf:" in _str
@@ -193,7 +191,6 @@ class Converter:
             # be enough
             func = level.get(row["level"])
             level_elem = func(row)
-            print(idx)
             # if row["level"] == 1:
             #     level_elem = level_one(row)
             # elif row["level"] == 2:
