@@ -54,7 +54,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 env:
   IMAGE_NAME_FRONTEND_TDD: ghcr.io/kaeyros-analytics/tdd_frontend_staging:latest
