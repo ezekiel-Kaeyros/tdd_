@@ -1,17 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { motion } from 'framer-motion';
-import { ToastContainer } from 'react-toastify';
-
-import { useFileContext } from '@/app/hooks/useFileContext';
-import { getToken } from '@/app/utils/getToken';
-import { Button } from '@/components/Button';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-
 import LoadingIndicator from './LoadingIndicator';
 import UploadPlaceholder from './UploadPlaceholder';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+import { ToastContainer } from 'react-toastify';
+import { Button } from '@/components/Button';
+import { useFileContext } from '@/app/hooks/useFileContext';
+import { getToken } from '@/app/utils/getToken';
 
 type Props = {
   filename: string;
@@ -43,7 +41,7 @@ const dropIn = {
 const FileUploadingProgress: React.FC<Props> = ({ filename }) => {
   const { dispatch, fileConverted, file } = useFileContext();
 
-  React.useEffect(() => {
+  useEffect(() => {
     fileConverted ? notifySuccess('Completed successfully') : '';
   }, [fileConverted]);
 

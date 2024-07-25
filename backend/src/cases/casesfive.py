@@ -18,7 +18,7 @@ from src.create_dumy.remedial_action_schedule_group import (
     create_remedial_action_schedule_group,
 )
 
-import time
+# import time
 
 
 def create_case_five(
@@ -26,9 +26,8 @@ def create_case_five(
 ):  # pylint: disable=too-many-locals
     """Function to create case five."""
     # fap_df = wv_file.loc[wv_file['auslosender_prozess'] == "FAP-Replacement"]
-    # print(socketio)
+    print(socketio)
     fap_df = wv_file
-    # print(len(fap_df))
     if len(fap_df) == 0:
         return fap_df
 
@@ -46,16 +45,15 @@ def create_case_five(
     # print(type(group_data))
     # cell_val = group_data.iloc[0]['tages_tm_ident']
     array_action_ora = []
+    print("step one")
     for p in range(len(group_data)):
         tmp_df = group_data.loc[
             group_data["tages_tm_ident"] == group_data.iloc[p]["tages_tm_ident"]
         ]
 
-        res = fap_df.merge(tmp_df, on="tages_tm_ident",
-                           how="left", indicator=True)
-        # print("step two")
-        # print(res.iloc[p])
-        # print(len(group_data))
+        res = fap_df.merge(tmp_df, on="tages_tm_ident", how="left", indicator=True)
+        print("step two")
+        print(res.iloc[p])
         # time.sleep(4500)
         remedial_action_schedule_group = create_remedial_action_schedule_group(
             res.iloc[p]
@@ -81,7 +79,7 @@ def create_case_five(
             array_action_ora.append(remedial_action_cost)
             array_action_ora.append(power_schedule)
             array_action_ora.append(power_time_point)
-            # print(res.head())
+            print(res.head())
     # dumy_ora = pd.concat(array_action_ora, axis=0)
     if len(array_action_ora) == 0:
         return []

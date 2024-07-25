@@ -1,20 +1,13 @@
-// 'use client';
-import React from 'react';
-
-import dynamic from 'next/dynamic';
-import { Toaster } from 'react-hot-toast';
-import { ToastContainer } from 'react-toastify';
-
-// import NavigationBar from '../components/NavigationBar';
-// import NavBar from '@/components/NavBar';
+'use client';
+import { ReactNode } from 'react';
+import NavigationBar from '../components/NavigationBar';
+import NavBar from '@/components/NavBar';
 import { SuperAdminProvider } from '../context/admin.context';
-
-const NavigationBar = dynamic(() => import('../components/NavigationBar'), { ssr: false }); 
-// const NavBar = dynamic(() => import('../components/NavBar'), { ssr: false }); 
-const NavBar = dynamic(() => import('@/components/NavBar'), { ssr: false }); 
+import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 
 interface IProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Layout = ({ children }: IProps) => {

@@ -1,29 +1,20 @@
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from 'next/image';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+
 import './styles.css';
 
-import React from 'react';
-
-import axios from 'axios';
-import Image from 'next/image';
 // import required modules
-import {
-  Autoplay,
-  FreeMode,
-  Navigation,
-  Pagination,
-} from 'swiper/modules';
-// Import Swiper React components
-import {
-  Swiper,
-  SwiperSlide,
-} from 'swiper/react';
+import { Autoplay, Pagination, Navigation, FreeMode } from 'swiper/modules';
 import useSWR from 'swr';
-
-import { getToken } from '@/app/utils/getToken';
 import { BACKEND_URL } from '@/types/backendUrl';
+import axios from 'axios';
+import { getToken } from '@/app/utils/getToken';
 
 export default function App() {
   const { data, error, isLoading }: { data: []; error: any; isLoading: any } =
@@ -44,8 +35,6 @@ export default function App() {
         // revalidateOnReconnect: false
       }
     );
-
-    // console.log(data, "jjjjjjjjjjjjjj")
 
   return (
     <>
@@ -78,7 +67,7 @@ export default function App() {
                 <Image
                   src={`${BACKEND_URL}/${tso?.logo_path}`}
                   alt="Logo"
-                  width={80}
+                  width={100}
                   height={70}
                   title={tso.company}
                   className=" object-cover md:w-[82px] md:h-16 w-full h-full "

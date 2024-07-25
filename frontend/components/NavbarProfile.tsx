@@ -1,25 +1,22 @@
 'use client';
-import React from 'react';
-
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { notify } from './notifications/WarningNotification';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-
 import { useAuth } from '@/app/hooks/useAuth';
 import { logout } from '@/context/actions/auth-actions';
-
-import logoutIcon from '../public/icons/logoutIcon.svg';
+import { useRouter } from 'next/navigation';
 import settingsIcon from '../public/icons/settingsIcon.svg';
-import { notify } from './notifications/WarningNotification';
+import logoutIcon from '../public/icons/logoutIcon.svg';
 
 const NavbarProfile: React.FC = () => {
   const { push } = useRouter();
   const { user } = useAuth();
 
-  const [authorization, setAuthorization] = React.useState<boolean>(false);
+  const [authorization, setAuthorization] = useState<boolean>(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (user?.role !== 2) {
       setAuthorization(true);
     } else {

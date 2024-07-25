@@ -1,17 +1,16 @@
 'use client';
-import React from 'react';
-
-import { usePathname } from 'next/navigation';
-
 import { useAuth } from '@/app/hooks/useAuth';
+import { gettingAbbrReverse } from '@/app/utils/utils';
+import { BACKEND_URL } from '@/types/backendUrl';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
   name: string;
   props: any;
   company?: any;
   type?: string;
-  title?: string; 
-  companyValue?: string; 
+  title?: string;
 };
 
 type Tso = Object[];
@@ -20,27 +19,26 @@ const SelectField: React.FC<Props> = ({
   name,
   props,
   company,
-  type, 
-  companyValue, 
+  type,
   title,
 }) => {
   const { user } = useAuth();
-  const [, setComanies] = React.useState<Tso>();
+  const [, setComanies] = useState<Tso>();
   const pathname = usePathname();
   const paths = pathname.split('/');
 
-  // React.useEffect(() => {
-  //   async function fetchForm() {
-  //     await fetch(`${BACKEND_URL}/company/`)
-  //       .then((res) => res.json())
-  //       .then((result) => setComanies(result?.tso_list));
-  //   }
+  useEffect(() => {
+    async function fetchForm() {
+      await fetch(`${BACKEND_URL}/company/`)
+        .then((res) => res.json())
+        .then((result) => setComanies(result?.tso_list));
+    }
 
-  //   fetchForm();
-  //   return () => {
-  //     //
-  //   };
-  // }, []);
+    fetchForm();
+    return () => {
+      //
+    };
+  }, []);
 
   return (
     <>
@@ -107,15 +105,10 @@ const SelectField: React.FC<Props> = ({
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-greenpale focus:border-greenpale block w-full p-2.5  dark:focus:ring-greenpale dark:focus:border-greenpale"
           >
             {user?.role === 0 ? (
-              // <>
-              //   <option
-              //     value={`${gettingAbbrReverse(paths[2])}`}
-              //   >{`${gettingAbbrReverse(paths[2])}`}</option>
-              // </>
               <>
                 <option
-                  value={ companyValue }
-                >{ companyValue }</option>
+                  value={`${gettingAbbrReverse(paths[2])}`}
+                >{`${gettingAbbrReverse(paths[2])}`}</option>
               </>
             ) : (
               <>

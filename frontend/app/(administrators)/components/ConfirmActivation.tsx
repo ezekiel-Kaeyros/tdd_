@@ -1,24 +1,14 @@
 'use client';
-// import dynamic from 'next/dynamic';
-import React from 'react';
-
-import { FaRegCheckCircle } from 'react-icons/fa';
-
+import Image from 'next/image';
+import React, { useContext } from 'react';
+import DeleteIcon from '../../../public/icons/delete.svg';
 import { Button } from '@/components/Button';
-// import { deleteSingleUser } from '../actions/delete-user';
-import { notifyError } from '@/components/notifications/ErrorNotification';
-// import Image from 'next/image';
-// import DeleteIcon from '../../../public/icons/delete.svg';
 import { notifySuccess } from '@/components/notifications/SuccessNotification';
-
-import { activateSingleUser } from '../actions/activateSingleUser';
 import { SuperAdminContext } from '../context/admin.context';
-
-// const FormCard = dynamic(() => import('./forms/FormCard'), { ssr: false }); 
-// const Modal = dynamic(() => import('@/components/Modal'), { ssr: false }); 
-// const ConfirmDelete = dynamic(() => import('./ConfirmDelete'), { ssr: false }); 
-// const UpdateUserForm = dynamic(() => import('./forms/UpdateUserForm'), { ssr: false }); 
-// const ConfirmActivation = dynamic(() => import('./ConfirmActivation'), { ssr: false }); 
+import { deleteSingleUser } from '../actions/delete-user';
+import { notifyError } from '@/components/notifications/ErrorNotification';
+import { FaRegCheckCircle } from 'react-icons/fa';
+import { activateSingleUser } from '../actions/activateSingleUser';
 
 type Props = {
   id?: number;
@@ -26,17 +16,7 @@ type Props = {
 };
 
 const ConfirmActivation: React.FC<Props> = ({ setOpen }) => {
-  const { state, dispatch } = React.useContext(SuperAdminContext); 
-
-  // const handleNotification = async (message: string) => {
-  //   const { notifyError } = await import('@/components/notifications/ErrorNotification');
-  //   notifyError(message);
-  // }; 
-
-  // const handleNotificationSuccess = async (message: string) => {
-  //   const { notifySuccess } = await import('@/components/notifications/SuccessNotification');
-  //   notifySuccess(message);
-  // };
+  const { state, dispatch } = useContext(SuperAdminContext);
 
   // When deleting
   const ActivateUser = async (id: number) => {
@@ -45,17 +25,14 @@ const ConfirmActivation: React.FC<Props> = ({ setOpen }) => {
 
       if (result.status === 200) {
         notifySuccess('Activate successfully');
-        // handleNotificationSuccess('Activate successfully');
         dispatch({ type: 'REFRESH', payload: '' });
         setOpen();
       } else {
         // Something went wrong
         notifyError('Something went wrong, try again');
-        // handleNotification('Something went wrong, try again');
       }
     } catch (error) {
       notifyError('Something went wrong, try again');
-      // handleNotification('Something went wrong, try again');
     }
   };
   return (

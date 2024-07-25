@@ -1,18 +1,14 @@
 'use client';
 
-import React from 'react';
-
+import NotificationButton from '@/app/(administrators)/components/notificationButton/NotificationButton';
+import { useAuth } from '@/app/hooks/useAuth';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import NotificationButton
-  from '@/app/(administrators)/components/notificationButton/NotificationButton';
-import { useAuth } from '@/app/hooks/useAuth';
-
+import React, { useContext } from 'react';
 import { FileContext } from '../app/convert/context/file.context';
-import TipsIcon from '../public/icons/settings_suggest.svg';
 import Logo from '../public/icons/TDD-logo-form.svg';
+import TipsIcon from '../public/icons/settings_suggest.svg';
 import NavbarProfile from './NavbarProfile';
 
 type Props = {
@@ -20,7 +16,7 @@ type Props = {
 };
 
 const NavBar: React.FC<Props> = ({ _role }) => {
-  const { dispatch } = React.useContext(FileContext);
+  const { dispatch } = useContext(FileContext);
   const { user } = useAuth();
 
   return (

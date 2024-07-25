@@ -1,17 +1,9 @@
 'use client';
 
 import React, { useEffect } from 'react';
-
-import dynamic from 'next/dynamic';
-import {
-  redirect,
-  usePathname,
-} from 'next/navigation';
-
-// import ConfigForm from '@/app/(administrators)/components/forms/ConfigForm';
+import { redirect, usePathname } from 'next/navigation';
+import ConfigForm from '@/app/(administrators)/components/forms/ConfigForm';
 import { useAuth } from '@/app/hooks/useAuth';
-
-const ConfigForm = dynamic(() => import('@/app/(administrators)/components/forms/ConfigForm'), { ssr: false });
 
 const ConfigFiles = () => {
   const { user } = useAuth();

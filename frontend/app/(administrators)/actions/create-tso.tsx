@@ -10,7 +10,5 @@ export const createTSO = async (formData: FormData) => {
     },
   });
 
-  console.log("response...", result)
-
   return result;
 };

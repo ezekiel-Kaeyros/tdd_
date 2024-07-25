@@ -1,18 +1,10 @@
 'use client';
 
-import React, {
-  ButtonHTMLAttributes,
-  FC,
-} from 'react';
-
-import {
-  cva,
-  VariantProps,
-} from 'class-variance-authority';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-
+import { VariantProps, cva } from 'class-variance-authority';
+import React, { ButtonHTMLAttributes, FC } from 'react';
 import { cn } from '../app/utils/utils';
+import Image from 'next/image';
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,

@@ -1,13 +1,11 @@
-import React from 'react';
-
 import Image from 'next/image';
-
 import uploadIcon from '../../../public/icons/cloud_download.svg';
-import { FileContext } from '../context/file.context';
 import ThreeDotsLoadingAnimation from './ThreeDotsLoadingAnimation';
+import { useContext } from 'react';
+import { FileContext } from '../context/file.context';
 
 const UploadPlaceholder: React.FC = () => {
-  const { state } = React.useContext(FileContext);
+  const { state } = useContext(FileContext);
   return (
     <div className="flex w-full justify-between">
       <div className="flex flex-col items-start ">

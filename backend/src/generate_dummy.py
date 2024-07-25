@@ -174,8 +174,6 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
             if len(reste) > 0:
                 data_case_5, reste = filter_case_five(reste)
                 if len(data_case_5) > 0:
-                    # print("case five here", data_case_5)
-                    # time.sleep(2000)
                     self.socketio.emit("update-progress" +
                                        self.user_email, "Case 5")
                     case5 = create_case_five(
@@ -186,6 +184,7 @@ class CreateDummy:  # pylint: disable=too-many-instance-attributes
                     )
                     if len(case5) > 0:
                         self.actions.append(case5)
+                        print("case 5")
                 else:
                     print("value")
             if len(reste) > 0:

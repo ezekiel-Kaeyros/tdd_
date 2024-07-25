@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Dispatch, createContext, useReducer } from 'react';
 
 type TSOType = {
   tsoName: string;
@@ -26,8 +26,6 @@ type TSOType = {
   tsoList: any | null;
   currentTSO: currentTSO | null;
   notifications: any;
-  refresh: boolean; 
-  dataFromServerIsEmpty: boolean; 
 };
 
 // current TSO type
@@ -71,9 +69,7 @@ const initialState: TSOType = {
   selectedIdTSO: 0,
   tsoList: [],
   currentTSO: null,
-  notifications: [], 
-  refresh: false, 
-  dataFromServerIsEmpty: false
+  notifications: [],
 };
 
 const reducer = (initialState: TSOType, action: ActionType) => {
@@ -158,24 +154,6 @@ const reducer = (initialState: TSOType, action: ActionType) => {
         refreshData: initialState?.refreshData + 1,
       };
 
-    case 'REFRESHAFTERACTION': 
-      return {
-        ...initialState, 
-        refresh: !initialState?.refresh
-      }
-
-    case 'ISDATAFROMSERVEREMPTY': 
-      return {
-        ...initialState, 
-        dataFromServerIsEmpty: true
-      }
-
-    case 'ISDATAFROMSERVEREMPTYFALSE': 
-      return {
-        ...initialState, 
-        dataFromServerIsEmpty: false
-      }
-
     case 'DELETE':
       return {
         ...initialState,
@@ -221,15 +199,15 @@ const reducer = (initialState: TSOType, action: ActionType) => {
   }
 };
 
-export const SuperAdminContext = React.createContext<{
+export const SuperAdminContext = createContext<{
   state: TSOType;
-  dispatch: React.Dispatch<ActionType>;
+  dispatch: Dispatch<ActionType>;
 }>({ state: initialState, dispatch: () => null });
 
 export const SuperAdminProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <SuperAdminContext.Provider value={{ state, dispatch }}>
@@ -237,5 +215,3 @@ export const SuperAdminProvider: React.FC<{ children: React.ReactNode }> = ({
     </SuperAdminContext.Provider>
   );
 };
-// John.paul@gmail.com123
-// Norbert@gmail.com123

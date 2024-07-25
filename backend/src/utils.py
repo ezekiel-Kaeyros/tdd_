@@ -222,9 +222,6 @@ def update_some_row(user_id, row, newvalue, database):
     if row == "role":
         user.role = newvalue
         database.session.commit()
-    if row == "is_actif":
-        user.is_actif = newvalue
-        database.session.commit()
     return True
 
 

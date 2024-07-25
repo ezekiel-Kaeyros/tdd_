@@ -1,25 +1,25 @@
-name: CI Pipeline
+# name: CI Pipeline
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
 
-      - name: Login github registry
-        run:  |
-         echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
+#       - name: Login github registry
+#         run:  |
+#          echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u "${{ secrets.USERNAME }}" --password-stdin
 
-      - name: Build the Docker image for frontend
-        run: |
-          cd frontend && docker build -t ghcr.io/ezekiel-kaeyros/tdd-frontend:latest .
+#       - name: Build the Docker image for frontend
+#         run: |
+#           cd frontend && docker build -t ghcr.io/ezekiel-kaeyros/tdd-frontend:latest .
 
-      - name: Push to github registry for frontend
-        run: |
+#       - name: Push to github registry for frontend
+#         run: |
         
-          docker push ghcr.io/ezekiel-kaeyros/tdd-frontend:latest
+#           docker push ghcr.io/ezekiel-kaeyros/tdd-frontend:latest
 

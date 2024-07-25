@@ -1,26 +1,19 @@
 'use client';
-import React from 'react';
-
 import Image from 'next/image';
+import TDDLogo from '../../public/icons/TDD-logo-form.svg';
+import InputField from './InputField';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useContext, useState } from 'react';
+import ErrorMessage from '../notifications/ErrorMessage';
+import { Button } from '../Button';
+import ThreeDotsLoadingAnimation from '@/app/convert/components/ThreeDotsLoadingAnimation';
+import { login } from '@/context/actions/auth-actions';
+import { notifyError } from '../notifications/ErrorNotification';
+import { AuthContext } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
-import {
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import ThreeDotsLoadingAnimation
-  from '@/app/convert/components/ThreeDotsLoadingAnimation';
-import { login } from '@/context/actions/auth-actions';
-import { AuthContext } from '@/context/AuthContext';
-
-import TDDLogo from '../../public/icons/TDD-logo-form.svg';
-import { Button } from '../Button';
-import ErrorMessage from '../notifications/ErrorMessage';
-import { notifyError } from '../notifications/ErrorNotification';
-import InputField from './InputField';
-
-const LoginForm = ({ modalVal }: { modalVal: boolean}) => {
+const LoginForm: React.FC = () => {
   // Handling login form
 
   interface IFormInput {
@@ -29,10 +22,10 @@ const LoginForm = ({ modalVal }: { modalVal: boolean}) => {
   }
 
   const { push, refresh } = useRouter();
-  const [error, setError] = React.useState(modalVal);
-  const [loading, setLoading] = React.useState(modalVal);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const { dispatch } = React.useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm<IFormInput>();
 

@@ -1,8 +1,6 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-
-// import EditSettings from './EditSettings';
+import EditSettings from './EditSettings';
 
 type dataType = {
   company: string;
@@ -15,8 +13,6 @@ type dataType = {
 type Props = {
   data: Array<dataType>;
 };
-
-const EditSettings = dynamic(() => import('./EditSettings'), { ssr: false }); 
 
 const UserTable: React.FC<Props> = ({ data }) => {
   function reorderArrayByIsActive(array: dataType[]) {
@@ -36,7 +32,7 @@ const UserTable: React.FC<Props> = ({ data }) => {
 
   let reorderedArray = reorderArrayByIsActive(data);
 
-  // console.log(reorderedArray);
+  console.log(reorderedArray);
 
   return (
     <div className="relative  bg-white  flex justify-center shadow-md sm:rounded-lg">

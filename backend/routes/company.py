@@ -61,6 +61,7 @@ def get_all_tso():
     Returns:
         A JSON response containing a list of TSOs.
     """
+    print('get alllll tso ===============>>>>>>>>>')
     user = is_authenticate(request)
     info_logger(request)
     tso_list = Tso.query.order_by(Tso.company).all()
@@ -126,8 +127,7 @@ def get_company(tso_id):
         return jsonify({"error": "companie not found"}), 404
 
     user_list = []
-    users = User.query.filter_by(
-        company=tso.company).order_by(User.username).all()
+    users = User.query.filter_by(company=tso.company).order_by(User.username).all()
     for user in users:
         us = {
             "username": user.username,
@@ -321,7 +321,7 @@ def tso_update_logo(tso_id):
 
 
 @handle_tso.route("/delete/<tso_id>", methods=["DELETE"])
-@user_is_authenticate
+# @user_is_authenticate
 def tso_delete(tso_id):
     """Deletes a TSO (Technical Support Officer) based on the provided TSO"""
     info_logger(request)
@@ -331,7 +331,7 @@ def tso_delete(tso_id):
         db.session.delete(tso_data)
         db.session.commit()
 
-        return jsonify({'message': 'TSO deleted successfully'}), 200
+    return jsonify({'message': 'TSO deleted successfully'}), 200
 
     return jsonify({"error": "this companie not found !"}), 404
 

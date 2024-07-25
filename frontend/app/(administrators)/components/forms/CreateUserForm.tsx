@@ -1,28 +1,14 @@
 'use client';
-import React from 'react';
-
-import dynamic from 'next/dynamic';
-import {
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
-
-// import { Button } from '@/components/Button';
-// import InputField from '@/components/forms/InputField';
-// import SelectField from '@/components/forms/SelectField';
+import { Button } from '@/components/Button';
+import InputField from '@/components/forms/InputField';
+import SelectField from '@/components/forms/SelectField';
+import { notifySuccess } from '@/components/notifications/SuccessNotification';
+import React, { useContext } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { SuperAdminContext } from '../../context/admin.context';
 // import { encryptData } from '@/app/utils/encryptData';
 import { notifyError } from '@/components/notifications/ErrorNotification';
-import { notifySuccess } from '@/components/notifications/SuccessNotification';
-
 import { createUser } from '../../actions/create-user';
-import { SuperAdminContext } from '../../context/admin.context';
-
-const Button = dynamic(() =>
-  import('@/components/Button').then((mod) => mod.Button),
-  { ssr: false } // Set ssr to false if you don't want the component to be server-side rendered
-);
-const InputField = dynamic(() => import('@/components/forms/InputField'), { ssr: false }); 
-const SelectField = dynamic(() => import('@/components/forms/SelectField'), { ssr: false }); 
 
 const CreateUserForm: React.FC = () => {
   interface IFormInput {
@@ -35,9 +21,7 @@ const CreateUserForm: React.FC = () => {
   }
 
   const { register, handleSubmit, watch } = useForm<IFormInput>();
-  const { state, dispatch } = React.useContext(SuperAdminContext);
-
-  // console.log(state.currentTSO, "it is present in the form pane")
+  const { dispatch } = useContext(SuperAdminContext);
 
   // When submitting form
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
@@ -85,7 +69,6 @@ const CreateUserForm: React.FC = () => {
   );
 
   return (
-    
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-2">
         <InputField
@@ -164,7 +147,6 @@ const CreateUserForm: React.FC = () => {
       <div className="my-2">
         <SelectField
           company={true}
-          companyValue={ state?.currentTSO?.tsoAbbreviation }
           props={{
             ...register('company', { required: true }),
           }}
