@@ -24,8 +24,8 @@ load_dotenv()
 
 # create and get app function
 app = create_app()
-app.config["SECRET_KEY"] = os.environ.get("secret!")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("sqlite:///tdddatabase.db")
+app.config["SECRET_KEY"] = os.environ.get("APP_KEY")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 # // mysql+pymysql://
 # 'mysql://username:password@localhost/db_name'
 
