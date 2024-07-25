@@ -12,6 +12,7 @@ COPY .env ./
 RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
+RUN pip install marshmallow-sqlalchemy
 
 # Bundle app source
 COPY . .
