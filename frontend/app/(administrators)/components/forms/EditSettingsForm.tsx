@@ -69,11 +69,6 @@ const EditSettingsForm = () => {
       const formData = new FormData();
       formData.append('company', data?.tsoName as string);
       formData.append('tsoAbbreviation', data?.tsoAbbreviation as string);
-      if(data?.stammdatei_file[0] ){
-        formData.append('stammdatei_file', data.stammdatei_file[0]);
-      }
-      
-     
       // formData.append('company', data?.tsoName as string);
       // const newestData = {
       //   company: data?.tsoName, 

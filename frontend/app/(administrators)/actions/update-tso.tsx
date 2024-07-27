@@ -14,7 +14,7 @@ export const updateConfigFileTso = async (tsoName: number, data: any) => {
   try {
     const response = await axios.post(URL, data, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${getToken()}`,
       },
     });

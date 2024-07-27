@@ -2,8 +2,6 @@
 from datetime import datetime, timedelta
 from flask import session, redirect, request, jsonify, Blueprint
 import jwt
-import sys
-import traceback
 from logger.log import info_logger
 from src.database import User, Tso
 from src.utils import check_password
@@ -21,9 +19,8 @@ def user_login():
     """Authenticates"""
     info_logger(request)
     user = request.get_json()
-
-    try:
-        found = User.query.filter_by(email=user["email"]).first()
+    found = User.query.filter_by(email=user["email"]).first()
+    if found:
         if not found.is_actif:
             return (
                 jsonify(
@@ -90,13 +87,6 @@ def user_login():
             "company_id": found.company_id,
         }
         return jsonify(res)
-    except Exception:  # pylint: disable=broad-except
-        e = sys.exc_info()
-        traceback.print_tb(e[2], None, sys.stdout)
-        # time.sleep(5000)
-        # error_logger(error, "Builder_Module")
-        # create_and_send_email(str(error), "Builder_Module")
-
     return (
         jsonify(
             {
@@ -105,6 +95,7 @@ def user_login():
         ),
         401,
     )
+
 
 
 @auth.route("/refresh", methods=["POST", "GET"])

@@ -280,18 +280,14 @@ def tso_update(tso_id):
                 404,
             )
         tso_data = check_if_exist
-    print()
-    # print()
-
-    if request.files and request.files["stammdatei_file"]:
-        # time.sleep(1000)
+    if request.files["stammdatei_file"]:
         stammdatei_file_path = save_stammdatei_file(request)
         update_some_tso_row(
             tso_data.id, "stammdatei_file_path", stammdatei_file_path, db)
 
-    # if request.files['file']:
-    #     logo_path = upload_file(request)
-    #     update_some_tso_row(tso_data.id, "logo_path", logo_path, db)
+    if request.files['file']:
+        logo_path = upload_file(request)
+        update_some_tso_row(tso_data.id, "logo_path", logo_path, db)
 
     if request.form.get('tsoAbbreviation'):
         tso_data.tsoAbbreviation = request.form.get('tsoAbbreviation')

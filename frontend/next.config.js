@@ -9,10 +9,7 @@ const nextConfig = {
       'test-backend.tdd-tool.eu',
       'http://ec2-18-222-61-178.us-east-2.compute.amazonaws.com:5000',
       'http://13.58.91.109:5000',
-      '13.58.91.109:5000',
-      'cdcda999c426b35ca8ce63dfa84adc11.serveo.net',
-      '0fc27a23bde3ebf42c65cc67154147f8.serveo.net'
-
+      '13.58.91.109:5000'
     ],
   }, 
   // webpack: (config, { isServer }) => {
